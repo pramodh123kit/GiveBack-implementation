@@ -26,7 +26,7 @@ You should understand the fundamental concepts of Git, including:
 <pre>
 # Type this in Git bash or VS Code in-built terminal to Clone the main branch
 # Go to whatever directory you want the repo folder to be created through the terminal your using
-git clone https://github.com/SDGP-CS-71/GiveBack-implementation.git
+git clone https://github.com/pramodh123kit/GiveBack-implementation.git
 cd Giveback-implementation
 # To open the VS code from the project folder
 code .
