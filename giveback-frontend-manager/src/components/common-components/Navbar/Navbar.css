@@ -8,7 +8,7 @@
 
 nav {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     background-color: #ffffff;
     color: rgb(0, 0, 0);
@@ -16,7 +16,8 @@ nav {
     top: 0;
     height: 95px;
     margin-bottom: 50px;
-    width: 81%;
+    padding-inline: 1rem;
+    max-width: 1200px;
     margin:0 auto;
     box-sizing: border-box;
     margin-bottom: 50px;
@@ -35,7 +36,7 @@ nav .title {
 
 nav ul {
     display: flex;
-    /* margin-right: 50px; */
+   
 }
 
 nav ul li {
@@ -61,7 +62,7 @@ nav ul li a:not(.active):hover {
 
 .logo-light {
     height:85px;
-    margin-right: 700px;
+    /* margin-right: 700px; */
     padding-right: 100px;
    
 }
