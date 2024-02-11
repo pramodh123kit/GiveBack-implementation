@@ -1,0 +1,136 @@
+* {
+    font-family: 'Saira Condensed', sans-serif;
+}
+
+.active{
+    text-decoration: underline;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    position: relative;
+    top: 0;
+    height: 95px;
+    margin-bottom: 50px;
+    width: 81%;
+    margin:0 auto;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+
+
+nav .title {
+    font-size: 1.5rem;
+    margin: 1rem;
+    font-weight: bold;
+    font-family: serif;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    width: 100%;
+}
+
+nav ul {
+    display: flex;
+    /* margin-right: 50px; */
+}
+
+nav ul li {
+   list-style: none; 
+   margin-top: 6px;
+}
+
+nav ul li a {
+    display: block;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    padding: 0.5rem;
+    margin: 0 0.5rem;
+    font-size: 17.8px;
+    font-weight: bolder;
+    transition: 0.2s ease-in-out all;
+}
+
+nav ul li a:not(.active):hover {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    
+}
+
+.logo-light {
+    height:85px;
+    margin-right: 700px;
+    padding-right: 100px;
+   
+}
+
+nav .menu {
+    display: none;
+    position: absolute;
+    top: 0.75rem;
+    right: 0.5rem;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 2.25rem;
+    height: 2rem;
+}
+
+nav .menu span {
+    height: 0.4rem;
+    width: 100%;
+    background-color: #000000;
+    border-radius: 0.2rem;
+}
+
+.sign-in-button {
+    background-color: #52FF00;
+    color: rgb(0, 0, 0);
+    /* padding: 0.5rem 0.5rem; */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    /* width:50px; */
+}
+
+.sign-in-button:hover {
+    background-color: #44ff00a6;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    
+}
+
+@media (max-width: 780px) {
+    nav .menu {
+        display: flex;
+    }
+
+    nav {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        /* height: 100%; */
+        /* background-color: aqua; */
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        height: 500px;
+        margin-bottom: 0.25rem;
+    }
+
+    nav ul.open {
+        display: flex;
+    }
+
+    nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    nav ul li a {
+        margin: 0.2rem 0.5rem;
+    }
+}

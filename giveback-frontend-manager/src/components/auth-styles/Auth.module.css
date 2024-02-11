@@ -1,0 +1,30 @@
+.container {
+    width: 80%;
+    margin:0 auto;
+    height: 100%;
+}
+
+input {
+    padding: 2px;
+    margin: 10px;
+}
+
+p {
+    font-weight: bolder;
+    color: black;
+}
+
+.switch {
+    background-color: #52FF00;
+    color: rgb(0, 0, 0);
+    padding: 0.5rem 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.switch:hover {
+    background-color: #44ff00a6;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
