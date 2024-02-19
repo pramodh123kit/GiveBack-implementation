@@ -14,6 +14,10 @@
   height: 80%;
 }
 
+.container-community {
+  margin-bottom: 100px;
+}
+
 :root {
   --primary-color: #007126;
   --primary-color-alpha: #0071261a;
