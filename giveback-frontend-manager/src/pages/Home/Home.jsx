@@ -55,7 +55,7 @@ const Home = () => {
             </p>
           </div>
       </div>
-      <div className={styles.fourth_section}>
+        <div className={styles.fourth_section}>
         <div className={styles.line1}>
         <h1 className={styles.first_line}>Are you an Organization looking for help?</h1>
         <h2 className={styles.second_line}>Join us now!</h2>
