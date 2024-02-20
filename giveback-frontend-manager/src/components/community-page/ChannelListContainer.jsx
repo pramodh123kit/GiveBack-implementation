@@ -8,20 +8,20 @@ import GiveBackIcon from "../../Assets/logo-fav.png";
 
 const cookies = new Cookies();
 
-const SideBar = ({ logout }) => (
-    <div className="channel-list__sidebar">
-        <div className="channel-list__sidebar__icon1">
-            <div className="icon1__inner">
-                <img src={GiveBackIcon} alt="GiveBackLogo" width="50" />
-            </div>
-        </div>
-        <div className="channel-list__sidebar__icon2">
-            <div className="icon1__inner" onClick={logout}>
-                <img src={logOutIcon} className="logout__icon" alt="Logout" width="35"   />
-            </div>
-        </div>
-    </div>
-);
+// const SideBar = ({ logout }) => (
+//     <div className="channel-list__sidebar">
+//         <div className="channel-list__sidebar__icon1">
+//             <div className="icon1__inner">
+//                 <img src={GiveBackIcon} alt="GiveBackLogo" width="50" />
+//             </div>
+//         </div>
+//         <div className="channel-list__sidebar__icon2">
+//             <div className="icon1__inner" onClick={logout}>
+//                 <img src={logOutIcon} className="logout__icon" alt="Logout" width="35"   />
+//             </div>
+//         </div>
+//     </div>
+// );
 
 const CompanyHeader = () => (
     <div className="channel-list__header">
@@ -63,7 +63,7 @@ const ChannelListContent = ({
 
   return (
     <>
-      <SideBar logout={logout} />
+      {/* <SideBar logout={logout} /> */}
       <div className="channel-list__list__wrapper">
         <CompanyHeader />
         <ChannelSearch setToggleContainer={setToggleContainer} />
