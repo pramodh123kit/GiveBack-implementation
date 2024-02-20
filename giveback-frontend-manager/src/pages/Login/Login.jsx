@@ -1,11 +1,8 @@
-import React from 'react'
-import styles from './Login.module.css';
+import { Auth } from "../../components/community-page/index"
 
 const Login = () => {
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Login page</h1>
-    </div>
+    <Auth defaultMode="login" />
   )
 }
 

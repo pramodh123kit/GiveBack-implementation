@@ -1,30 +1,114 @@
-.container {
-    width: 80%;
-    margin:0 auto;
-    height: 100%;
+.auth_container {
+    width: 65%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    background-color: #74DE42;
+    border-radius: 15px;
+    margin: 0 auto;
+    position: relative;
 }
 
-input {
+.auth_container_right {
+    flex-wrap: wrap;
+    width: 80%;
+    margin-right: 3px;
+    height: 99%;
+    width: 50%;
+    background-color: #F3F3F3;
+    border-radius: 15px;
+    position: absolute;
+    right: 0;
+}
+
+.auth_container_right .share_h2 {
+    font-size: 40px;
+    margin-left: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.auth_log_button {
+    background-color: #4EE109;
+    border: none;
+    color: white;
+    padding: 3px 3px;
+    width: 80%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px; 
+    margin-left: 50px;
+    cursor: pointer;
+    border-radius: 8px; 
+    margin-bottom: 20px;
+    margin-top: 15px;
+    transition: all 0.125s;
+}
+
+.auth_log_button:hover {
+    background-color: #3bbd41; 
+}
+  
+.auth_log_button:active {
+    background-color: #4de109bb;
+}
+
+.auth_container_left {
+    width: 45%;
+    background-color: #74DE42;
+    border-radius: 15px;
+    position: absolute;
+    left: 0;
+    /* margin-top: 50px; */
+    margin-left: 40px;
+    z-index: 100;
+    
+}
+
+/* .container_left .quotation_img {
+  
+} */
+
+.auth_container_left .share_h2 {
+    font-size: 40px;
+    text-align: center;
+} 
+
+.auth_container_left .left_image {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+.auth_input {
     padding: 2px;
     margin: 10px;
+    border-radius: 6px;
+    border: 0.1px solid black;
+    width: 50%;
+    
 }
 
-p {
-    font-weight: bolder;
+.auth_p {
     color: black;
+    margin-left: 55px;
+    font-size: 18px;
+}
+
+.auth_label {
+    margin-left: 55px;
+    font-size: 18px;
 }
 
 .switch {
-    background-color: #52FF00;
-    color: rgb(0, 0, 0);
+    color: #349408;
     padding: 0.5rem 0.5rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    text-decoration: none;
     cursor: pointer;
+    font-size: bolder;
 }
 
 .switch:hover {
-    background-color: #44ff00a6;
-    color: rgb(0, 0, 0);
-    text-decoration: none;
+    color: #3bbd41;
+    text-decoration: underline;
 }

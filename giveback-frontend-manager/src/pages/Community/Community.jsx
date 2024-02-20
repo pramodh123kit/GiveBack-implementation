@@ -3,6 +3,7 @@ import { StreamChat } from "stream-chat";
 import { Chat } from "stream-chat-react";
 import Cookies from "universal-cookie";
 
+
 import { ChannelContainer, ChannelListContainer, Auth } from "../../components/community-page/index"
 
 import 'stream-chat-react/dist/css/index.css';
@@ -15,6 +16,8 @@ const apiKey = 'byfr7rs9s8mj';
 const authToken = cookies.get('token');
 
 const client = StreamChat.getInstance(apiKey);
+
+
 
 if(authToken) {
   client.connectUser({
@@ -32,9 +35,17 @@ const Community = () => {
   const [isCreating, setIsCreating] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
-  if (!authToken) return <Auth />
+   if (!authToken) {
+    return (
+      <>
+        <h1 className="notLogged-community">Please log in to access this feature</h1>
+        <Auth defaultMode="login" />
+      </>
+    );
+  }
 
   return (
+   
     <div className="container-community">
       <div className="app__wrapper">
         <Chat client={client} theme="team light">
