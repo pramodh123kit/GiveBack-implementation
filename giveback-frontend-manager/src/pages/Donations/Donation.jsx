@@ -12,6 +12,4 @@ const Donation = () => {
     </div>
   )
 }
-
-
 export default Donation;
