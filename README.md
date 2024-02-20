@@ -39,7 +39,7 @@ code .
 # Your branch's name (eg: pramodh_branch)
 git checkout pramodh_branch
 # To get a copy of the main branch
-git rebase main
+git fetch origin main
 # Go to the frontend folder as below shown
 cd giveback-frontend-manager
 npm install
