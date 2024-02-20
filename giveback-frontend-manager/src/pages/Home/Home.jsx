@@ -1,7 +1,13 @@
-import React from "react";
 import styles from "./Home.module.css";
+import Cookies from 'universal-cookie';
+import OrganizationSignContainer from '../../components/home-page/OrganizationSignContainer.jsx';
 
 const Home = () => {
+
+  const cookies = new Cookies();
+  const authToken = cookies.get('token');
+ 
+
   return (
     <div className={styles.container}>
       <div className={styles.first_section}>
@@ -55,17 +61,9 @@ const Home = () => {
             </p>
           </div>
       </div>
-        <div className={styles.fourth_section}>
-        <div className={styles.line1}>
-        <h1 className={styles.first_line}>Are you an Organization looking for help?</h1>
-        <h2 className={styles.second_line}>Join us now!</h2>
-        <img className={styles.arrow} src="../src/Assets/arrow.png" alt="arrow" /> <br />
-        <button className={styles.sign_up_btn}>SIGN UP</button>
-        </div>
-        <img className={styles.line2} src="../src/Assets/Project_70-01 1.png" alt="" />
-      </div>
+      {!authToken && <OrganizationSignContainer />}
     </div>
   );
 };
 
-export default Home;
+export default Home;
