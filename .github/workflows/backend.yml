@@ -20,7 +20,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        cd Backend
+        cd server
         npm install
 
     - name: Run tests
