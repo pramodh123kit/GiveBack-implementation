@@ -47,7 +47,7 @@ body {
   justify-content: center;
 
   padding: 2rem;
-  background: #007126;
+  background: var(--primary-color);
 }
 
 .auth__form-container_image {
@@ -126,8 +126,8 @@ body {
 
 .auth__form-container_fields-content_input input:focus,
 .auth__form-container_fields-content_input input:active {
-  box-shadow: 0px 0px 0px 1.5px #007126;
-  border-color: #007126;
+  box-shadow: 0px 0px 0px 1.5px var(--primary-color);
+  border-color: var(--primary-color);
 }
 
 .auth__form-container_fields-content_input-password {
@@ -145,8 +145,8 @@ body {
 
 .auth__form-container_fields-content_button button {
   border-radius: 4px;
-  background: #007126;
-  border: 1px solid #007126;
+  background: var(--primary-color);
+  border: 1px solid var(--primary-color);
   color: #fff;
   /* font-family: Arial, Helvetica, sans-serif; */
   font-weight: 500;
@@ -226,7 +226,7 @@ body {
 .str-chat-channel-list {
   height: fit-content;
   margin-bottom: 8px;
-  background-color: #007126;
+  background-color: var(--primary-color);
 }
 
 .str-chat-channel {
@@ -1754,7 +1754,7 @@ div.rta__autocomplete.str-chat__emojisearch {
   display: none;
   height: 50px;
   width: 50px;
-  background: #007126;
+  background: var(--primary-color);
   position: absolute;
   right: -2%;
   top: 50%;

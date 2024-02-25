@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './searchBar.css';
+// import './searchBar.css'; <= Pramodh commented this line temporarily
 import { FaSearch } from 'react-icons/fa';
 import { IoIosClose } from 'react-icons/io';
 
