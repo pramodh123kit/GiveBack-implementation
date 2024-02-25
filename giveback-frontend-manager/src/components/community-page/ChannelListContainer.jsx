@@ -55,6 +55,8 @@ const ChannelListContent = ({
     cookies.remove('avatarURL');
     cookies.remove('hashedPassword');
     cookies.remove('phoneNumber');
+    cookies.remove('isDonator');
+    cookies.remove('isRecipient');
 
     window.location.reload();
   }

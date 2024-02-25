@@ -25,7 +25,7 @@
     font-size: 40px;
     margin-left: 50px;
     margin-top: 50px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .auth_log_button {
@@ -111,4 +111,11 @@
 .switch:hover {
     color: #3bbd41;
     text-decoration: underline;
+}
+
+.error_message {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 18px;
 }
