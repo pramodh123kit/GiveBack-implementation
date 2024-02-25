@@ -28,7 +28,7 @@ const MeetTheTeam = () => {
         </div>
         <div className={styles.card}>
           <img className={styles.prof_pic} src={icon}></img>
-          <Card name="Akash Hewavickrama" role="Developer" email="chandrasekara.20222237@iit.ac.lk" linkedin="" github="https://github.com/RajeevAkash" />
+          <Card name="Akash Hewavickrama" role="Developer" email="chandrasekara.20222237@iit.ac.lk" linkedin="https://www.linkedin.com/in/rajeev-hewavickrama-5297bb266/" github="https://github.com/RajeevAkash" />
         </div>
       </div>
         
