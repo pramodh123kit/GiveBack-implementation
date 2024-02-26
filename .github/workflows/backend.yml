@@ -10,7 +10,7 @@ jobs:
     environment:
       name: 'production-backend'
       url: 'https://project-giveback.azurewebsites.net'
-    name: Build and Deploy
+    name: Build and Deploy Backend
     runs-on: ubuntu-latest
     
     steps:
