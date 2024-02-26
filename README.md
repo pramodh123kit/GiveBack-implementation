@@ -35,15 +35,15 @@ code .
 
 
 ## Checking Out to the Specific Branch:
+## To get a copy of the main branch
 <pre>
 # Your branch's name (eg: pramodh_branch)
 git checkout pramodh_branch
 
-# To get a copy of the main branch
 git fetch origin main
 git checkout main
 git pull origin main 
-git checkout pramodh_branch <--your branch name
+git checkout pramodh_branch <--your branch's name
 git merge main
 
 # Go to the frontend folder as below shown
