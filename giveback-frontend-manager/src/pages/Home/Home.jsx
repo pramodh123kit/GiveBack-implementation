@@ -32,7 +32,7 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <div className={styles.first_section}>
-        <img className={styles.column1} src={hand} alt="Image" />
+        <img className={styles.column1} src={hero} alt="Image" />
         <div className={styles.column2} >
           <h1 className={styles.main_topic}>Introducing <span className={styles.word_giveback}>GiveBack</span></h1>
           <h2 className={styles.sub_topic}>
