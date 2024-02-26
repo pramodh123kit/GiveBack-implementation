@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MessageList, MessageInput, Thread, Window, useChannelActionContext, Avatar, useChannelStateContext, useChatContext } from 'stream-chat-react';
 
-import { ChannelInfo } from '../../Assets/ChannelInfo.jsx';
+import { ChannelInfo } from '@/Assets/ChannelInfo.jsx';
 
 export const GiphyContext = React.createContext({});
 

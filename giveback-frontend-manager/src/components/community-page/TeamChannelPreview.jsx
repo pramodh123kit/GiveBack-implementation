@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../pages/Community/Community.css';
+import '@/pages/Community/Community.css';
 import { Avatar, useChatContext } from 'stream-chat-react';
 
 const TeamChannelPreview = ({ setActiveChannel, setIsCreating, setIsEditing, setToggleContainer, channel, type }) => {

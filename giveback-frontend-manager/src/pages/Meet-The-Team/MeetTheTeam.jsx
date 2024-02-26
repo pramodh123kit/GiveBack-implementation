@@ -1,6 +1,6 @@
-import Card from '../../components/meet-the-team-components/TeamCard/Card'
+import Card from '@/components/meet-the-team-components/TeamCard/Card'
 import styles from './MeetTheTeam.module.css';
-import icon from '../../Assets/icon.png';
+import icon from '@/Assets/icon.png';
 
 const MeetTheTeam = () => {
   return (

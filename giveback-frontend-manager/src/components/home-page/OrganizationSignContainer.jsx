@@ -1,4 +1,4 @@
-import styles from '../../pages/Home/Home.module.css';
+import styles from '@/pages/Home/Home.module.css';
 
 const OrganizationSignContainer = () => {
   return (

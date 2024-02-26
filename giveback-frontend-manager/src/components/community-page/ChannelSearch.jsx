@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useChatContext } from 'stream-chat-react';
-import "../../pages/Community/Community.css";
+import "@/pages/Community/Community.css";
 import { ResultsDropdown } from '../community-page/index.js';
-import { SearchIcon } from '../../Assets/SearchIcon'
+import { SearchIcon } from '@/Assets/SearchIcon'
 
 const ChannelSearch = ({ setToggleContainer }) => {
   const { client, setActiveChannel } = useChatContext();  

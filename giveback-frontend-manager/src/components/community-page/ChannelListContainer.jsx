@@ -2,9 +2,9 @@ import { useState } from "react";
 import { ChannelList, ChatAutoComplete, useChatContext } from "stream-chat-react";
 import { ChannelSearch, TeamChannelList, TeamChannelPreview } from "./";
 import Cookies from "universal-cookie";
-import "../../pages/Community/Community.css";
-import logOutIcon from "../../Assets/logout.png";
-import GiveBackIcon from "../../Assets/logo-fav.png";
+import "@/pages/Community/Community.css";
+import logOutIcon from "@/Assets/logout.png";
+import GiveBackIcon from "@/Assets/logo-fav.png";
 
 const cookies = new Cookies();
 

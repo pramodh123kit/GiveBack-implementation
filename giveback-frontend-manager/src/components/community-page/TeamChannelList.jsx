@@ -1,5 +1,5 @@
-import { AddChannel } from '../../Assets/AddChannel.jsx'
-import "../../pages/Community/Community.css";
+import { AddChannel } from '@/Assets/AddChannel.jsx'
+import "@/pages/Community/Community.css";
 
 const TeamChannelList = ({ setToggleContainer, children, error = false, loading, type, isCreating, setIsCreating, setCreateType, setIsEditing }) => {
   if (error) {

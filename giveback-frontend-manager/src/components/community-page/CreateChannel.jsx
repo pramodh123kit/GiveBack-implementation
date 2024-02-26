@@ -1,7 +1,7 @@
 import { useChatContext } from "stream-chat-react";
 import { useState } from "react";
-import { UserList } from "../../components/community-page/index.js";
-import { CloseCreateChannel } from '../../Assets/CloseCreateChannel.jsx'
+import { UserList } from "@/components/community-page/index.js";
+import { CloseCreateChannel } from '@/Assets/CloseCreateChannel.jsx'
 
 const ChannelNameInput = ({ channelName = '', setChannelName }) => {
   const { client, setActiveChannel } = useChatContext(); 

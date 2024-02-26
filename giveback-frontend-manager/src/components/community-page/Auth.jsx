@@ -4,8 +4,8 @@ import Cookies from 'universal-cookie';
 import axios from 'axios';
 import styles from '../auth-styles/Auth.module.css';
 
-import image from '../../Assets/Group11.svg';
-import quotationImg from '../../Assets/Frame.svg';
+import image from '@/Assets/Group11.svg';
+import quotationImg from '@/Assets/Frame.svg';
 
 const cookies = new Cookies();
 

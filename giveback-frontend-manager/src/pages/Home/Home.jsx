@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./Home.module.css";
 import { StreamChat } from "stream-chat";
 import Cookies from 'universal-cookie';
-import OrganizationSignContainer from '../../components/home-page/OrganizationSignContainer.jsx';
+import OrganizationSignContainer from '@/components/home-page/OrganizationSignContainer.jsx';
 
 const cookies = new Cookies();
 const authToken = cookies.get('token');

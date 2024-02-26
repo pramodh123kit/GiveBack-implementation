@@ -1,4 +1,4 @@
-import { Auth } from "../../components/community-page/index"
+import { Auth } from "@/components/community-page/index"
 
 const Login = () => {
   return (
