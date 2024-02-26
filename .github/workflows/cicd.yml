@@ -13,7 +13,6 @@ jobs:
     name: Build and Deploy
     runs-on: ubuntu-latest
     
-    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -30,11 +29,11 @@ jobs:
         
       # Frontend (React.js) Build and Test
       - name: Install Frontend Dependencies
-        working-directory: ./
+        working-directory: giveback-frontend-manager
         run: npm install
         
       - name: Build Frontend
-    
+        working-directory: giveback-frontend-manager
         run: npm run build
       
       # Deploy Backend (e.g., to Azure App Service)
@@ -43,15 +42,12 @@ jobs:
         with:
           app-name: 'Project-GiveBack'
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_BACKEND }}
-          package: ./server
+          package: ./server  # Corrected package path
+
       # Deploy Frontend (e.g., to Azure Storage Static Website)
       - name: Deploy Frontend
         uses: Azure/webapps-deploy@v2
         with:
           app-name: 'GiveBack'
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_FRONTEND }}
-          package: ./giveback-frontend-manager/dist
-          # Your deployment script/command for frontend deployment
-          # e.g., using Azure CLI, AWS CLI, or other deployment method
-          # Example (Azure Storage Static Website):
-          # az storage blob upload-batch --account-name $STORAGE_ACCOUNT_NAME --destination $CONTAINER_NAME --source frontend/build --pattern "*"
+          package: ./giveback-frontend-manager/dist  # Corrected package path
