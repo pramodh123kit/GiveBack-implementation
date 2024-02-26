@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import styles from "./Home.module.css";
 import { StreamChat } from "stream-chat";
 import Cookies from 'universal-cookie';
+import hero from "@/Assets/hero-section-image.png";
+import hand from "@/Assets/hand.png";
+import heart from "@/Assets/heart.png";
+import community from "@/Assets/community.png";
+
 import OrganizationSignContainer from '@/components/home-page/OrganizationSignContainer.jsx';
 
 const cookies = new Cookies();
@@ -27,7 +32,7 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <div className={styles.first_section}>
-        <img className={styles.column1} src="../src/Assets/hero-section-image.png" alt="Image" />
+        <img className={styles.column1} src={hero} alt="Image" />
         <div className={styles.column2} >
           <h1 className={styles.main_topic}>Introducing <span className={styles.word_giveback}>GiveBack</span></h1>
           <h2 className={styles.sub_topic}>
@@ -50,7 +55,7 @@ const Home = () => {
 
       <div className={styles.third_section}>
           <div className={styles.category}>
-            <img className={styles.icons} src="../src/Assets/hand.png" alt="Volunteering" />
+            <img className={styles.icons} src={hand} alt="Volunteering" />
             <h2>Promote Volunteering Activites</h2>
             <p>
               Inspire change by connecting volunteers with meaningful
@@ -60,7 +65,7 @@ const Home = () => {
           </div>
 
           <div className={styles.category}>
-            <img className={styles.icons} src="../src/Assets/heart.png" alt="Volunteering" />
+            <img className={styles.icons} src={heart} alt="Volunteering" />
             <h2>Donor Accounts</h2>
             <p>
               Offer users the option to create accounts to track their donation
@@ -69,7 +74,7 @@ const Home = () => {
           </div>
 
           <div className={styles.category}>
-            <img className={styles.icons} src="../src/Assets/community.png" alt="Volunteering" />
+            <img className={styles.icons} src={community} alt="Volunteering" />
             <h2>Community Groups</h2>
             <p>
               Unite with like-minded individuals, share experiences, and amplify
