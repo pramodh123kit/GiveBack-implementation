@@ -30,7 +30,7 @@ jobs:
         
       # Frontend (React.js) Build and Test
       - name: Install Frontend Dependencies
-        working-directory: giveback-frontend-manager
+        working-directory: ./
         run: npm install
         
       - name: Build Frontend
