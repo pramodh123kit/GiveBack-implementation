@@ -7,8 +7,12 @@ on:
 
 jobs:
   build-and-deploy:
+    environment:
+      name: 'production-backend'
+      url: 'https://project-giveback.azurewebsites.net'
     name: Build and Deploy
     runs-on: ubuntu-latest
+    
     
     steps:
       - name: Checkout repository
@@ -39,9 +43,10 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'Project-GiveBack'
+          working-directory: server
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_BACKEND }}
-          package: server
-      
+          package: .
+
       # Deploy Frontend (e.g., to Azure Storage Static Website)
       - name: Deploy Frontend
         run: |
