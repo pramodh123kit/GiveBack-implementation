@@ -1,0 +1,51 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Backend (Node.js) Build and Test
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+      
+      - name: Install Backend Dependencies
+        working-directory: server
+        run: npm install
+        
+      # Frontend (React.js) Build and Test
+      - name: Install Frontend Dependencies
+        working-directory: giveback-frontend-manager
+        run: npm install
+        
+      - name: Build Frontend
+        working-directory: giveback-frontend-manager
+        run: npm run build
+      
+      # Deploy Backend (e.g., to Azure App Service)
+
+      - name: Deploy Backend
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'Equinox-app'
+          slot-name: 'Production'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_BACKEND }}
+      
+      # Deploy Frontend (e.g., to Azure Storage Static Website)
+      - name: Deploy Frontend
+        run: |
+          # Your deployment script/command for frontend deployment
+          # e.g., using Azure CLI, AWS CLI, or other deployment method
+          # Example (Azure Storage Static Website):
+          # az storage blob upload-batch --account-name $STORAGE_ACCOUNT_NAME --destination $CONTAINER_NAME --source frontend/build --pattern "*"
