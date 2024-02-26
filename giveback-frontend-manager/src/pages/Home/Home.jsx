@@ -3,7 +3,7 @@ import styles from "./Home.module.css";
 import { StreamChat } from "stream-chat";
 import Cookies from 'universal-cookie';
 import hero from "@/Assets/hero-section-image.png";
-import hand from "@/Assets/hand.png";
+// import hand from "@/Assets/hand.png";
 import heart from "@/Assets/heart.png";
 import community from "@/Assets/community.png";
 
@@ -55,7 +55,7 @@ const Home = () => {
 
       <div className={styles.third_section}>
           <div className={styles.category}>
-            <img className={styles.icons} src={hand} alt="Volunteering" />
+            {/* <img className={styles.icons} src={hand} alt="Volunteering" /> */}
             <h2>Promote Volunteering Activites</h2>
             <p>
               Inspire change by connecting volunteers with meaningful
