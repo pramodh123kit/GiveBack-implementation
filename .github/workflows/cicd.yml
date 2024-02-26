@@ -25,13 +25,13 @@ jobs:
         run: npm install
         
       # Frontend (React.js) Build and Test
-      - name: Install Frontend Dependencies
-        working-directory: giveback-frontend-manager
-        run: npm install
+      # - name: Install Frontend Dependencies
+      #   working-directory: giveback-frontend-manager
+      #   run: npm install
         
-      - name: Build Frontend
-        working-directory: giveback-frontend-manager
-        run: npm run build
+      # - name: Build Frontend
+      #   working-directory: giveback-frontend-manager
+      #   run: npm run build
       
       # Deploy Backend (e.g., to Azure App Service)
 
