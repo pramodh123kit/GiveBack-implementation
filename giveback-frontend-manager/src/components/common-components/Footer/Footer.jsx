@@ -1,5 +1,5 @@
-import logoDark from "@/Assets/logoDark.png";
-import emailIcon from "@/Assets/email-icon.png";
+import logoDark from "@/assets/logoDark.png";
+import emailIcon from "@/assets/email-icon.png";
 import "./Footer.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 

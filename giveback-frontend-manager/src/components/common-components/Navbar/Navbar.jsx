@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logoLight from "@/Assets/logoLight.png";
+import logoLight from "@/assets/logoLight.png";
 import "./Navbar.css";
 import { Link, NavLink } from "react-router-dom";
 

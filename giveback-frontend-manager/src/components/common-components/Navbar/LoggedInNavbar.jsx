@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import logoLight from "@/Assets/logoLight.png";
+import logoLight from "@/assets/logoLight.png";
 import "./Navbar.css";
 import { Link, NavLink } from "react-router-dom";
 import Cookies from 'universal-cookie';
-import image from '@/Assets/prof.svg'
+import image from '@/assets/prof.svg'
 
 const cookies = new Cookies();
 

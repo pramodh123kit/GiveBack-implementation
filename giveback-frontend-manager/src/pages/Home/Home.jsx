@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import styles from "./Home.module.css";
 import { StreamChat } from "stream-chat";
 import Cookies from 'universal-cookie';
-import hero from "@/Assets/hero-section-image.png";
-import hand from "@/Assets/hand.png";
-import heart from "@/Assets/heart.png";
-import community from "@/Assets/community.png";
+import hero from "@/assets/hero-section-image.png";
+import hand from "@/assets/hand.png";
+import heart from "@/assets/heart.png";
+import community from "@/assets/community.png";
 
 import OrganizationSignContainer from '@/components/home-page/OrganizationSignContainer.jsx';
 

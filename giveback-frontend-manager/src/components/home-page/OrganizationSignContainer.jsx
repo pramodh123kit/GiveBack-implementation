@@ -1,6 +1,6 @@
 import styles from '@/pages/Home/Home.module.css';
-import arrow from '@/Assets/arrow.png';
-import orgLogo from '@/Assets/Project_70-01 1.png';
+import arrow from '@/assets/arrow.png';
+import orgLogo from '@/assets/Project_70-01 1.png';
 
 const OrganizationSignContainer = () => {
   return (

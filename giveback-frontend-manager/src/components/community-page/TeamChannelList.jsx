@@ -1,4 +1,4 @@
-import { AddChannel } from '@/Assets/AddChannel.jsx'
+import { AddChannel } from '@/assets/AddChannel.jsx'
 import "@/pages/Community/Community.css";
 
 const TeamChannelList = ({ setToggleContainer, children, error = false, loading, type, isCreating, setIsCreating, setCreateType, setIsEditing }) => {
