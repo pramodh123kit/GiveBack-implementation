@@ -2,7 +2,7 @@
 _**Welcome to the Repository of **GiveBack** 👨‍🎓**_
 
 ## Overview
-* This repository manages the client-side codebase for **GiveBack**. It handles the user interface, interactions, and presentation logic for the application and backend logic.
+* This repository manages the codebase for **GiveBack**. It handles the user interface, interactions, and presentation logic for the application and backend logic.
 
 # Prerequisites
 
