@@ -25,10 +25,14 @@ export const LoggedInNavbar = () => {
     window.location.reload();
   };
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
-    <nav>
+    <nav className={menuOpen ? "open" : ""}>
       <img src={logoLight} className="logo-light" alt="logo" />
-      <div className="menu" onClick={() => setMenuOpen(!menuOpen)}>
+      <div className="menu" onClick={toggleMenu}>
         <span></span>
         <span></span>
         <span></span>

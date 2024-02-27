@@ -6,10 +6,14 @@ import { Link, NavLink } from "react-router-dom";
 export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
-    <nav>
+    <nav className={menuOpen ? "open" : ""}>
       <img src={logoLight} className="logo-light" alt="logo" />
-      <div className="menu" onClick={() => setMenuOpen(!menuOpen)}>
+      <div className="menu" onClick={toggleMenu}>
         <span></span>
         <span></span>
         <span></span>
