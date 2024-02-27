@@ -23,6 +23,9 @@ nav {
     margin-bottom: 50px;
 }
 
+nav.open {
+    margin-bottom: 450px;    
+  }
 
 nav .title {
     font-size: 1.5rem;
@@ -116,17 +119,23 @@ nav .menu span {
     cursor: pointer; /* If clicking the icon should do something, like open a user profile */
   }
 
-@media (max-width: 780px) {
+
+  @media (max-width: 780px) {
     nav .menu {
         display: flex;
+        
     }
 
     nav {
         width: 100%;
         flex-direction: column;
         align-items: flex-start;
-        /* height: 100%; */
-        /* background-color: aqua; */
+        
+    }
+
+
+    .sign-in-button {
+        margin-bottom: 20px;
     }
 
     nav ul {
@@ -135,10 +144,16 @@ nav .menu span {
         width: 100%;
         height: 500px;
         margin-bottom: 0.25rem;
+        box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.3);
+        border-radius: 15px;
+        
     }
 
     nav ul.open {
         display: flex;
+        transform: translateY(0);
+        background-color: rgb(255, 255, 255);
+        margin-bottom: 50px;
     }
 
     nav ul li {
@@ -149,4 +164,22 @@ nav .menu span {
     nav ul li a {
         margin: 0.2rem 0.5rem;
     }
+
+    nav {
+        transition: margin-bottom 0.3s ease-in-out;
+      }
+    
+      nav ul {
+        transition: transform 0.3s ease-in-out;
+        transform: translateY(-100%);
+      } 
+       
+      nav.open ul {
+        transition: transform 0.3s ease-in-out; /* Added transition property */
+        transform: translateY(0);
+      }
+
+      .user-initial-icon {
+        margin-bottom: 20px;
+      }
 }
