@@ -15,11 +15,13 @@ const OrganizationSignContainer = () => {
     <h1 className={styles.first_line}>Are you an Organization looking for help?</h1>
     <h2 className={styles.second_line}>Join us now!</h2>
     <img className={styles.arrow} src={arrow} alt="arrow" /> <br />
-    <button className={styles.sign_up_btn} onClick={handleOpenBtn}>SIGN UP</button>
-    {showForm && <OrganizationRegister onClose={handleCloseBtn}/>}
+        <button className={styles.sign_up_btn} onClick={handleOpenBtn}>
+          SIGN UP
+        </button>
+        {showForm && <OrganizationRegister onClose={handleCloseBtn} />}
+      </div>
+      <img className={styles.line2} src={orgLogo} alt="orgLogo" />
     </div>
-    <img className={styles.line2} src={orgLogo} alt="orgLogo" />
-  </div>
 
   )
 }
