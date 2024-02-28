@@ -2,19 +2,17 @@ import React, { useState, useEffect } from "react";
 import { StreamChat } from "stream-chat";
 import { Chat } from "stream-chat-react";
 import Cookies from "universal-cookie";
+import axios from 'axios';
 
-import { ChannelContainer, ChannelListContainer, Auth } from "@/components/community-page/index"
-
+import { ChannelContainer, ChannelListContainer, Auth } from "@/components/community-page/index";
 import 'stream-chat-react/dist/css/index.css';
 
 const cookies = new Cookies();
-
 const apiKey = 'byfr7rs9s8mj';
 const authToken = cookies.get('token');
-
 const client = StreamChat.getInstance(apiKey);
 
-if(authToken) {
+if (authToken) {
   client.connectUser({
     id: cookies.get('userId'),
     name: cookies.get('username'),
@@ -24,7 +22,7 @@ if(authToken) {
     phoneNumber: cookies.get('phoneNumber'),
     donator: cookies.get('isDonator'),
     recipient: cookies.get('isRecipient'),
-   }, authToken)
+  }, authToken);
 }
 
 const Community = () => {
@@ -38,16 +36,29 @@ const Community = () => {
   useEffect(() => {
     async function importStyles() {
       if (isDonator) {
-        const module = await import('./Community2.css');
+        await import('./Community2.css');
       } else if (isRecipient) {
-        const module = await import('./Community.css');
+        await import('./Community.css');
       }
     }
   
     importStyles();
   }, [isDonator, isRecipient]);
 
-   if (!authToken) {
+  useEffect(() => {
+    const fetchCommunityData = async () => {
+      try {
+        const response = await axios.get('/api/community');
+        console.log(response.data); // Handle the response as needed
+      } catch (error) {
+        console.error('Error fetching community data:', error);
+      }
+    };
+
+    fetchCommunityData();
+  }, []);
+
+  if (!authToken) {
     return (
       <>
         <h1 className="notLogged-community">Please log in to access this feature</h1>
@@ -56,15 +67,13 @@ const Community = () => {
     );
   }
 
-if (isDonator) {
-  console.log("User is a donator");
-} else if (isRecipient) {
-  console.log("User is a recipient");
-}
-  
+  if (isDonator) {
+    console.log("User is a donator");
+  } else if (isRecipient) {
+    console.log("User is a recipient");
+  }
 
   return (
-   
     <div className="container-community">
       <div className="app__wrapper">
         <Chat client={client} theme="team light">
@@ -73,7 +82,6 @@ if (isDonator) {
             setIsCreating={setIsCreating}
             setCreateType={setCreateType}
             setIsEditing={setIsEditing}
-           
           />
           <ChannelContainer 
             isCreating={isCreating}
@@ -85,7 +93,7 @@ if (isDonator) {
         </Chat>
       </div>
     </div>
-  )
+  );
 }
 
-export default Community
+export default Community;
