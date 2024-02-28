@@ -2,8 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const swaggerUI = require('swagger-ui-express');  
 const swaggerSpec = require('./swagger');
-
-
 const authRoutes = require('./routes/auth');
 
 const app = express();
@@ -26,6 +24,10 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
+app.get('/api/community', (req, res) => {
+  res.json({ message: 'Community data fetched from the backend' });
+});
+
 app.post('/', (req, res) => {
   const { message, user: sender, type, members } = req.body;
 
@@ -33,18 +35,18 @@ app.post('/', (req, res) => {
     members
       .filter((member) => member.user_id !== sender.id)
       .forEach(({ user }) => {
-          if (!user.online) {
-            twilioClient.messages
-              .create({
-                body: `You have a new message from ${message.user.fullName} - ${message.text}`,
-                messagingServiceSid: messagingServiceSid,
-                to: user.phoneNumber  
-              })
-              .then(() => console.log('Message sent!'))
-              .catch((err) => console.error(err));
-          }
+        if (!user.online) {
+          twilioClient.messages
+            .create({
+              body: `You have a new message from ${message.user.fullName} - ${message.text}`,
+              messagingServiceSid: messagingServiceSid,
+              to: user.phoneNumber  
+            })
+            .then(() => console.log('Message sent!'))
+            .catch((err) => console.error(err));
+        }
       })
-      return res.status(200).send('Message sent!');
+    return res.status(200).send('Message sent!');
   }
   return res.status(200).send('Not a new message request');
 });
