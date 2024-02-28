@@ -1,5 +1,8 @@
 const express = require('express');
 const cors = require('cors');
+const swaggerUI = require('swagger-ui-express');  
+const swaggerSpec = require('./swagger');
+
 
 const authRoutes = require('./routes/auth');
 
@@ -7,6 +10,8 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 require('dotenv').config();
+
+app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
