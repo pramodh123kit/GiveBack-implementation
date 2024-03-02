@@ -1,0 +1,159 @@
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow: auto;
+  }
+  
+  .popupCard {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 550px;
+    height: 90%;
+  }
+  
+  .form_header{
+    display: flex;
+    flex-direction: flex-start;
+    margin-bottom: 2rem;
+    font-size: 60px;
+    font-weight: bolder;
+  }
+
+  .close_icon {
+    width: 40px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    cursor: pointer;
+  }
+  
+  .styles-button {
+    color: #ffffff;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .styles-donations-container {
+    margin-top: 20px;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  
+  .styles-donation-item {
+    list-style-type: none;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-right: 8%;
+    border-radius: 10px;
+  }
+  
+  .styles-donation-info {
+    font-weight: bold;
+  }
+
+
+  .styles-donation-image {
+    max-width: 100px;
+    max-height: 100px;
+  }
+  
+  .form_header{
+    display: flex;
+    flex-direction: flex-start;
+    margin-left: 6%;
+    font-size: 45px;
+    font-weight: bolder;
+  }
+  
+  .form_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .forms {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    font-size: 19px;
+    color:#000; 
+  }
+  
+  .form_labels {
+    color: #121212;
+    padding-right: 10px;
+  }
+  
+  .form_box {
+    border-width: 1px;
+    border-radius: 5px;
+    width: 100%;
+    padding: 1px;
+  }
+  
+  .form_box_big {
+    border-width: 1px;
+    border-radius: 5px;
+    padding-bottom: 3.65rem;
+    width: 100%;
+  }
+  
+  .form_btn {
+    padding-top: 5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .next_btn {
+    background-color: #52ff00;
+    border: none;
+    font-weight: bold;
+    color: #000000;
+    padding: 7px 40px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 7px;
+    margin-top: 20px;
+  }
+  
+  .register_btn {
+    background-color: #52ff00;
+    border: none;
+    font-weight: bold;
+    color: #000000;
+    padding: 7px 30px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 7px;
+    margin-top: 20px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .form_header {
+      font-size: 40px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .popupCard {
+      width: 90%;
+    }
+  }
+  

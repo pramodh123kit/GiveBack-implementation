@@ -180,6 +180,53 @@ body {
   font-weight: 700;
 }
 
+.recieve-btn{
+  background-color: #52ff00;
+  border: none;
+  font-weight: bold;
+  color: #000000;
+  padding: 7px 30px;
+  text-align: center;
+  font-size: 19px;
+  border-radius: 7px;
+  margin-top: 20px; 
+  position: absolute;
+  right: 10%;     
+}
+
+.donate-btn{
+  background-color: #71005e;
+  border: none;
+  font-weight: bold;
+  color: white;
+  padding: 7px 30px;
+  font-size: 19px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 7px;
+  margin-top: 20px; 
+  position: absolute;
+  right: 10%;
+  margin-bottom: 50px;   
+}
+
+.donate-btn-list{
+  background-color: #71005e;
+  border: none;
+  font-weight: bold;
+  color: white;
+  padding: 7px 30px;
+  font-size: 19px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 7px;
+  margin-top: 20px; 
+  margin-right: 120px;
+  position: absolute;
+  right: 10%;
+  margin-bottom: 50px;
+}
+
 @media screen and (max-width: 800px) {
   .auth__form-container {
     flex-direction: column-reverse;

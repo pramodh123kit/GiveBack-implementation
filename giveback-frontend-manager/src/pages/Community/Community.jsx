@@ -3,7 +3,9 @@ import { StreamChat } from "stream-chat";
 import { Chat } from "stream-chat-react";
 import Cookies from "universal-cookie";
 
-import { ChannelContainer, ChannelListContainer, Auth } from "@/components/community-page/index"
+import { ChannelContainer, ChannelListContainer, Auth, ShowDonationList } from "@/components/community-page/index"
+import DonatorForm from '@/components/community-page/request-form/DonatorForm';
+import RecipientForm from '@/components/community-page/request-form/RecipientForm';
 
 import 'stream-chat-react/dist/css/index.css';
 
@@ -32,6 +34,15 @@ const Community = () => {
   const [isCreating, setIsCreating] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
+  const [showDonateForm, setShowDonateForm] = useState(false);
+  const [showDonationList, setShowDonationList] = useState(false);
+
+  const handleOpenDonateForm = () => setShowDonateForm(true);
+  const handleCloseDonateForm = () => setShowDonateForm(false);
+
+  const handleOpenDonationList = () => setShowDonationList(true);
+  const handleCloseDonationList = () => setShowDonationList(false);
+
   const isDonator = cookies.get('isDonator');
   const isRecipient = cookies.get('isRecipient');
 
@@ -57,9 +68,9 @@ const Community = () => {
   }
 
 if (isDonator) {
-  console.log("User is a donator");
+  // console.log("User is a donator");
 } else if (isRecipient) {
-  console.log("User is a recipient");
+  // console.log("User is a recipient");
 }
   
 
@@ -68,6 +79,20 @@ if (isDonator) {
     <div className="container-community">
       <div className="app__wrapper">
         <Chat client={client} theme="team light">
+          {/* Donator Form */}
+          {isDonator && (
+            <>
+              {/* ... */}
+            </>
+          )}
+
+          {/* Recipient Form */}
+          {isRecipient && (
+            <>
+              {/* ... */}
+            </>
+          )}
+
           <ChannelListContainer 
             isCreating={isCreating}
             setIsCreating={setIsCreating}
@@ -84,8 +109,29 @@ if (isDonator) {
           />
         </Chat>
       </div>
+
+      {isDonator && (
+        <>
+          <button className="donate-btn" onClick={handleOpenDonateForm}>
+            DONATE
+          </button>
+          {showDonateForm && <DonatorForm onClose={handleCloseDonateForm} />}
+          <button className="donate-btn-list" onClick={handleOpenDonationList}>
+            Donation list
+          </button>
+          {showDonationList && <ShowDonationList onClose={handleCloseDonationList} />}
+        </>
+      )}
+      {isRecipient && (
+        <>
+          <button className="recieve-btn" onClick={handleOpenDonateForm}>
+            Are you looking for donations?
+          </button>
+          {showDonateForm && <RecipientForm onClose={handleCloseDonateForm} />}
+        </>
+      )}
     </div>
-  )
-}
+  );
+};
 
 export default Community
