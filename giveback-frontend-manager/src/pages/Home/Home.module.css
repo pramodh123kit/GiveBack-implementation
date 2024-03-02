@@ -123,13 +123,20 @@
   width: 80%;
   max-width: 550px;
 }
-.close_icon{
-  width: 40px;
+.icons_container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 1rem;
-  margin-left: auto;
+}
+.back_icon {
+  width: 40px;
   cursor: pointer;
+}
+.close_icon {
+  width: 40px;
+  cursor: pointer;
+  margin-left: auto;
 }
 .form_header{
   display: flex;
@@ -165,7 +172,7 @@
 .form_box_big{
   border-width: 1px;
   border-radius: 5px;
-  padding-bottom: 3.65rem;
+  padding-bottom: 3.62rem;
   width: 100%;
 }
 .form_btn{
