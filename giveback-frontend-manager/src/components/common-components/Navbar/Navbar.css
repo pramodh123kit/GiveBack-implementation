@@ -117,7 +117,11 @@ nav .menu span {
     font-weight: bold;
     margin-left: 10px;
     cursor: pointer; /* If clicking the icon should do something, like open a user profile */
-  }
+    
+    justify-content: center;
+    align-items: center;
+    
+}
 
 
   @media (max-width: 780px) {
@@ -179,7 +183,13 @@ nav .menu span {
         transform: translateY(0);
       }
 
-      .user-initial-icon {
+    .user-initial-icon {
+        margin-left: auto;
+        margin-right: auto;
         margin-bottom: 20px;
-      }
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+ 
 }
