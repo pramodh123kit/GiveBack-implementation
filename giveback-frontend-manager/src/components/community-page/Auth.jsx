@@ -21,7 +21,11 @@ const initialState = {
 };
 
 const Auth = ({ defaultMode }) => {
-  const [form, setForm] = useState(initialState);
+  const [form, setForm] = useState({
+    ...initialState,
+    isDonator: defaultMode === 'signup',
+    isRecipient: defaultMode === 'signup',
+  });
   const [isSignup, setIsSignup] = useState(defaultMode === 'signup');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -75,8 +79,6 @@ const Auth = ({ defaultMode }) => {
         cookies.set('phoneNumber', phoneNumber);
         cookies.set('avatarURL', avatarURL);
         cookies.set('hashedPassword', hashedPassword);
-        cookies.set('isDonator', isDonator);
-        cookies.set('isRecipient', isRecipient);
       } else {
         cookies.set('isDonator', isDonator);
         cookies.set('isRecipient', isRecipient);
@@ -88,6 +90,7 @@ const Auth = ({ defaultMode }) => {
       window.location.reload();
     } catch (error) {
       console.error('Authentication failed:', error);
+      setError('Authentication failed. Please check your credentials.');
     }
   };
   

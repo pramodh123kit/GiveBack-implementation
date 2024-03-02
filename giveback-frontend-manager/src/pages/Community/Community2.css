@@ -51,19 +51,9 @@
   }
   
   .user-initial-icon {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background-color: var(--primary-color); /* Example color, adjust as needed */
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    font-weight: bold;
-    margin-left: 10px;
-    cursor: pointer; /* If clicking the icon should do something, like open a user profile */
+    background-color: var(--primary-color); 
   }
+
   .auth__form-container_image {
     flex: 3;
     display: flex;
