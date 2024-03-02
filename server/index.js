@@ -141,7 +141,7 @@ app.post('/', (req, res) => {
         if (!user.online) {
           twilioClient.messages
             .create({
-              body: You have a new message from ${message.user.fullName} - ${message.text},
+              body: `You have a new message from ${message.user.fullName} - ${message.text}`,
               messagingServiceSid: messagingServiceSid,
               to: user.phoneNumber,
             })
@@ -157,5 +157,5 @@ app.post('/', (req, res) => {
 app.use('/auth', authRoutes);
 
 app.listen(PORT, () => {
-  console.log(Server is running on port ${PORT});
+  console.log(`Server is running on port ${PORT}`);
 });
