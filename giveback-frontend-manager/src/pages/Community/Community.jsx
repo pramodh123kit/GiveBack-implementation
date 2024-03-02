@@ -10,11 +10,13 @@ import RecipientForm from '@/components/community-page/request-form/RecipientFor
 import 'stream-chat-react/dist/css/index.css';
 
 const cookies = new Cookies();
+
 const apiKey = 'byfr7rs9s8mj';
 const authToken = cookies.get('token');
+
 const client = StreamChat.getInstance(apiKey);
 
-if (authToken) {
+if(authToken) {
   client.connectUser({
     id: cookies.get('userId'),
     name: cookies.get('username'),
@@ -47,27 +49,14 @@ const Community = () => {
   useEffect(() => {
     async function importStyles() {
       if (isDonator) {
-        await import('./Community2.css');
+        const module = await import('./Community2.css');
       } else if (isRecipient) {
-        await import('./Community.css');
+        const module = await import('./Community.css');
       }
     }
-  
+
     importStyles();
   }, [isDonator, isRecipient]);
-
-  useEffect(() => {
-    const fetchCommunityData = async () => {
-      try {
-        const response = await axios.get('/api/community');
-        console.log(response.data); // Handle the response as needed
-      } catch (error) {
-        console.error('Error fetching community data:', error);
-      }
-    };
-
-    fetchCommunityData();
-  }, []);
 
   if (!authToken) {
     return (
@@ -78,12 +67,11 @@ const Community = () => {
     );
   }
 
-if (isDonator) {
-  // console.log("User is a donator");
-} else if (isRecipient) {
-  // console.log("User is a recipient");
-}
-  
+  if (isDonator) {
+    // console.log("User is a donator");
+  } else if (isRecipient) {
+    // console.log("User is a recipient");
+  }
 
   return (
     <div className="container-community">
@@ -101,15 +89,16 @@ if (isDonator) {
             <>
               {/* ... */}
             </>
-          )}
+          )}
 
-          <ChannelListContainer 
+          <ChannelListContainer
             isCreating={isCreating}
             setIsCreating={setIsCreating}
             setCreateType={setCreateType}
             setIsEditing={setIsEditing}
           />
-          <ChannelContainer 
+
+          <ChannelContainer
             isCreating={isCreating}
             setIsCreating={setIsCreating}
             isEditing={isEditing}
@@ -137,11 +126,10 @@ if (isDonator) {
             Are you looking for donations?
           </button>
           {showDonateForm && <RecipientForm onClose={handleCloseDonateForm} />}
-        </>
-      )}
+        </>
+      )}
     </div>
   );
 };
-
 
 export default Community;
