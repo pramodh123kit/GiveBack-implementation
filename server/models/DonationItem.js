@@ -1,13 +1,10 @@
 const mongoose = require('mongoose');
 
 const donationItemSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  type: { type: String, required: true },
-  description: { type: String, required: true },
-  quantity: { type: Number, required: true },
-  location: { type: String, required: true },
-  date: { type: Date, required: true },
-
+  itemType: { type: String, required: true },
+  itemName: { type: String, required: true },
+  itemDescription: { type: String, required: true },
+  donorAddress: { type: String, required: true },
 });
 
 const DonationItem = mongoose.model('DonationItem', donationItemSchema);

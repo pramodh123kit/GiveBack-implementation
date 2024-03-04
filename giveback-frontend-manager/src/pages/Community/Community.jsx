@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StreamChat } from "stream-chat";
 import { Chat } from "stream-chat-react";
 import Cookies from "universal-cookie";
+import ClosestMatch from "../../components/community-page/closest-match/ClosestMatch";
 
 import { ChannelContainer, ChannelListContainer, Auth, ShowDonationList } from "@/components/community-page/index"
 import DonatorForm from '@/components/community-page/request-form/DonatorForm';
@@ -34,6 +35,10 @@ const Community = () => {
   const [isCreating, setIsCreating] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
+  const [closestMatch, setClosestMatch] = useState(null);
+  const [showClosestMatch, setShowClosestMatch] = useState(false);
+  const [recipientFormSubmitted, setRecipientFormSubmitted] = useState(false);
+
   const [showDonateForm, setShowDonateForm] = useState(false);
   const [showDonationList, setShowDonationList] = useState(false);
 
@@ -42,6 +47,9 @@ const Community = () => {
 
   const handleOpenDonationList = () => setShowDonationList(true);
   const handleCloseDonationList = () => setShowDonationList(false);
+
+  const handleOpenClosestMatch = () => setShowClosestMatch(true);
+  const handleCloseClosestMatch = () => setShowClosestMatch(false);
 
   const isDonator = cookies.get('isDonator');
   const isRecipient = cookies.get('isRecipient');
@@ -125,7 +133,15 @@ const Community = () => {
           <button className="recieve-btn" onClick={handleOpenDonateForm}>
             Are you looking for donations?
           </button>
-          {showDonateForm && <RecipientForm onClose={handleCloseDonateForm} />}
+          {showDonateForm && <RecipientForm onClose={handleCloseDonateForm} setClosestMatch={setClosestMatch} onSubmit={() => setRecipientFormSubmitted(true)} />}
+          {recipientFormSubmitted && (
+            <>
+              <button className="match-btn" onClick={handleOpenClosestMatch}>
+                CLOSEST MATCH
+              </button>
+              {showClosestMatch && <ClosestMatch closestMatch={closestMatch} onClose={handleCloseClosestMatch} />}
+            </>
+          )}
         </>
       )}
     </div>

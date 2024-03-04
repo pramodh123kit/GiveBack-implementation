@@ -7,7 +7,7 @@ const Donation = () => {
     <div className={styles.container}>
      
       <SearchBar/>
-      
+      <Filter/>
       
       
     </div>

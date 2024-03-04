@@ -10,6 +10,13 @@
     align-items: center;
     z-index: 1000;
   }
+
+  .styles-donation-image{
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
   .popupCard {
     background: #fff;
     padding: 20px;

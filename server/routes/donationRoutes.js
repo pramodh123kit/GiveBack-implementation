@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const DonationItem = require('../models/DonationItem');
+const Donation = require('../models/Donation');
 const Recommendation = require('../models/Recommendation');
 const knnService = require('../services/knnService');
 
 router.post('/donate', async (req, res) => {
   try {
-    const newDonationItem = await DonationItem.create(req.body);
+    const newDonationItem = await Donation.create(req.body);
     res.status(201).json(newDonationItem);
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
@@ -15,7 +15,7 @@ router.post('/donate', async (req, res) => {
 
 router.get('/donate', async (req, res) => {
   try {
-    const donationItems = await DonationItem.find();
+    const donationItems = await Donation.find();
     res.status(200).json(donationItems);
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
