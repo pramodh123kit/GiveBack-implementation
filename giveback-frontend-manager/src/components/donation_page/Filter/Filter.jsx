@@ -27,10 +27,8 @@ const FilterSystem = ({ onSearch, onFilter }) => {
           <li className={selectedFilter === 'school items' ? 'active' : ''} onClick={() => handleFilterChange('school items')}>School Items</li>
         </ul>
       </div>
-      <div className="search-bar-section">
-        <SearchBar onSearch={onSearch} />
       </div>
-    </div>
+      
   );
 };
 

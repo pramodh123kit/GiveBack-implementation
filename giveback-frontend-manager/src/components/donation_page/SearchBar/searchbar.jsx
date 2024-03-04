@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import './searchBar.css'; <= Pramodh commented this line temporarily
+import styles from './searchBar.module.css'; // Import CSS module
 import { FaSearch } from 'react-icons/fa';
 import { IoIosClose } from 'react-icons/io';
 
@@ -20,20 +20,21 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <form className="search-bar" onSubmit={handleSubmit}>
+    <form className={styles['search-bar']} onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Search..."
         value={searchTerm}
         onChange={handleChange}
+        className={styles['search-input']}
       />
       {searchTerm && (
-        <button type="button" className="clear-icon" onClick={handleClear}>
-          <IoIosClose className="fas fa-times" />
+        <button type="button" className={styles['clear-icon']} onClick={handleClear}>
+          <IoIosClose className={styles['close-icon']} />
         </button>
       )}
-      <button type="submit" className="search-icon">
-        <FaSearch className="fas fa-search" />
+      <button type="submit" className={styles['search-icon']}>
+        <FaSearch className={styles['search-icon']} />
       </button>
     </form>
   );
