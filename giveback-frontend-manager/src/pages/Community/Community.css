@@ -117,6 +117,28 @@ body {
   background: #fff;
 }
 
+.match-btn{ 
+  background-color: #52ff00;
+  border: none;
+  font-weight: bold;
+  color: 000000;
+  padding: 7px 30px;
+  font-size: 17px;
+  text-align: center;
+  border-radius: 7px;
+  margin-top: 20px; 
+  margin-right: 280px;
+  position: absolute;
+  right: 10%;
+  margin-bottom: 50px;
+  transition: all 0.3s ease; 
+}
+
+.match-btn:hover{
+  background-color: #46dd00;
+
+}
+
 .auth__form-container_fields-content_input input::placeholder {
   color: #b1b1b1;
   width: 100%;
@@ -196,6 +218,22 @@ body {
   margin-top: 20px; 
   position: absolute;
   right: 10%;     
+  transition: all 0.3s ease;
+}
+
+.recieve-btn:hover{
+  background-color: #46dd00;
+  border: none;
+  font-weight: bold;
+  color: #000000;
+  padding: 7px 30px;
+  text-align: center;
+  font-size: 19px;
+  border-radius: 7px;
+  margin-top: 20px; 
+  position: absolute;
+  right: 10%; 
+  cursor: pointer;
 }
 
 .donate-btn{

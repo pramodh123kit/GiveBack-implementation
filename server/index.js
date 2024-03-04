@@ -5,6 +5,10 @@ const donationRoutes = require('./routes/donationRoutes');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const path = require('path');
+const recipientRoutes = require('./routes/recipientRoutes');
+const knnService = require('./services/knnService');
+const Donation = require('./models/Donation');
+const Recipient = require('./models/Recipient');
 
 const app = express();
 
@@ -14,22 +18,8 @@ app.use(cors());
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/donationDB');
 
-// Use donation routes
-app.use('/api', donationRoutes);
-
-const donationSchema = new mongoose.Schema({
-  itemType: String,
-  itemName: String,
-  itemDescription: String,
-  itemQuantity: String,
-  donorAddress: String,
-  contactNumber: String,
-  donorName: String,
-  donorId: String,
-  image: { data: Buffer, contentType: String },
-});
-
-const Donation = mongoose.model('Donation', donationSchema);
+app.use('/donations', donationRoutes);
+app.use('/recipients', recipientRoutes);
 
 app.use(bodyParser.json());
 
@@ -62,6 +52,28 @@ app.post('/api/donatorSubmitForm', upload.single('image'), async (req, res) => {
   } catch (error) {
     console.error('Error submitting Donator form:', error);
     res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+app.post('/api/recipientSubmitForm', async (req, res) => {
+  try {
+    const { itemType, itemName, itemDescription, itemQuantity, recipientAddress, recipientContactNumber } = req.body;
+
+    const newRecipientItem = await Recipient.create({
+      itemType,
+      itemName,
+      itemDescription,
+      itemQuantity,
+      recipientAddress,
+      recipientContactNumber,
+    });
+
+    const closestMatch = await knnService.getClosestMatch(newRecipientItem);
+
+    res.status(201).json({ newRecipientItem, closestMatch });
+  } catch (error) {
+    console.error('Error submitting recipient form:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
