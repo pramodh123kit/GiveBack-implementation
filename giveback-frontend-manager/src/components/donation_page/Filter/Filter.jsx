@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import './Filter.css';
-
+import styles from './Filter.module.css'; // Import the CSS module
 
 const FilterSystem = ({ onSearch, onFilter }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -17,18 +16,90 @@ const FilterSystem = ({ onSearch, onFilter }) => {
   };
 
   return (
-    <div className="filter-system">
-      <div className="filter-section">
-        <h3>Filter</h3>
-        <ul className="filter-options">
-          <li className={selectedFilter === '' ? 'active' : ''} onClick={() => handleFilterChange('')}>All</li>
-          <li className={selectedFilter === 'food' ? 'active' : ''} onClick={() => handleFilterChange('food')}>Food</li>
-          <li className={selectedFilter === 'clothing' ? 'active' : ''} onClick={() => handleFilterChange('clothing')}>Clothing</li>
-          <li className={selectedFilter === 'school items' ? 'active' : ''} onClick={() => handleFilterChange('school items')}>School Items</li>
-        </ul>
+    <div className={styles['filter-system']}> {/* Use styles['class-name'] syntax */}
+      <div className={styles['filter-section']}>
+        <h3>Categories</h3>
+        <div className={styles['filter-options']}>
+          <label>
+            <input
+              type="radio"
+              name="filter"
+              value=""
+              checked={selectedFilter === ''}
+              onChange={() => handleFilterChange('')}
+            />
+            All
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="filter"
+              value="food"
+              checked={selectedFilter === 'food'}
+              onChange={() => handleFilterChange('food')}
+            />
+            Food
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="filter"
+              value="clothing"
+              checked={selectedFilter === 'clothing'}
+              onChange={() => handleFilterChange('clothing')}
+            />
+            Clothing
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="filter"
+              value="books"
+              checked={selectedFilter === 'books'}
+              onChange={() => handleFilterChange('books')}
+            />
+            Books
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="filter"
+              value="furniture"
+              checked={selectedFilter === 'furniture'}
+              onChange={() => handleFilterChange('furniture')}
+            />
+            Furniture
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="filter"
+              value="school items"
+              checked={selectedFilter === 'school items'}
+              onChange={() => handleFilterChange('school items')}
+            />
+            School Items
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="filter"
+              value="other"
+              checked={selectedFilter === 'other'}
+              onChange={() => handleFilterChange('other')}
+            />
+            Other
+          </label>
+
+        </div>
       </div>
-      </div>
-      
+    </div>
   );
 };
 
