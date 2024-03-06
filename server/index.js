@@ -2,12 +2,14 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const donationRoutes = require('./routes/donationRoutes');
+const organizationRoutes = require('./routes/organizationRoutes');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const path = require('path');
 const recipientRoutes = require('./routes/recipientRoutes');
 const knnService = require('./services/knnService');
 const Donation = require('./models/Donation');
+const Organization = require('./models/Organizations');
 const Recipient = require('./models/Recipient');
 
 const app = express();
@@ -20,8 +22,9 @@ mongoose.connect('mongodb://localhost:27017/donationDB');
 
 app.use('/donations', donationRoutes);
 app.use('/recipients', recipientRoutes);
+app.use('/organizations', organizationRoutes);
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '10mb' }));
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
@@ -52,6 +55,30 @@ app.post('/api/donatorSubmitForm', upload.single('image'), async (req, res) => {
   } catch (error) {
     console.error('Error submitting Donator form:', error);
     res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+app.post('/api/registerOrganization', async (req, res) => {
+  try {
+    const { orgName, address, email, contactNumber, registrationDoc, permit, type, quantity, forWho, summary } = req.body;
+
+    const newOrganizationItem = await Organization.create({
+      orgName,
+      address,
+      email,
+      contactNumber,
+      registrationDoc,
+      permit,
+      type,
+      quantity,
+      forWho,
+      summary,
+    });
+
+    res.status(201).json({ newOrganizationItem });
+  } catch (error) {
+    console.error('Error submitting recipient form:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
@@ -96,6 +123,24 @@ app.get('/api/getDonations', async (req, res) => {
   }
 });
 
+app.get('/api/getOrganizations', async (req, res) => {
+  try {
+    // Fetch all donations from MongoDB
+    const organizations = await Organization.find();
+
+    // Convert images to base64 for sending in response
+    const OrganizationsWithImages = organizations.map((organization) => ({
+      ...organization.toObject(),
+      image: organization.image && organization.image.data ? organization.image.data.toString('base64') : null,
+    }));
+
+    res.status(200).json(OrganizationsWithImages);
+  } catch (error) {
+    console.error('Error fetching organizations:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 
 // Serve uploaded images
 app.get('/api/getImage/:donationId', async (req, res) => {
@@ -109,6 +154,24 @@ app.get('/api/getImage/:donationId', async (req, res) => {
 
     res.set('Content-Type', donation.image.contentType);
     res.send(donation.image.data);
+  } catch (error) {
+    console.error('Error fetching image:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+app.get('/api/getImage/:organizationId', async (req, res) => {
+  try {
+    // Retrieve organization information including image from the database
+    const organizationId = req.params.organizationId;
+    const organization = await Organization.findById(organizationId);
+
+    if (!organization || !organization.image) {
+      return res.status(404).json({ error: 'Image not found' });
+    }
+
+    res.set('Content-Type', organization.image.contentType);
+    res.send(organization.image.data);
   } catch (error) {
     console.error('Error fetching image:', error);
     res.status(500).json({ error: 'Internal server error' });
