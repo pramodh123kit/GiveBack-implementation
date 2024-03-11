@@ -23,7 +23,6 @@ const DonatorForm = ({ onClose }) => {
     try {
       const userId = cookies.get('userId');
 
-      // Create FormData to handle file upload
       const formData = new FormData();
       formData.append('image', image);
       formData.append('formType', 'donator');
@@ -39,7 +38,7 @@ const DonatorForm = ({ onClose }) => {
       // Making a POST request to the backend API endpoint
       await axios.post('http://localhost:5000/api/donatorSubmitForm', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data', // Set content type for FormData
+          'Content-Type': 'multipart/form-data', 
         },
       });
 
