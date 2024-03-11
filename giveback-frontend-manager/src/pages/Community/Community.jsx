@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StreamChat } from "stream-chat";
 import { Chat } from "stream-chat-react";
 import Cookies from "universal-cookie";
-import ClosestMatch from "../../components/community-page/closest-match/ClosestMatch";
+import ClosestMatch from "@/components/community-page/closest-match/ClosestMatch";
 
 import { ChannelContainer, ChannelListContainer, Auth, ShowDonationList } from "@/components/community-page/index"
 import DonatorForm from '@/components/community-page/request-form/DonatorForm';
@@ -122,9 +122,9 @@ const Community = () => {
             DONATE
           </button>
           {showDonateForm && <DonatorForm onClose={handleCloseDonateForm} />}
-          <button className="donate-btn-list" onClick={handleOpenDonationList}>
+          {/* <button className="donate-btn-list" onClick={handleOpenDonationList}>
             Donation list
-          </button>
+          </button> */}
           {showDonationList && <ShowDonationList onClose={handleCloseDonationList} />}
         </>
       )}
