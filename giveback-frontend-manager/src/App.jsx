@@ -7,7 +7,7 @@ import "./App.css";
 import { Navbar } from "./components/common-components/Navbar/Navbar";
 import { LoggedInNavbar } from "./components/common-components/Navbar/LoggedInNavbar.jsx";
 import { Footer } from "./components/common-components/Footer/Footer";
-import { Home, Donations, Community, About, Contact, Login, Signup, MeetTheTeam } from "./pages";
+import { Home, Donations, Community, About, Contact, Login, Signup, MeetTheTeam, FindDonation } from "./pages";
 
 function App() {
   const cookies = new Cookies();
@@ -34,6 +34,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/donations" element={<Donations />} />
+        <Route path="/find-donation" element={<FindDonation />} />
         <Route path="/community" element={<Community />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
