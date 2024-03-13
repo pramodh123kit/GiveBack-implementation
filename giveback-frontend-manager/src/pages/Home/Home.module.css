@@ -18,6 +18,25 @@
   margin: 0 auto;
   padding-inline: 1rem;
 }
+
+.scrollToTopButton {
+  width: 95px;
+  position: fixed;
+  bottom: 40%;
+  right: 100px;
+  color: #000000;
+  font-weight: bolder;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.scrollToTopButton:hover {
+  transform: translateY(-3px);
+}
+
 .first_section {
   display: flex;
   gap: 3rem;
@@ -206,6 +225,14 @@
   margin-top: 20px; 
 }
 @media screen and (max-width: 768px) {
+
+  .scrollToTopButton {
+    bottom: 20%;
+    right: 20px;
+    padding: 10px;
+    font-size: 14px;
+  }
+
   .first_section {
     flex-direction: column;
   }
@@ -235,6 +262,14 @@
 }
 
 @media screen and (max-width: 480px) {
+
+  .scrollToTopButton {
+    bottom: 100%;
+    right: 10px;
+    padding: 8px;
+    font-size: 12px;
+  }
+
   .category {
     flex-basis: 100%;
     width: 40%;

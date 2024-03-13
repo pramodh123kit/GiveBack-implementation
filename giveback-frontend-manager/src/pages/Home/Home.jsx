@@ -6,6 +6,7 @@ import hero from "@/assets/hero-section-image.png";
 import hand from "@/assets/hand.png";
 import heart from "@/assets/heart.png";
 import community from "@/assets/community.png";
+import scroll from "@/assets/scroll.png";
 
 import OrganizationSignContainer from '@/components/home-page/OrganizationSignContainer.jsx';
 
@@ -13,6 +14,38 @@ const cookies = new Cookies();
 const authToken = cookies.get('token');
 
 const Home = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollPosition = window.scrollY;
+  
+      const bottomPosition = windowHeight + scrollPosition;
+  
+      const buffer = 10; 
+  
+      if (bottomPosition >= documentHeight - buffer) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+  
+    window.addEventListener("scroll", handleScroll);
+  
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
 
   const isDonator = cookies.get('isDonator');
   const isRecipient = cookies.get('isRecipient');
@@ -31,6 +64,9 @@ const Home = () => {
 
   return (
     <div className={styles.container}>
+      {isScrolled && 
+        <img src={scroll} alt="" className={styles.scrollToTopButton} onClick={scrollToTop} />
+      }
       <div className={styles.first_section}>
         <img className={styles.column1} src={hero} alt="Image" />
         <div className={styles.column2} >
