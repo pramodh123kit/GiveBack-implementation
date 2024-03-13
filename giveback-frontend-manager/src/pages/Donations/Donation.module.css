@@ -6,3 +6,21 @@
     width: 70%;
     margin:0 auto;
 }
+
+.scrollToTopButton {
+    width: 95px;
+    position: fixed;
+    bottom: 37%;
+    right: 100px;
+    color: #000000;
+    font-weight: bolder;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .scrollToTopButton:hover {
+    transform: translateY(-3px);
+  }
