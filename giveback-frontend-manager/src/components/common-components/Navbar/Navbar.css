@@ -27,6 +27,15 @@ nav.open {
     margin-bottom: 450px;    
   }
 
+nav.scrolled {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  z-index: 1000;
+}
+
 nav .title {
     font-size: 1.5rem;
     margin: 1rem;
