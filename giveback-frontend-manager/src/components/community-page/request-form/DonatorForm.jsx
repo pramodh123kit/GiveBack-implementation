@@ -21,8 +21,6 @@ const DonatorForm = ({ onClose }) => {
     e.preventDefault();
 
     try {
-      const userId = cookies.get('userId');
-
       const formData = new FormData();
       formData.append('image', image);
       formData.append('formType', 'donator');

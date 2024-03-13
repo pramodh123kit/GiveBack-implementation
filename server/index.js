@@ -11,11 +11,13 @@ const knnService = require('./services/knnService');
 const Donation = require('./models/Donation');
 const Organization = require('./models/Organizations');
 const Recipient = require('./models/Recipient');
+const nodemailer = require('nodemailer');
 
 const app = express();
 
 // Enable CORS
 app.use(cors());
+app.use(express.json());
 
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/donationDB');
@@ -58,11 +60,11 @@ app.post('/api/donatorSubmitForm', upload.single('image'), async (req, res) => {
   }
 });
 
-app.post('/api/registerOrganization', async (req, res) => {
+app.post('/api/registerOrganization', upload.single('image'), async (req, res) => {
   try {
     const { orgName, address, email, contactNumber, registrationDoc, permit, type, quantity, forWho, summary } = req.body;
 
-    const newOrganizationItem = await Organization.create({
+    const newOrganizationItem = new Organization({
       orgName,
       address,
       email,
@@ -73,7 +75,13 @@ app.post('/api/registerOrganization', async (req, res) => {
       quantity,
       forWho,
       summary,
+      image: {
+        data: req.file.buffer,
+        contentType: req.file.mimetype,
+      },
     });
+
+    await newOrganizationItem.save();
 
     res.status(201).json({ newOrganizationItem });
   } catch (error) {
@@ -160,7 +168,7 @@ app.get('/api/getImage/:donationId', async (req, res) => {
   }
 });
 
-app.get('/api/getImage/:organizationId', async (req, res) => {
+app.get('/api/getOrganizationImage/:organizationId', async (req, res) => {
   try {
     // Retrieve organization information including image from the database
     const organizationId = req.params.organizationId;
@@ -178,8 +186,92 @@ app.get('/api/getImage/:organizationId', async (req, res) => {
   }
 });
 
+app.get('/api/getOrganizationEmail/:organizationId', async (req, res) => {
+  try {
+    const organizationId = req.params.organizationId;
+    const organization = await Organization.findById(organizationId);
+
+    if (!organization) {
+      return res.status(404).json({ error: 'Organization not found' });
+    }
+
+    res.status(200).json({ email: organization.email });
+  } catch (error) {
+    console.error('Error fetching organization email:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+app.post('/api/sendDonationEmail', upload.single('image'), async (req, res) => {
+  try {
+    const {
+      userName,
+      userContactNumber,
+      userEmail,
+      donationType,
+      donationQuantity,
+      donationReason,
+      organizationEmail, // Add this field to the form or fetch it from the database
+    } = req.body;
+
+    // Save the form data to MongoDB
+    const donation = new Donation({
+      userName,
+      userContactNumber,
+      userEmail,
+      donationType,
+      donationQuantity,
+      donationReason,
+      // ... other fields
+    });
+
+    await donation.save();
+
+    // Send email using Nodemailer
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'sharewithgiveback@gmail.com',
+        pass: 'zlpw txvw vnsy imjk', 
+      },
+    });
+
+    const mailOptions = {
+      from: 'sharewithgiveback@gmail.com',
+      to: organizationEmail,
+      subject: 'New Donation Submission',
+      html: `
+        <h2>New donation request</h2>
+        <h3>Details are as follows:</h3>
+      
+        <p>Donation Type: ${donationType}</p>
+        <p>Donation Quantity: ${donationQuantity}</p>
+        <p>Donation Reason: ${donationReason}</p>
+
+        <h3>If interested, below are the details of the user:</h3>
+        <p>User Name: ${userName}</p>
+        <p>Contact Number: ${userContactNumber}</p>
+        <p>Email: ${userEmail}</p>
+
+        <hr>
+        <p>Best regards</p>
+        <p>CS-71, GiveBack Team</p>
+        <img src="https://i.imgur.com/igUsVTL.png" alt="Company Logo" width="100" height="100" margin-top="-30px">
+      `,
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    res.status(201).json({ message: 'Donation submitted successfully!' });
+  } catch (error) {
+    console.error('Error submitting donation form:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+
 // Middleware
-app.use(express.json());
+
 
 // Use donation routes
 app.use('/api', donationRoutes);
