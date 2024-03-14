@@ -11,23 +11,13 @@ const Donation = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      const scrollPosition = window.scrollY;
-  
-      const bottomPosition = windowHeight + scrollPosition;
-  
-      const buffer = 10; 
-  
-      if (bottomPosition >= documentHeight - buffer) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      const scrollTop = window.pageYOffset;
+
+      setIsScrolled(scrollTop > 300);
     };
-  
+
     window.addEventListener("scroll", handleScroll);
-  
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -36,7 +26,7 @@ const Donation = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
+      behavior: "smooth" 
     });
   };
 

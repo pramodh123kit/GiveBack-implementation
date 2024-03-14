@@ -20,17 +20,14 @@
 }
 
 .scrollToTopButton {
-  width: 95px;
+  width: 60px;
+  height: 60px;
   position: fixed;
-  bottom: 40%;
-  right: 100px;
-  color: #000000;
-  font-weight: bolder;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  bottom: 40px;
+  right: 40px;
   cursor: pointer;
   transition: all 0.2s;
+  z-index: 1000;
 }
 
 .scrollToTopButton:hover {
@@ -87,7 +84,7 @@
   margin-bottom: 2rem;
 }
 .icons {
-  width: 60px;
+  width: 80px;
 }
 .fourth_section {
   display: flex;
