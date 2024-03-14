@@ -1,0 +1,170 @@
+ button{
+    font-size: 19px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 2rem;
+    width: 80%;
+    margin: 0 auto;
+    background-color:#F4F4F4;
+    border-radius: 15px;
+    height: 70%;
+  }
+
+  .heading_container {
+    padding: 2rem;
+  }
+
+  .heading_container h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: bolder;
+  }
+  
+  .tabs {
+    display: flex;
+    flex-direction: column;
+    margin-right: 2rem;
+    width: 20%; 
+  }
+  
+  .tabList {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .tab {
+    padding: 0.5rem 1rem;
+    margin-bottom: 5px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    
+  } 
+
+  .logOut_container {
+    display: flex;
+    justify-content: center; 
+  }
+  
+  .center_container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logOut_button {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem; 
+  }
+  
+  .image {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    transform: scaleX(-1);
+    cursor: pointer;
+    margin-right: 10px;  
+  }
+  
+  .logOut_text {
+    font-size: 19px;
+    color: #000000;
+    padding: 0;
+    margin-top: 5px;
+    flex: 1;
+    display: flex;
+    cursor: pointer;
+    margin: 0;
+  }
+  
+  .tab:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .active {
+    border-left: 4px solid #52FF00;
+    color: #000000;
+  }
+  
+  .content {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+  
+  .contentItem {
+    width: 100%;
+    padding: 2rem;
+    border-radius: 4px;
+    background-color: #C7FFB4;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+  }
+
+  .username {
+    font-size: 1.5rem;
+    font-weight: bold;
+
+
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+  }
+
+  .userIcon {
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    background-color: #60BC49;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer; 
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin: 0 auto;
+  }
+
+  @media screen and (max-width: 768px) {
+
+    .tabs {
+      border-right: none;
+      border-bottom: 1px solid #ccc;
+      margin-right: 0;
+    }
+  
+    .tabList {
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .tab {
+      margin-bottom: 0;
+    }
+  
+    .content {
+      width: 100%;
+    }
+  
+    .userIcon {
+      width: 5rem;
+      height: 5rem;
+      font-size: 16px;
+    }
+  
+    .username {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+  }
