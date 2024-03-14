@@ -8,7 +8,7 @@ import DonationFormForOrganization from '../DonatingForm/DonationFormForOrganiza
 import OrganizationDetailsModal from '../OrganizationDetailsModal/OrganizationDetailsModal'; // Importing the modal component
 
 const cookies = new Cookies();
-const apiKey = 'byfr7rs9s8mj';
+const apiKey = '93grt8nxgs6j';
 const authToken = cookies.get('token');
 
 const client = StreamChat.getInstance(apiKey);

@@ -23,23 +23,36 @@ const initialState = {
 const Auth = ({ defaultMode }) => {
   const [form, setForm] = useState({
     ...initialState,
-    isDonator: defaultMode === 'signup',
-    isRecipient: defaultMode === 'signup',
-  });
+    isDonator: false,
+    isRecipient: false,
+  });
   const [isSignup, setIsSignup] = useState(defaultMode === 'signup');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, type, checked } = e.target;
-
+  
     setForm((prevForm) => {
       if (type === 'checkbox') {
-        return {
-          ...prevForm,
-          isDonator: name === 'isDonator' ? checked : false,
-          isRecipient: name === 'isRecipient' ? checked : false,
-        };
+        // If the checkbox being clicked is isDonator
+        if (name === 'isDonator') {
+          // If isDonator is being checked, set isRecipient to false
+          return {
+            ...prevForm,
+            isDonator: checked,
+            isRecipient: checked ? false : prevForm.isRecipient,
+          };
+        }
+        // If the checkbox being clicked is isRecipient
+        if (name === 'isRecipient') {
+          // If isRecipient is being checked, set isDonator to false
+          return {
+            ...prevForm,
+            isRecipient: checked,
+            isDonator: checked ? false : prevForm.isDonator,
+          };
+        }
       } else {
         return {
           ...prevForm,
@@ -48,6 +61,7 @@ const Auth = ({ defaultMode }) => {
       }
     });
   };
+  
 
   const switchMode = () => {
     setIsSignup((prevIsSignup) => !prevIsSignup);
@@ -59,7 +73,7 @@ const Auth = ({ defaultMode }) => {
     const { username, password, phoneNumber, avatarURL, isDonator, isRecipient } = form;
   
     if (!isDonator && !isRecipient) {
-      setError('Please select either Donator or Recipient !');
+      setError('Please select either Donator or Recipient!');
       return;
     }
   
@@ -74,14 +88,13 @@ const Auth = ({ defaultMode }) => {
       cookies.set('username', username);
       cookies.set('fullName', fullName);
       cookies.set('userId', userId);
+      cookies.set('isDonator', isDonator); // Set isDonator cookie
+      cookies.set('isRecipient', isRecipient); // Set isRecipient cookie
   
       if (isSignup) {
         cookies.set('phoneNumber', phoneNumber);
         cookies.set('avatarURL', avatarURL);
         cookies.set('hashedPassword', hashedPassword);
-      } else {
-        cookies.set('isDonator', isDonator);
-        cookies.set('isRecipient', isRecipient);
       }
   
       window.dispatchEvent(new Event('authChange'));
@@ -93,9 +106,8 @@ const Auth = ({ defaultMode }) => {
       setError('Authentication failed. Please check your credentials.');
     }
   };
-  
 
-return (
+  return (
     <div className={styles.auth_container}>
       <div className={styles.auth_container_left}>
         <img src={quotationImg} className={styles.quotation_img}/>
@@ -112,7 +124,6 @@ return (
                 className={styles.auth_input}
                 name="fullName" 
                 type="text" 
-                placeholder="Full Name" 
                 onChange={handleChange}
                 required 
               />
@@ -124,7 +135,6 @@ return (
               className={styles.auth_input}
               name="username" 
               type="text" 
-              placeholder="Username" 
               onChange={handleChange}
               required 
             />
@@ -136,7 +146,6 @@ return (
                 className={styles.auth_input}
                 name="phoneNumber" 
                 type="text" 
-                placeholder="Phone Number" 
                 onChange={handleChange}
                 required 
               />
@@ -144,12 +153,11 @@ return (
           )}
           {isSignup && (
             <div className={styles.inputBox}>
-              <label className={styles.auth_label} htmlFor='avatarURL'>Avatar URL</label>
+              <label className={styles.auth_label} htmlFor='avatarURL'>Email</label>
               <input 
                 className={styles.auth_input}
                 name="avatarURL" 
                 type="text" 
-                placeholder="Avatar URL" 
                 onChange={handleChange}
                 required 
               />
@@ -161,7 +169,6 @@ return (
               className={styles.auth_input}
               name="password" 
               type="password" 
-              placeholder="Password" 
               onChange={handleChange}
               required 
             />
@@ -173,7 +180,6 @@ return (
                 className={styles.auth_input}
                 name="confirmPassword" 
                 type="password" 
-                placeholder="Confirm Password" 
                 onChange={handleChange}
                 required 
               />
@@ -208,15 +214,14 @@ return (
             <button className={styles.auth_log_button}>{isSignup ? "Create Account" : "Log In"}</button>
           </div>
         </form>
-        <div>
-          <p className={styles.auth_p}>
-            {isSignup ? 'Already have an account? ' : "Don't have an account? "}
-            <span className={styles.switch} onClick={switchMode}>
-              {isSignup ? 'Login' : 'Sign Up'}
-            </span>
-             {error && <div className={styles.error_message}>{error}</div>}
-          </p>
-        </div>
+        <p className={styles.auth_p}>
+          {isSignup ? 'Already have an account? ' : "Don't have an account? "}
+          <span className={styles.switch} onClick={switchMode}>
+            {isSignup ? 'Login' : 'Sign Up'}
+          </span>
+          {error && <span className={styles.error_message}>{error}</span>}
+        </p>
+
       </div>
     </div>
   );

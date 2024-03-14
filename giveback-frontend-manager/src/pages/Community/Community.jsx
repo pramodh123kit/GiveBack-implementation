@@ -12,7 +12,7 @@ import 'stream-chat-react/dist/css/index.css';
 
 const cookies = new Cookies();
 
-const apiKey = 'byfr7rs9s8mj';
+const apiKey = '93grt8nxgs6j';
 const authToken = cookies.get('token');
 
 const client = StreamChat.getInstance(apiKey);
