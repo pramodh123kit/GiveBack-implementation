@@ -90,6 +90,11 @@ li {
     background-color: #46dd00;
 }
 
+.text_heading_property {
+    font-weight: bolder;
+    font-size: 19px;
+  }
+
 .details_btn {
     background-color: #52ff00;
     border: none;

@@ -15,7 +15,7 @@ export const LoggedInNavbar = () => {
   const userInitial = username && typeof username === 'string' ? username.charAt(0).toUpperCase() : '';
 
   const handleLogout = () => {
-    // Remove user data from cookies
+    // Removing user data from cookies
     cookies.remove('token');
     cookies.remove('username');
     cookies.remove('fullName');
@@ -25,7 +25,7 @@ export const LoggedInNavbar = () => {
     cookies.remove('phoneNumber');
     cookies.remove('isDonator');
     cookies.remove('isRecipient');
-    // Reload the page
+    // Reloading the page after removing the user information
     window.location.reload();
   };
 
@@ -41,7 +41,7 @@ export const LoggedInNavbar = () => {
     setDropdownOpen(false);
   };
 
-  // Redirect function to handle navigation
+  // Redirectin to the function to handle navigation
   const redirectToUserProfile = (index) => {
     switch (index) {
       case 0:
