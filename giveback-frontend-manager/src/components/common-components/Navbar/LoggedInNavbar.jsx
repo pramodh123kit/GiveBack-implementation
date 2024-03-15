@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import Cookies from 'universal-cookie';
 import logoLight from "@/assets/logoLight.png";
@@ -10,9 +10,27 @@ const cookies = new Cookies();
 
 export const LoggedInNavbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const username = cookies.get('username');
   const userInitial = username && typeof username === 'string' ? username.charAt(0).toUpperCase() : '';
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isTop = window.scrollY < 100;
+      if (!isTop) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+  
+    window.addEventListener("scroll", handleScroll);
+  
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [scrolled]);
 
   const handleLogout = () => {
     // Removing user data from cookies
@@ -71,13 +89,13 @@ export const LoggedInNavbar = () => {
   const isRecipient = cookies.get('isRecipient');
 
   return (
-    <nav className={menuOpen ? "open" : ""}>
+    <nav className={`${menuOpen ? "open" : ""} ${scrolled ? "scrolled" : ""}`}>
       <img src={logoLight} className="logo-light" alt="logo" />
       <div className="menu" onClick={toggleMenu}>
         <span></span>
         <span></span>
         <span></span>
-      </div>
+        </div>
       <ul className={menuOpen ? "open" : ""}>
         {isAuthenticated && (isDonator || isRecipient) && (
           <>
