@@ -128,7 +128,7 @@ const Community = () => {
           {showDonationList && <ShowDonationList onClose={handleCloseDonationList} />}
         </>
       )}
-      {isRecipient && (
+      {/* {isRecipient && (
         <>
           <button className="recieve-btn" onClick={handleOpenDonateForm}>
             Are you looking for donations?
@@ -143,7 +143,7 @@ const Community = () => {
             </>
           )}
         </>
-      )}
+      )} */}
     </div>
   );
 };

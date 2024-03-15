@@ -80,6 +80,11 @@
     display: flex;
     justify-content: center;
   }
+
+  .text_heading_property {
+    font-weight: bolder;
+    font-size: 19px;
+  }
   
   .next_btn {
     background-color: #52ff00;
@@ -88,7 +93,7 @@
     color: #000000;
     padding: 7px 40px;
     text-align: center;
-    font-size: 16px;
+    font-size: 19px;
     border-radius: 7px;
     margin-top: 20px;
   }
@@ -99,7 +104,7 @@
     color: #000000;
     padding: 7px 30px;
     text-align: center;
-    font-size: 16px;
+    font-size: 19px;
     border-radius: 7px;
     margin-top: 20px; 
   }

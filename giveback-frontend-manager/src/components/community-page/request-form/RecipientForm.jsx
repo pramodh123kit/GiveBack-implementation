@@ -50,27 +50,27 @@ const RecipientForm = ({ onClose, setClosestMatch, onSubmit }) => {
           <form onSubmit={handleSubmit}>
             <div className={styles.form_container}>
               <div className={styles.forms}>
-                <label className={styles.form_labels}>Type of Donation you're looking for: <br/> (Food, Clothing, Books, Household items, School supplies, Furniture) </label>             
+                <label className={styles.form_labels}><span className='text_heading_property'>Type of Donation you're looking for: <br/> (Food, Clothing, Books, Household items, School supplies, Furniture)</span> </label>             
                 <input type="text" className={styles.form_box} value={itemType} onChange={(e) => setItemType(e.target.value)} required />
               </div>
               <div className={styles.forms}>
-                <label className={styles.form_labels}>Item Name: </label>             
+                <label className={styles.form_labels}><span className='text_heading_property'>Item Name:</span> </label>             
                 <input type="text" className={styles.form_box} value={itemName} onChange={(e) => setItemName(e.target.value)} required />
               </div>
               <div className={styles.forms}>
-                <label className={styles.form_labels}>Item Description:</label>
+                <label className={styles.form_labels}><span className='text_heading_property'>Item Description:</span></label>
                 <input type="text" className={styles.form_box} value={itemDescription} onChange={(e) => setItemDescription(e.target.value)} />
               </div>
               <div className={styles.forms}>
-                <label className={styles.form_labels}>Quantity</label>
+                <label className={styles.form_labels}><span className='text_heading_property'>Quantity</span></label>
                 <input type="text" className={styles.form_box} value={itemQuantity} onChange={(e) => setItemQuantity(e.target.value)} required />
               </div>
               <div className={styles.forms}>
-                <label className={styles.form_labels}>Your Address:</label>
+                <label className={styles.form_labels}><span className='text_heading_property'>Your Address:</span></label>
                 <input type="text" className={styles.form_box} value={recipientAddress} onChange={(e) => setRecipientAddress(e.target.value)} required />
               </div>
               <div className={styles.forms}>
-                <label className={styles.form_labels}>Your Contact Number:</label>
+                <label className={styles.form_labels}><span className='text_heading_property'>Your Contact Number:</span></label>
                 <input type="text" className={styles.form_box} value={recipientContactNumber} onChange={(e) => setRecipientContactNumber(e.target.value)} required />
               </div>
             </div>

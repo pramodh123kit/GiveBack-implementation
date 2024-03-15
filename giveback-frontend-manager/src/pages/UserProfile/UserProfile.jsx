@@ -27,12 +27,14 @@ if(authToken) {
 
   const fullName = cookies.get('fullName');
   const username = cookies.get('username');
+  const email = cookies.get('avatarURL');
+  const phoneNumber = cookies.get('phoneNumber');
   const userInitial = username ? username.charAt(0).toUpperCase() : '';
 
 const UserProfile = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
-  const activeTab = parseInt(queryParams.get('tab') || '0', 10);
+  const [activeTab, setActiveTab] = useState(parseInt(queryParams.get('tab') || '0', 10));
  
   const handleLogout = () => {
     cookies.remove('token');
@@ -45,6 +47,10 @@ const UserProfile = () => {
     cookies.remove('isDonator');
     cookies.remove('isRecipient');
     window.location.reload();
+  };
+
+  const handleTabClick = (tabIndex) => {
+    setActiveTab(tabIndex);
   };
 
   return (
@@ -114,12 +120,10 @@ const PersonalInfo = () => {
       <h1>Personal Information</h1>
     </div>
         <div className={styles.contentItem}>
-        <p>Username: {cookies.get('username')}</p>
-            <p>Full Name: {cookies.get('fullName')}</p>
-            <p>Username: {cookies.get('username')}</p>
-            <p>Phone Number: {cookies.get('phoneNumber')}</p>
-            <p>Donator: {cookies.get('isDonator')}</p>
-            <p>Recipient: {cookies.get('isRecipient')}</p>
+            <p><span className='text_heading_property'>Full Name:</span> {fullName}</p>
+            <p><span className='text_heading_property'>Username:</span> {username}</p>
+            <p><span className='text_heading_property'>Email:</span> {email}</p>
+            <p><span className='text_heading_property'>Phone Number:</span> {phoneNumber}</p>
         </div>
     </>
   );
