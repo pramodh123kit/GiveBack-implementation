@@ -2,10 +2,7 @@
     margin-top: 100px;
 }
 
-
 .container_organizations {
-
-
     margin: 0;
 
 }
@@ -16,7 +13,11 @@
     margin: 0;
     margin-left: auto;
     padding: 0;
+}
 
+.notLogged_community {
+    color: red;
+    text-align: center;
 }
 
 p {
@@ -28,6 +29,7 @@ p {
     margin-bottom: 30px;
     border-radius: 20px;
     display: flex;
+    margin-bottom: 50px;
 }
 
 li {
@@ -65,8 +67,8 @@ li {
 }
 
 .image {
-    width: 85%;
-    height: 100%;
+    margin-top: 2rem;
+    margin-left: 2rem;
     border-radius: 10px; /* Adjust as needed */
 }
 
@@ -76,7 +78,7 @@ li {
     font-weight: bold;
     color: #000000;
     padding: 7px 25px;
-    font-size: 17px;
+    font-size: 18px;
     text-align: center;
     width: 100px;
     border-radius: 7px;
@@ -85,6 +87,30 @@ li {
 }
 
 .match_btn:hover {
+    background-color: #46dd00;
+}
+
+.text_heading_property {
+    font-weight: bolder;
+    font-size: 19px;
+  }
+
+.details_btn {
+    background-color: #52ff00;
+    border: none;
+    font-weight: bold;
+    color: #000000;
+    padding: 7px 10px;
+    font-size: 18px;
+    margin-left: 10px;
+    text-align: center;
+    width: 170px;
+    border-radius: 7px;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.details_btn:hover {
     background-color: #46dd00;
 }
 
@@ -100,5 +126,14 @@ li {
     .right_container,
     .left_container {
         width: 100%;
+    }
+
+    .details_btn {
+        margin-left: 0; /* Remove left margin */
+        width: auto; /* Allow width to adjust based on content */
+    }
+
+    .image {
+        margin-bottom: 1rem;
     }
 }

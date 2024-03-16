@@ -8,13 +8,12 @@ const ClosestMatch = ({ closestMatch, onClose }) => {
       <div className="popupCard-closest">
       <img src={close_icon} alt="close" className="close_icon-closest" onClick={onClose} />
         <h2 className="heading-closest">Closest Match</h2>
-        <p className="info-closest">Item Type: {closestMatch.itemType}</p>
-        <p className="info-closest">Item Name: {closestMatch.itemName}</p>
-        <p className="info-closest">Item Description: {closestMatch.itemDescription}</p>
-        <p className="info-closest">Item Quantity: {closestMatch.itemQuantity}</p>
-        <p className="info-closest">Donator's Name: {closestMatch.donorName}</p>
-        <p className="info-closest">Donator's Address: {closestMatch.donorAddress}</p>
-        <p className="info-closest">Image:</p>
+        <p className="info-closest"><span className='text_heading_property'>Item Type:</span> {closestMatch.itemType}</p>
+        <p className="info-closest"><span className='text_heading_property'>Item Name: </span>{closestMatch.itemName}</p>
+        <p className="info-closest"><span className='text_heading_property'>Item Description: </span>{closestMatch.itemDescription}</p>
+        <p className="info-closest"><span className='text_heading_property'>Item Quantity: </span>{closestMatch.itemQuantity}</p>
+
+        <p className="info-closest"><span className='text_heading_property'>Image:</span></p>
         <img
           className="donation-image-closest"
           src={`http://localhost:5000/api/getImage/${closestMatch._id}`}

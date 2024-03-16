@@ -7,6 +7,9 @@ export { default as Home} from './Home/Home';
 export { default as Login} from './Login/Login';
 export { default as MeetTheTeam} from './Meet-The-Team/MeetTheTeam';
 export { default as Signup} from './Signup/Signup';
+export { default as UserProfile } from './UserProfile/UserProfile';
 export {default as FAQ} from './FAQ/FAQ';
+
+
 
 
