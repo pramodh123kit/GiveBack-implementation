@@ -1,6 +1,7 @@
+
 .styles-donations-container {
   width: 70%;
-  margin-left:auto
+  margin-left: auto;
 }
 
 .styles-donation-item {
@@ -28,28 +29,6 @@
   margin-top: 10px;
 }
 
-/* Add more styles as needed */
-
-/* Media Queries for Responsive Design */
-
-@media only screen and (max-width: 600px) {
-  .styles-donations-container {
-    padding: 10px;
-  }
-
-  .styles-donation-item {
-    padding: 10px;
-  }
-}
-
-@media only screen and (max-width: 400px) {
-  .forms {
-    font-size: 14px;
-  }
-}
-
-/* FindDonation.module.css */
-
 .container {
   max-width: 800px;
   margin: 0 auto;
@@ -61,16 +40,33 @@
   margin-bottom: 20px;
 }
 
-/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  .styles-donations-container {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto; 
+  }
 
-@media only screen and (max-width: 600px) {
-  .container {
+  .styles-donation-item {
     padding: 10px;
+  }
+
+  .forms {
+    font-size: 16px; 
   }
 }
 
-@media only screen and (max-width: 400px) {
-  .title {
-    font-size: 24px;
+@media (max-width: 576px) {
+  .styles-donations-container {
+    width: 100%;
+    padding: 10px; 
+  }
+
+  .forms {
+    font-size: 14px;
+  }
+
+  .styles-donation-image {
+    height: auto; 
   }
 }
