@@ -219,25 +219,14 @@ body {
   text-align: center;
   font-size: 19px;
   border-radius: 7px;
-  /* margin-top: 20px;  */
   position: absolute;
   right: 15%;     
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .recieve-btn:hover{
-  background-color: #46dd00;
-  border: none;
-  font-weight: bold;
-  color: #000000;
-  padding: 7px 30px;
-  text-align: center;
-  font-size: 19px;
-  border-radius: 7px;
-  margin-top: 20px; 
-  position: absolute;
-  right: 10%; 
-  cursor: pointer;
+  background-color: #48ad19;
 }
 
 .donate-btn{
