@@ -8,7 +8,7 @@ import { Navbar } from "./components/common-components/Navbar/Navbar";
 import { LoggedInNavbar } from "./components/common-components/Navbar/LoggedInNavbar.jsx";
 import { Footer } from "./components/common-components/Footer/Footer";
 
-import { Home, Donations, Community, About, Contact, Login, Signup, MeetTheTeam, FindDonation,FAQ } from "./pages";
+import { Home, Donations, Community, About, Contact, Login, Signup, MeetTheTeam, FindDonation,FAQ,UserProfile} from "./pages";
 
 
 function App() {
@@ -39,6 +39,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/donations" element={<Donations />} />
         <Route path="/find-donation" element={<FindDonation />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/community" element={<Community />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
