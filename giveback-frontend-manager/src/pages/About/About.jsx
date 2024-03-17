@@ -1,40 +1,48 @@
-import React from 'react';
-import styles from './About.module.css';
-
+import React from "react";
+import styles from "./About.module.css";
 
 const About = () => {
   return (
-    
-		
-      <div className={styles.container}>
-        <div className={styles.upper}>
-          
-            <h2> What is GiveBack</h2>
-
-            <p>
-             Give-Back is a revolutionary donation app that empowers users to make a positive impact by connecting them with causes they are 
-             about. With its user friendly interface ,personolized giving options, and transparent donation tracking. GiveBack ensures a seamless 
-             and ,meaningful philantrophic experience.The app fosters commuinity engagement ,allowing users to join a like-minded commuinity,share experienses
-             and collectively contribute to impactful projects.With easy payment options,recognition rewards,and a focus on impactful campaigns,GiveBack transends
-             traditional donation platforms, transforming the act of giving into a
-            </p>
-          
-        </div>
-
-        <div className={styles.lower}>
-
-            <h2> Who are we ?</h2>
-
-            <p>
-              we are students of computer science degree program and we devoloping this app as our second year project
-            </p>
-
-            <button className={styles.btn}><a href='/MeetTheTeam'><b>Meet the team </b> </a></button>
-        </div>
-
-        
+    <div className={styles.container}>
+      <div className={styles.upper}>
+        <h1 className={styles.heading}> What is GiveBack</h1>
+        <p className={styles.about_text}>
+          GiveBack is a purpose-driven web platform dedicated to connecting
+          those with resources to spare with those in need. By facilitating the
+          donation of various items and enabling organizations to showcase their
+          charitable efforts, GiveBack strives to reduce waste and address
+          community needs effectively. With its integrated chat feature,
+          GiveBack fosters community engagement and collaboration, empowering
+          users to make a tangible difference in the lives of others. Join us in
+          our mission to create a more compassionate and supportive world
+          through giving back.
+        </p>
+        <button className={styles.meetTheTeam_button}>
+          <a href="/giveback-info">Read about logic of the algorithm</a>
+        </button>
       </div>
-	  
+
+      <div className={styles.lower}>
+        <h1 className={styles.heading}>Who are we ?</h1>
+        <p className={styles.about_text}>
+          We are "Team GiveBack," a group of second-year undergraduate students
+          enrolled in the Computer Science degree program at the University of
+          Westminster. As part of our Software Development Group Project (SDGP)
+          coursework, we developed GiveBack with the aim of creating a platform
+          that facilitates the donation of various items to those in need within
+          local communities. Our goal is to reduce waste and foster a spirit of
+          giving and community support. Through GiveBack, we provide users with
+          an intuitive and accessible platform to connect donors with
+          recipients, as well as a vibrant chat application to encourage
+          collaboration and engagement. We are committed to making a positive
+          impact and are proud to offer GiveBack as a valuable resource
+          completely free of charge.
+        </p>
+        <button className={styles.meetTheTeam_button}>
+          <a href="/MeetTheTeam">Meet the team</a>
+        </button>
+      </div>
+    </div>
   );
 };
 
