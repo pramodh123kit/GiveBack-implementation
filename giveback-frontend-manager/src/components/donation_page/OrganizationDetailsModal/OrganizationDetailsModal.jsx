@@ -10,8 +10,6 @@ const OrganizationDetailsModal = ({ organization, onClose }) => {
         <h2 className={styles.heading}>{organization.orgName}</h2>
         <p><strong>Address:</strong> {organization.address}</p>
         <p><strong>Contact Number:</strong> {organization.contactNumber}</p>
-        <p><strong>Registration Document:</strong> {organization.registrationDoc}</p>
-        <p><strong>Permit:</strong> {organization.permit}</p>
         <p><strong>Type of Donations Needed:</strong> {organization.type}</p>
         <p><strong>Quantity:</strong> {organization.quantity}</p>
         <p><strong>Beneficiary:</strong> {organization.forWho}</p>

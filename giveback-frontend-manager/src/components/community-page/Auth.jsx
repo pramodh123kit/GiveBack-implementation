@@ -35,18 +35,14 @@ const Auth = ({ defaultMode }) => {
   
     setForm((prevForm) => {
       if (type === 'checkbox') {
-        // If the checkbox being clicked is isDonator
         if (name === 'isDonator') {
-          // If isDonator is being checked, set isRecipient to false
           return {
             ...prevForm,
             isDonator: checked,
             isRecipient: checked ? false : prevForm.isRecipient,
           };
         }
-        // If the checkbox being clicked is isRecipient
         if (name === 'isRecipient') {
-          // If isRecipient is being checked, set isDonator to false
           return {
             ...prevForm,
             isRecipient: checked,
@@ -88,8 +84,8 @@ const Auth = ({ defaultMode }) => {
       cookies.set('username', username);
       cookies.set('fullName', fullName);
       cookies.set('userId', userId);
-      cookies.set('isDonator', isDonator); // Set isDonator cookie
-      cookies.set('isRecipient', isRecipient); // Set isRecipient cookie
+      cookies.set('isDonator', isDonator); 
+      cookies.set('isRecipient', isRecipient); 
   
       if (isSignup) {
         cookies.set('phoneNumber', phoneNumber);

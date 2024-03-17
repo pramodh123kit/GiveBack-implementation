@@ -7,7 +7,9 @@ import "./App.css";
 import { Navbar } from "./components/common-components/Navbar/Navbar";
 import { LoggedInNavbar } from "./components/common-components/Navbar/LoggedInNavbar.jsx";
 import { Footer } from "./components/common-components/Footer/Footer";
-import { Home, Donations, Community, About, Contact, Login, Signup, MeetTheTeam, FindDonation, UserProfile } from "./pages";
+
+import { Home, Donations, Community, About, Contact, Login, Signup, MeetTheTeam, FindDonation, FAQ, UserProfile, GivebackInfo} from "./pages";
+
 
 function App() {
   const cookies = new Cookies();
@@ -27,6 +29,8 @@ function App() {
     };
   }, []);
 
+  
+
   return (
     <div className="App">
       {isAuthenticated ? <LoggedInNavbar /> : <Navbar />}
@@ -35,13 +39,15 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/donations" element={<Donations />} />
         <Route path="/find-donation" element={<FindDonation />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/community" element={<Community />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/FAQ" element={<FAQ/>} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/MeetTheTeam" element={<MeetTheTeam />} />
         <Route path="/user-profile" element={<UserProfile />} />
+        <Route path="/giveback-info" element={<GivebackInfo />} />
       </Routes>
       <Footer />
     </div>

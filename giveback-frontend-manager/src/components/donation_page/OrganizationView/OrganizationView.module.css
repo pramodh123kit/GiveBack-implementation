@@ -84,6 +84,7 @@ li {
     border-radius: 7px;
     margin-top: 10px;
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .match_btn:hover {
@@ -108,10 +109,18 @@ li {
     border-radius: 7px;
     margin-top: 10px;
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .details_btn:hover {
     background-color: #46dd00;
+}
+
+.image {
+    width: 250px;
+    height: 200px;
+    margin-right: 20px;
+    margin-bottom: 1rem;
 }
 
 @media only screen and (max-width: 768px) {
