@@ -74,6 +74,12 @@
     padding-bottom: 3.65rem;
     width: 100%;
   }
+
+  .upload_btn{
+    margin-top: 5px;
+    font-size: 15px;
+  }
+
   .form_btn{
     padding-top: 5rem;
     width: 100%;
