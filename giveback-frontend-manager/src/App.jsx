@@ -8,7 +8,7 @@ import { Navbar } from "./components/common-components/Navbar/Navbar";
 import { LoggedInNavbar } from "./components/common-components/Navbar/LoggedInNavbar.jsx";
 import { Footer } from "./components/common-components/Footer/Footer";
 
-import { Home, Donations, Community, About, Contact, Login, Signup, MeetTheTeam, FindDonation,FAQ,UserProfile} from "./pages";
+import { Home, Donations, Community, About, Contact, Login, Signup, MeetTheTeam, FindDonation, FAQ, UserProfile, GivebackInfo} from "./pages";
 
 
 function App() {
@@ -47,6 +47,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/MeetTheTeam" element={<MeetTheTeam />} />
         <Route path="/user-profile" element={<UserProfile />} />
+        <Route path="/giveback-info" element={<GivebackInfo />} />
       </Routes>
       <Footer />
     </div>
