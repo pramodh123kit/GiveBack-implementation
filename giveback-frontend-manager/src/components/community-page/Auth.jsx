@@ -114,11 +114,12 @@ const Auth = ({ defaultMode }) => {
         <h1 className={styles.share_h2}>Share, Connect, Thrive</h1>
         <img src={image} className={styles.left_image}/>
       </div>
+
       <div className={styles.auth_container_right}>
         <h2 className={styles.share_h2}>{isSignup ? 'Create Account' : 'Log In'}</h2>
         <form onSubmit={handleSubmit}>
           {isSignup && (
-            <div className={styles.inputBox}>
+            <div className={styles.auth_form}>
               <label className={styles.auth_label} htmlFor='fullName'>Full Name</label>
               <input 
                 className={styles.auth_input}
@@ -129,7 +130,7 @@ const Auth = ({ defaultMode }) => {
               />
             </div>
           )}
-          <div className={styles.inputBox}>
+          <div className={styles.auth_form}>
             <label className={styles.auth_label} htmlFor='username'>Username</label>
             <input 
               className={styles.auth_input}
@@ -140,7 +141,7 @@ const Auth = ({ defaultMode }) => {
             />
           </div>
           {isSignup && (
-            <div className={styles.inputBox}>
+            <div className={styles.auth_form}>
               <label className={styles.auth_label} htmlFor='phoneNumber'>Phone Number</label>
               <input 
                 className={styles.auth_input}
@@ -152,7 +153,7 @@ const Auth = ({ defaultMode }) => {
             </div>
           )}
           {isSignup && (
-            <div className={styles.inputBox}>
+            <div className={styles.auth_form}>
               <label className={styles.auth_label} htmlFor='avatarURL'>Email</label>
               <input 
                 className={styles.auth_input}
@@ -163,7 +164,7 @@ const Auth = ({ defaultMode }) => {
               />
             </div>
           )}
-          <div className={styles.inputBox}>
+          <div className={styles.auth_form}>
             <label className={styles.auth_label} htmlFor='password'>Password</label>
             <input 
               className={styles.auth_input}
@@ -174,7 +175,7 @@ const Auth = ({ defaultMode }) => {
             />
           </div>
           {isSignup && (
-            <div className={styles.inputBox}>
+            <div className={styles.auth_form}>
               <label className={styles.auth_label} htmlFor='confirmPassword'>Confirm Password</label>
               <input 
                 className={styles.auth_input}
@@ -186,9 +187,10 @@ const Auth = ({ defaultMode }) => {
             </div>
           )}
 
-          <div className={styles.inputBox}>
-            <label className={styles.auth_label}>
+          <div className={styles.auth_form}>
+            <label className={styles.auth_checkbox}>
               <input
+                className={styles.auth_input_checkbox}
                 type="checkbox"
                 name="isDonator"
                 checked={form.isDonator}
@@ -198,9 +200,10 @@ const Auth = ({ defaultMode }) => {
             </label>
           </div>
 
-          <div className={styles.inputBox}>
-            <label className={styles.auth_label}>
+          <div className={styles.auth_form}>
+            <label className={styles.auth_checkbox}> 
               <input
+                className={styles.auth_input_checkbox}
                 type="checkbox"
                 name="isRecipient"
                 checked={form.isRecipient}

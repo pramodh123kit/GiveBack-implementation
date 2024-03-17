@@ -107,7 +107,7 @@ const OrganizationRegister = ({ onClose, onSubmit }) => {
                                 </div>
                                 <div className={styles.forms}>
                                     <label className={styles.form_labels}>Upload the logo</label>
-                                    <input className={styles.form_box} type="file" accept="image/*" onChange={handleImageChange} required/>
+                                    <input className={styles.upload_btn} type="file" accept="image/*" onChange={handleImageChange} required/>
                                 </div>
                             </div>
                             <div className={styles.form_btn}>

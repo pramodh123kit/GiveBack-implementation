@@ -92,7 +92,7 @@ return (
 
                             <div className={styles.forms}>
                                 <label className={styles.form_labels}>Donation Image:</label>
-                                <input type="file" accept="image/*" onChange={handleImageChange} required />
+                                <input className={styles.upload_btn} type="file" accept="image/*" onChange={handleImageChange} required />
                             </div>
                         </div>
                         {successMessage && (
