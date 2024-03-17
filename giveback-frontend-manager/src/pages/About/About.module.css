@@ -4,5 +4,25 @@
 
 .container {
     width: 80%;
-    margin:0 auto;
+    border-radius: 20px;
+    margin: 30px auto;
+    background-color: greenyellow;
+    height: 60%
+    
+    
+}
+.btn{
+    width: 100px;
+    position: relative;
+    left:40%
+}
+.upper{
+    padding: 50px;
+}
+.lower{
+    padding: 50px;
+}
+
+h2{
+    text-align: center;
 }
