@@ -121,28 +121,9 @@ const Community = () => {
             DONATE
           </button>
           {showDonateForm && <DonatorForm onClose={handleCloseDonateForm} />}
-          {/* <button className="donate-btn-list" onClick={handleOpenDonationList}>
-            Donation list
-          </button> */}
           {showDonationList && <ShowDonationList onClose={handleCloseDonationList} />}
         </>
       )}
-      {/* {isRecipient && (
-        <>
-          <button className="recieve-btn" onClick={handleOpenDonateForm}>
-            Are you looking for donations?
-          </button>
-          {showDonateForm && <RecipientForm onClose={handleCloseDonateForm} setClosestMatch={setClosestMatch} onSubmit={() => setRecipientFormSubmitted(true)} />}
-          {recipientFormSubmitted && (
-            <>
-              <button className="match-btn" onClick={handleOpenClosestMatch}>
-                CLOSEST MATCH
-              </button>
-              {showClosestMatch && <ClosestMatch closestMatch={closestMatch} onClose={handleCloseClosestMatch} />}
-            </>
-          )}
-        </>
-      )} */}
     </div>
   );
 };

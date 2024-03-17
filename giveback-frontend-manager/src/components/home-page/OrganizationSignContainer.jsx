@@ -12,14 +12,12 @@ const OrganizationSignContainer = () => {
 
   const handleSubmit = async (formData) => {
     try {
-      // Make a POST request to the server to submit the form data
+      // Making a POST request to the server to submit the form data
       const response = await axios.post('http://localhost:5000/api/registerOrganization', formData);
       console.log(response.data);
-      // Handle success
       alert('Organization registered successfully!');
-      handleCloseBtn(); // Close the form after successful submission
+      handleCloseBtn(); 
     } catch (error) {
-      // Handle error
       console.error('Error submitting form:', error);
       alert('An error occurred while registering the organization.');
     }
@@ -38,7 +36,6 @@ const OrganizationSignContainer = () => {
       </div>
       <img className={styles.line2} src={orgLogo} alt="orgLogo" />
     </div>
-
   )
 }
 

@@ -60,6 +60,21 @@ app.post('/api/donatorSubmitForm', upload.single('image'), async (req, res) => {
   }
 });
 
+app.get('/api/getUserDonations', async (req, res) => {
+  try {
+    const userId = req.query.userId; // Extract user ID from query params
+    const donations = await Donation.find({ donorId: userId }); // Fetch donations with matching user ID
+    const donationsWithImages = donations.map((donation) => ({
+      ...donation.toObject(),
+      image: donation.image && donation.image.data ? donation.image.data.toString('base64') : null,
+    }));
+    res.status(200).json(donationsWithImages);
+  } catch (error) {
+    console.error('Error fetching user donations:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 app.post('/api/registerOrganization', upload.single('image'), async (req, res) => {
   try {
     const { orgName, address, email, contactNumber, registrationDoc, permit, type, quantity, forWho, summary } = req.body;

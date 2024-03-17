@@ -22,7 +22,7 @@ if(authToken) {
     id: cookies.get('userId'),
     name: cookies.get('username'),
     fullName: cookies.get('fullName'),
-    image: cookies.get('avatarURL'),
+    email: cookies.get('avatarURL'),
     hashedPassword: cookies.get('hashedPassword'),
     phoneNumber: cookies.get('phoneNumber'),
     donator: cookies.get('isDonator'),

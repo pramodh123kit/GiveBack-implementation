@@ -112,6 +112,13 @@ html {
 }
 .first_line {
   margin-bottom: 10px;
+  font-size: 40px;
+  font-weight: bolder;
+}
+.second_line {
+  margin-bottom: 10px;
+  font-size: 40px;
+  font-weight: bolder;
 }
 .arrow {
   margin-left: 80px;

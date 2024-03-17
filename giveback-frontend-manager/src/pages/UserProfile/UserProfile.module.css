@@ -11,7 +11,7 @@ button{
     flex-direction: row;
     align-items: flex-start;
     padding: 2rem;
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
     background-color:#F4F4F4;
     border-radius: 15px;
@@ -21,6 +21,7 @@ button{
 
   .heading_container {
     padding: 2rem;
+    max-height: 430px; 
   }
 
   .heading_container h1 {
@@ -74,6 +75,23 @@ button{
     font-size: 19px;
   }  
 
+  .inside_content {
+    margin-bottom: 20px;
+  }
+  
+  .inside_content p {
+    margin: 5px 0;
+    height: 20px;
+    padding: 10px;
+  }
+  
+  .inside_content hr {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 10px 0;
+  }
+  
+
   .image {
     width: 28px;
     height: 28px;
@@ -110,14 +128,15 @@ button{
   }
   
   .contentItem {
-    width: 100%;
+    max-height: 430px; /* Adjust the maximum height as needed */
+    overflow-y: auto; /* Enable vertical scrolling */
     padding: 2rem;
     border-radius: 4px;
     background-color: #C7FFB4;
     border-radius: 10px;
     margin-bottom: 2rem;
+    height: 430px;
   }
-
   .username {
     font-size: 1.5rem;
     font-weight: bold;
@@ -145,6 +164,8 @@ button{
     margin-bottom: 20px;
     margin: 0 auto;
   }
+
+  
 
   @media screen and (max-width: 768px) {
 
