@@ -13,6 +13,7 @@ const DonatorForm = ({ onClose }) => {
     const [itemQuantity, setItemQuantity] = useState('');
     const [donorAddress, setDonorAddress] = useState('');
     const [contactNumber, setContactNumber] = useState('');
+    const [email, setEmail] = useState('');
     const [image, setImage] = useState(null);
     const [successMessage, setSuccessMessage] = useState('');
   
@@ -31,6 +32,7 @@ const DonatorForm = ({ onClose }) => {
         formData.append('itemQuantity', itemQuantity);
         formData.append('donorAddress', donorAddress);
         formData.append('contactNumber', contactNumber);
+        formData.append('email', email);
         formData.append('donorName', cookies.get('fullName'));
         formData.append('donorId', userId);
   
@@ -47,6 +49,7 @@ const DonatorForm = ({ onClose }) => {
           itemQuantity,
           donorAddress,
           contactNumber,
+          email,
           donorName: cookies.get('fullName'),
           donorId: userId,
         };
@@ -97,6 +100,11 @@ const DonatorForm = ({ onClose }) => {
                   <input type="text" className={styles.form_box} value={itemQuantity} onChange={(e) => setItemQuantity(e.target.value)} required />
                 </div>
   
+                <div className={styles.forms}>
+                  <label className={styles.form_labels}>Your email:</label>
+                  <input type="text" className={styles.form_box} value={email} onChange={(e) => setEmail(e.target.value)} required />
+                </div>
+
                 <div className={styles.forms}>
                   <label className={styles.form_labels}>Your address:</label>
                   <input type="text" className={styles.form_box} value={donorAddress} onChange={(e) => setDonorAddress(e.target.value)} required />

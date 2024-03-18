@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StreamChat } from "stream-chat";
 import { useLocation } from 'react-router-dom';
 import Cookies from "universal-cookie";
-import axios from 'axios'; // Import axios for making HTTP requests
+import axios from 'axios';
 import styles from './UserProfile.module.css';
 import logOutIcon from "@/assets/logout.png";
 
@@ -34,6 +34,7 @@ const UserProfile = () => {
   const [activeTab, setActiveTab] = useState(parseInt(queryParams.get('tab') || '0', 10));
   const userId = cookies.get('userId');
   const [donationHistory, setDonationHistory] = useState([]);
+  const [feedbackHistory, setFeedbackHistory] = useState([]);
 
   useEffect(() => {
     const fetchUserDonations = async () => {
@@ -44,8 +45,18 @@ const UserProfile = () => {
         console.error('Error fetching user donations:', error);
       }
     };
-  
+
+    const fetchUserFeedback = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/api/getFeedback?userId=${String(userId)}`);
+        setFeedbackHistory(response.data);
+      } catch (error) {
+        console.error('Error fetching user feedback:', error);
+      }
+    };
+
     fetchUserDonations();
+    fetchUserFeedback();
   }, [userId]);
 
   const handleLogout = () => {
@@ -120,7 +131,7 @@ const UserProfile = () => {
       <div className={styles.content}>
         {activeTab === 0 && <PersonalInfo />}
         {activeTab === 1 && <DonationHistory donationHistory={donationHistory} />}
-        {activeTab === 2 && <Feedback />}
+        {activeTab === 2 && <Feedback feedbackHistory={feedbackHistory} />}
         {activeTab === 3 && <Ratings />}
       </div>
     </div>
@@ -168,21 +179,24 @@ const DonationHistory = ({ donationHistory }) => {
   );
 };
 
-
-
-const Feedback = () => {
+const Feedback = ({ feedbackHistory }) => {
   return (
     <>
       <div className={styles.heading_container}>
         <h1>View Feedback History</h1>
       </div>
       <div className={styles.contentItem}>
-        <h2>Username: {cookies.get('username')}</h2>
-        <h2>Full Name: {cookies.get('fullName')}</h2>
-        <h2>Email: {cookies.get('username')}</h2>
-        <h2>Phone Number: {cookies.get('phoneNumber')}</h2>
-        <h2>Donator: {cookies.get('isDonator')}</h2>
-        <h2>Recipient: {cookies.get('isRecipient')}</h2>
+        {feedbackHistory.length === 0 ? (
+          <p>No feedback available.</p>
+        ) : (
+          feedbackHistory.map((feedback, index) => (
+            <div key={index} className={styles.inside_content}>
+              <p><span className='text_heading_property'>Feedback:</span> {feedback.text}</p>
+              <p><span className='text_heading_property'>Feedback Text:</span> {feedback.feedbackText}</p>
+              <hr />
+            </div>
+          ))
+        )}
       </div>
     </>
   );

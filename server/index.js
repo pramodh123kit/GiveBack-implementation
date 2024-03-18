@@ -11,6 +11,7 @@ const knnService = require('./services/knnService');
 const Donation = require('./models/Donation');
 const Organization = require('./models/Organizations');
 const Recipient = require('./models/Recipient');
+const Feedback = require('./models/Feedback');
 const nodemailer = require('nodemailer');
 
 const app = express();
@@ -33,7 +34,7 @@ const upload = multer({ storage: storage });
 
 app.post('/api/donatorSubmitForm', upload.single('image'), async (req, res) => {
   try {
-    const {itemType, itemName, itemDescription, itemQuantity, donorAddress, contactNumber, donorName, donorId } = req.body;
+    const {itemType, itemName, itemDescription, itemQuantity, donorAddress, contactNumber, email, donorName, donorId } = req.body;
 
     // Save the form data to MongoDB
     const donation = new Donation({
@@ -43,6 +44,7 @@ app.post('/api/donatorSubmitForm', upload.single('image'), async (req, res) => {
       itemQuantity,
       donorAddress,
       contactNumber,
+      email,
       donorName,
       donorId,
       image: {
@@ -217,6 +219,44 @@ app.get('/api/getOrganizationEmail/:organizationId', async (req, res) => {
   }
 });
 
+
+
+app.post('/api/submitFeedback/:donationId', async (req, res) => {
+  try {
+    const { feedbackText, userId } = req.body;
+    const donationId = req.params.donationId;
+    
+    
+    const feedback = new Feedback({
+      donationId,
+      feedbackText,
+      recipientId: userId
+    });
+    await feedback.save();
+
+    res.status(200).json({ message: 'Feedback submitted successfully!' });
+  } catch (error) {
+    console.error('Error submitting feedback:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Example endpoint to fetch feedback data
+app.get('/api/getFeedback', async (req, res) => {
+  try {
+    // Fetch feedback data from the database
+    const feedback = await Feedback.find({ recipientId: req.query.userId });
+
+    // Send the feedback data as response
+    res.status(200).json(feedback);
+  } catch (error) {
+    console.error('Error fetching feedback:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+
+
 app.post('/api/sendDonationEmail', upload.single('image'), async (req, res) => {
   try {
     const {
@@ -284,9 +324,64 @@ app.post('/api/sendDonationEmail', upload.single('image'), async (req, res) => {
   }
 });
 
+app.post('/api/acceptDonation/:donationId', async (req, res) => {
+  try {
+    const donationId = req.params.donationId;
+    const recipientName = req.body.recipientName;
+    const recipientContactNumber = req.body.recipientContactNumber;
+    const recipientEmail = req.body.recipientEmail;
 
-// Middleware
+    // Find the donation by ID
+    const donation = await Donation.findById(donationId);
 
+    if (!donation) {
+      return res.status(404).json({ error: 'Donation not found' });
+    }
+
+    // Assuming you have the donor's email address
+    const donorEmail = donation.email;
+
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'pramodh.20220414@iit.ac.lk',
+        pass: 'jagath123kit', 
+      },
+    });
+
+
+    // Prepare email content
+    const mailOptions = {
+      from: 'sharewithgiveback@gmail.com',
+      to: donorEmail,
+      subject: 'Your Donation Has Been Accepted',
+      html: `
+        <h2>Your Donation Has Been Accepted!</h2>
+        <p>Thank you for your donation. It has been accepted by ${recipientName}.</p>
+        <p>Item Type: ${donation.itemType}</p>
+        <p>Item Name: ${donation.itemName}</p>
+        <p>Item Description: ${donation.itemDescription}</p>
+        <p>Item Quantity: ${donation.itemQuantity}</p>
+        <p>Recipient's name: ${recipientName}</p>
+        <p>Recipient's contact number: ${recipientContactNumber}</p>
+        <p>Recipient's email: ${recipientEmail}</p>      
+      `,
+    };
+
+    // Send email
+    await transporter.sendMail(mailOptions);
+
+    // Optionally, update the donation status in the database
+    donation.status = 'Accepted';
+    await donation.save();
+
+    // Send a success response
+    res.status(200).json({ message: 'Donation accepted successfully!' });
+  } catch (error) {
+    console.error('Error accepting donation:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 
 // Use donation routes
 app.use('/api', donationRoutes);
