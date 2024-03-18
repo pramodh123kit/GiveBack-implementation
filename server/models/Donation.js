@@ -7,6 +7,7 @@ const donationSchema = new mongoose.Schema({
   itemQuantity: String,
   donorAddress: String,
   contactNumber: String,
+  email: String,
   donorName: String,
   donorId: String,
   image: { data: Buffer, contentType: String },

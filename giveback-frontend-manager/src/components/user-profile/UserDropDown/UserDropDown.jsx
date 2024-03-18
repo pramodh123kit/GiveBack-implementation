@@ -12,7 +12,7 @@ import startDropdown from "@/assets/star-dropdown.png";
 
 const cookies = new Cookies();
 
-const apiKey = '93grt8nxgs6j';
+const apiKey = 'ehvtd7wtcmck';
 const authToken = cookies.get('token');
 
 const client = StreamChat.getInstance(apiKey);

@@ -1,7 +1,6 @@
-
 .styles-donations-container {
   width: 70%;
-  margin-left: auto;
+  margin-left:auto
 }
 
 .styles-donation-item {
@@ -10,6 +9,38 @@
   border: 1px solid #ccc;
   border-radius: 15px;
   padding: 15px;
+}
+
+.accept_btn {
+  background-color: #52ff00;
+  border: none;
+  font-weight: bold;
+  color: #000000;
+  padding: 7px 25px;
+  font-size: 18px;
+  text-align: center;
+  width: 100px;
+  border-radius: 7px;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.accept_btn :hover {
+  background-color: #46dd00;
+}
+
+.accepted_text {
+  background-color: #3cbe00;
+  border: none;
+  font-weight: bold;
+  color: #000000;
+  padding: 7px 25px;
+  font-size: 18px;
+  text-align: center;
+  width: 100px;
+  border-radius: 7px;
+  margin-top:15px;
 }
 
 .form_container {
@@ -29,6 +60,80 @@
   margin-top: 10px;
 }
 
+.feedback_form {
+  margin-top: 20px;
+}
+
+.feedback_textarea {
+  width: 100%;
+  height: 150px;
+  padding: 10px;
+  border: 1px solid #121212;
+  border-radius: 5px;
+  resize: none; /* Prevent textarea resize */
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.submit_feedback_button {
+  background-color: #52ff00;
+  border: none;
+  font-weight: bold;
+  color: #000000;
+  padding: 7px 25px;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 7px;
+  margin-top:5px;
+  transition: background-color 0.3s ease;
+}
+
+.feedback_button {
+  background-color: #52ff00;
+  border: none;
+  font-weight: bold;
+  color: #000000;
+  padding: 7px 25px;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 7px;
+  margin-top:5px;
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.feedback_button:hover {
+  background-color: #3ec500;
+}
+
+.submit_feedback_button:hover {
+  background-color: #3ec500;
+}
+
+@media only screen and (max-width: 600px) {
+  .feedback_textarea {
+    height: 100px; /* Adjust height for smaller screens */
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .styles-donations-container {
+    padding: 10px;
+  }
+
+  .styles-donation-item {
+    padding: 10px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .forms {
+    font-size: 14px;
+  }
+}
+
 .container {
   max-width: 800px;
   margin: 0 auto;
@@ -40,33 +145,14 @@
   margin-bottom: 20px;
 }
 
-@media (max-width: 768px) {
-  .styles-donations-container {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto; 
-  }
-
-  .styles-donation-item {
+@media only screen and (max-width: 600px) {
+  .container {
     padding: 10px;
-  }
-
-  .forms {
-    font-size: 16px; 
   }
 }
 
-@media (max-width: 576px) {
-  .styles-donations-container {
-    width: 100%;
-    padding: 10px; 
-  }
-
-  .forms {
-    font-size: 14px;
-  }
-
-  .styles-donation-image {
-    height: auto; 
+@media only screen and (max-width: 400px) {
+  .title {
+    font-size: 24px;
   }
 }
