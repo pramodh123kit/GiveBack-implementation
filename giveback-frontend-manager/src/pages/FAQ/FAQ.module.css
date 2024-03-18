@@ -39,4 +39,61 @@
   .toggleIcon {
     font-size: 24px;
   }
+
+  /* For smaller devices like tablets */
+@media screen and (max-width: 1024px) {
+  .faqContainer {
+    width: 90%; 
+  }
+
+  .faqItems {
+    grid-template-columns: repeat(1, 1fr); 
+  }
+
+  .faqQuestion {
+    font-size: 20px; 
+  }
+
+  .faqAnswer {
+    font-size: 18px; 
+  }
+}
+
+/* For mobile devices */
+@media screen and (max-width: 600px) {
+  .faqContainer {
+    width: 100%; /* Adjust container width to full width */
+    padding: 0 10px; /* Add padding to the sides */
+  }
+
+  .faqQuestion {
+    font-size: 18px; /* Further reduce font size for questions */
+  }
+
+  .faqAnswer {
+    font-size: 16px; /* Further reduce font size for answers */
+  }
+}
+
+/* For very small devices like smartphones in portrait mode */
+@media screen and (max-width: 400px) {
+  .faqContainer {
+    width: 100%; /* Adjust container width to full width */
+    padding: 0 5px; /* Add minimal padding to the sides */
+  }
+
+  .faqItems {
+    grid-template-columns: repeat(1, 1fr); /* Switch to a single column layout */
+  }
+
+  .faqQuestion {
+    font-size: 16px; /* Reduce font size for questions */
+  }
+
+  .faqAnswer {
+    font-size: 14px; /* Reduce font size for answers */
+  }
+}
+
+
   
