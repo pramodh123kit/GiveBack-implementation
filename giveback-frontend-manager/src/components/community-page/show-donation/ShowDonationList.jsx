@@ -92,20 +92,39 @@ const ShowDonationList = ({ filter, closestMatch, recipientFormSubmitted }) => {
       setFeedbackText('');
       setShowFeedbackForm(false);
       setFeedbackButtonLabel('Give Feedback');
+
+      await sendFeedbackToDonator(donationId, feedbackText);
     } catch (error) {
       console.error('Error giving feedback:', error.message);
     }
   };
 
+  const sendFeedbackToDonator = async (donationId, feedbackText) => {
+    try {
+      // Make a POST request to the backend route
+      const response = await axios.post(`http://localhost:5000/api/sendFeedbackToDonator/${donationId}`, {
+        feedbackText: feedbackText,
+      });
+
+      // Check if the request was successful
+      if (response.status === 200) {
+        console.log('Feedback sent to donator successfully!');
+      } else {
+        console.error('Failed to send feedback to donator');
+      }
+    } catch (error) {
+      console.error('Error sending feedback to donator:', error.message);
+    }
+  };
+
   // Toggle feedback form visibility and button label
   const toggleFeedbackForm = (donationId) => {
-    if (showFeedbackForm) {
-      setShowFeedbackForm(false);
-      setFeedbackButtonLabel('Give Feedback');
+    if (selectedDonationId === donationId) {
+      // If the same donation ID is clicked again, close the form
+      setSelectedDonationId(null);
     } else {
+      // Otherwise, set the selected donation ID
       setSelectedDonationId(donationId);
-      setShowFeedbackForm(true);
-      setFeedbackButtonLabel('Close Feedback');
     }
   };
 
@@ -115,7 +134,7 @@ const ShowDonationList = ({ filter, closestMatch, recipientFormSubmitted }) => {
   // Filter by item type if filter is applied
   if (filter) {
     filteredDonations = donations.filter((donation) => 
-      donation.itemType.toLowerCase() === filter.toLowerCase()
+      donation.itemType && donation.itemType.toLowerCase() === filter.toLowerCase()
     );
   }
 
@@ -140,7 +159,7 @@ const ShowDonationList = ({ filter, closestMatch, recipientFormSubmitted }) => {
               <div className={styles.forms}>Donator's Name: {closestMatch.donorName}</div>
               <div className={styles.forms}>Donator's Email: {closestMatch.email}</div>
             </div>
-            {closestMatch.image && (
+             {closestMatch.image && (
               <div>
                 <p className={styles.forms}>Image:</p>
                 <img
@@ -148,6 +167,43 @@ const ShowDonationList = ({ filter, closestMatch, recipientFormSubmitted }) => {
                   src={`http://localhost:5000/api/getImage/${closestMatch._id}`}
                   alt={`Closest Donation ${closestMatch._id}`}
                 />
+              </div>
+            )}
+            {closestMatch.status === 'Accepted' ? (
+              <>
+                <span className={styles.accepted_text}>Accepted</span>
+                {selectedDonationId === closestMatch._id && (
+                  <button
+                    className={styles.feedback_button}
+                    onClick={() => toggleFeedbackForm(closestMatch._id)}
+                  >
+                    {selectedDonationId === closestMatch._id ? 'Close Feedback' : 'Give Feedback'}
+                  </button>
+                )}
+              </>
+            ) : (
+              <button
+                className={styles.accept_btn}
+                onClick={() => handleAcceptDonation(closestMatch._id)}
+                disabled={closestMatch.status === 'Accepted'}
+              >
+                {closestMatch.status === 'Accepted' ? 'Accepted' : 'Accept'}
+              </button>
+            )}
+            {selectedDonationId === closestMatch._id && (
+              <div className={styles.feedback_form}>
+                <textarea
+                  className={styles.feedback_textarea}
+                  placeholder="Enter your feedback here..."
+                  value={feedbackText}
+                  onChange={(e) => setFeedbackText(e.target.value)}
+                />
+                <button
+                  className={styles.submit_feedback_button}
+                  onClick={() => handleGiveFeedback(selectedDonationId)}
+                >
+                  Submit Feedback
+                </button>
               </div>
             )}
           </div>
@@ -184,7 +240,7 @@ const ShowDonationList = ({ filter, closestMatch, recipientFormSubmitted }) => {
                   className={styles.feedback_button}
                   onClick={() => toggleFeedbackForm(donation._id)}
                 >
-                  {feedbackButtonLabel}
+                  {selectedDonationId === donation._id ? 'Close Feedback' : 'Give Feedback'}
                 </button>
               </>
             ) : (
@@ -196,28 +252,25 @@ const ShowDonationList = ({ filter, closestMatch, recipientFormSubmitted }) => {
                 {donation.status === 'Accepted' ? 'Accepted' : 'Accept'}
               </button>
             )}
-            {showFeedbackForm && (
-        <div className={styles.feedback_form}>
-          <textarea
-            className={styles.feedback_textarea}
-            placeholder="Enter your feedback here..."
-            value={feedbackText}
-            onChange={(e) => setFeedbackText(e.target.value)}
-          />
-          <button
-            className={styles.submit_feedback_button}
-            onClick={() => handleGiveFeedback(selectedDonationId)}
-          >
-            Submit Feedback
-          </button>
-        </div>
-      )}
+            {selectedDonationId === donation._id && (
+              <div className={styles.feedback_form}>
+                <textarea
+                  className={styles.feedback_textarea}
+                  placeholder="Enter your feedback here..."
+                  value={feedbackText}
+                  onChange={(e) => setFeedbackText(e.target.value)}
+                />
+                <button
+                  className={styles.submit_feedback_button}
+                  onClick={() => handleGiveFeedback(selectedDonationId)}
+                >
+                  Submit Feedback
+                </button>
+              </div>
+            )}
           </li>
         ))}
       </ul>
-      
-      
-      
     </div>
   );
 };

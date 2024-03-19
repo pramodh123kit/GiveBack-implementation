@@ -11,26 +11,28 @@ const CheckboxLabel = styled.label`
 
 const CheckboxInput = styled.input`
   margin-right: 4px;
-  appearance: none; /* Remove default appearance */
+  appearance: none; 
   width: 16px;
   height: 16px;
-  border: 2px solid #000; /* Border color when unchecked */
+  border: 2px solid #000;
   border-radius: 3px;
   outline: none;
-
+  
   &:checked {
-    background-color: green; /* Change this to your desired color */
-    border: 2px solid green; /* Border color when checked */
+    background-color: green; 
+    border: 2px solid green; 
+    cursor: pointer;
   }
 
   &:before {
-    content: '\\2713'; /* Unicode character for checkmark */
+    content: '\\2713'; 
     font-size: 16px;
-    color: white; /* Color of the checkmark */
+    color: white;
     margin-bottom:5px;
     display: block;
     text-align: center;
-    line-height: 16px; /* Match height of the checkbox */
+    line-height: 16px; 
+    cursor: pointer;
   }
 `;
 
@@ -55,7 +57,7 @@ const FilterSystem = ({ onSearch, onFilter }) => {
     { value: 'books', label: 'Books' },
     { value: 'furniture', label: 'Furniture' },
     { value: 'school items', label: 'School Items' },
-    { value: 'other', label: 'Other' },
+    // { value: 'other', label: 'Other' },
   ];
 
   return (
