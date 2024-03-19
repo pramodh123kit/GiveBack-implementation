@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import styles from "./Contact.module.css";
 import mail_icon from '@/assets/mail_icon.svg';
-import FAQ from '../FAQ/FAQ';
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -19,7 +18,6 @@ const Contact = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
         
         console.log('Form data:', formData);
         setFormData({ name: '', email: '', message: '' });
@@ -37,7 +35,7 @@ const Contact = () => {
                 <div className={styles.box2}>
                     <img src={mail_icon} alt="mail_icon" className={styles.mail_icon} />
                     <p>Email Us</p>
-                    <p>infoTest@gmail.com</p>
+                    <p>sharewithgiveback@gmail.com</p>
                 </div>
                 <div>
                     <button className={styles.faq_button} onClick={handleReadFAQs}>Read FAQ's</button>
@@ -58,8 +56,8 @@ const Contact = () => {
                     />
                     <br />
                     <input
-                        className={styles.form_input}
-                        type="email"
+                        className={styles.form_input} 
+                        type="text"
                         id="email"
                         name="email"
                         placeholder="Your Email"
