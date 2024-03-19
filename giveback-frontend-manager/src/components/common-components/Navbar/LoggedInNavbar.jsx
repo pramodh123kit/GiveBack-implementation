@@ -90,6 +90,7 @@ export const LoggedInNavbar = () => {
 
   return (
     <nav className={`${menuOpen ? "open" : ""} ${scrolled ? "scrolled" : ""}`}>
+      <div className="navContainer">
       <img src={logoLight} className="logo-light" alt="logo" />
       <div className="menu" onClick={toggleMenu}>
         <span></span>
@@ -114,6 +115,7 @@ export const LoggedInNavbar = () => {
           </>
         )}
       </ul>
+      </div>
     </nav>
   );
 };
