@@ -16,11 +16,11 @@ const nodemailer = require('nodemailer');
 
 const app = express();
 
-// Enable CORS
+// Enabling CORS
 app.use(cors());
 app.use(express.json());
 
-// Connect to MongoDB
+// Connecting to MongoDB
 mongoose.connect('mongodb://localhost:27017/donationDB');
 
 app.use('/donations', donationRoutes);
@@ -36,7 +36,7 @@ app.post('/api/donatorSubmitForm', upload.single('image'), async (req, res) => {
   try {
     const {itemType, itemName, itemDescription, itemQuantity, donorAddress, contactNumber, email, donorName, donorId } = req.body;
 
-    // Save the form data to MongoDB
+    // Saving the form data to MongoDB
     const donation = new Donation({
       itemType,
       itemName,
@@ -64,8 +64,8 @@ app.post('/api/donatorSubmitForm', upload.single('image'), async (req, res) => {
 
 app.get('/api/getUserDonations', async (req, res) => {
   try {
-    const userId = req.query.userId; // Extract user ID from query params
-    const donations = await Donation.find({ donorId: userId }); // Fetch donations with matching user ID
+    const userId = req.query.userId; 
+    const donations = await Donation.find({ donorId: userId }); 
     const donationsWithImages = donations.map((donation) => ({
       ...donation.toObject(),
       image: donation.image && donation.image.data ? donation.image.data.toString('base64') : null,
@@ -132,10 +132,9 @@ app.post('/api/recipientSubmitForm', async (req, res) => {
 // Endpoint to fetch donations
 app.get('/api/getDonations', async (req, res) => {
   try {
-    // Fetch all donations from MongoDB
+
     const donations = await Donation.find();
 
-    // Convert images to base64 for sending in response
     const donationsWithImages = donations.map((donation) => ({
       ...donation.toObject(),
       image: donation.image && donation.image.data ? donation.image.data.toString('base64') : null,
@@ -150,10 +149,9 @@ app.get('/api/getDonations', async (req, res) => {
 
 app.get('/api/getOrganizations', async (req, res) => {
   try {
-    // Fetch all donations from MongoDB
+    // Fetching all donations from MongoDB
     const organizations = await Organization.find();
 
-    // Convert images to base64 for sending in response
     const OrganizationsWithImages = organizations.map((organization) => ({
       ...organization.toObject(),
       image: organization.image && organization.image.data ? organization.image.data.toString('base64') : null,
@@ -167,7 +165,7 @@ app.get('/api/getOrganizations', async (req, res) => {
 });
 
 
-// Serve uploaded images
+// Serving uploaded images
 app.get('/api/getImage/:donationId', async (req, res) => {
   try {
     const donationId = req.params.donationId;
@@ -187,7 +185,7 @@ app.get('/api/getImage/:donationId', async (req, res) => {
 
 app.get('/api/getOrganizationImage/:organizationId', async (req, res) => {
   try {
-    // Retrieve organization information including image from the database
+    // Retrieving organization information including image from the database
     const organizationId = req.params.organizationId;
     const organization = await Organization.findById(organizationId);
 
@@ -220,7 +218,6 @@ app.get('/api/getOrganizationEmail/:organizationId', async (req, res) => {
 });
 
 
-
 app.post('/api/submitFeedback/:donationId', async (req, res) => {
   try {
     const { feedbackText, userId } = req.body;
@@ -241,20 +238,18 @@ app.post('/api/submitFeedback/:donationId', async (req, res) => {
   }
 });
 
-// Example endpoint to fetch feedback data
+// Endpoint to fetch the feedback data
 app.get('/api/getFeedback', async (req, res) => {
   try {
     // Fetch feedback data from the database
     const feedback = await Feedback.find({ recipientId: req.query.userId });
 
-    // Send the feedback data as response
     res.status(200).json(feedback);
   } catch (error) {
     console.error('Error fetching feedback:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
-
 
 
 app.post('/api/sendDonationEmail', upload.single('image'), async (req, res) => {
@@ -266,10 +261,10 @@ app.post('/api/sendDonationEmail', upload.single('image'), async (req, res) => {
       donationType,
       donationQuantity,
       donationReason,
-      organizationEmail, // Add this field to the form or fetch it from the database
+      organizationEmail, 
     } = req.body;
 
-    // Save the form data to MongoDB
+    // Saving the form data to MongoDB
     const donation = new Donation({
       userName,
       userContactNumber,
@@ -277,22 +272,21 @@ app.post('/api/sendDonationEmail', upload.single('image'), async (req, res) => {
       donationType,
       donationQuantity,
       donationReason,
-      // ... other fields
     });
 
     await donation.save();
 
-    // Send email using Nodemailer
+    // Sending email using Nodemailer
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'sharewithgiveback@gmail.com',
-        pass: 'zlpw txvw vnsy imjk', 
+        user: 'pramodh.20220414@iit.ac.lk',
+        pass: 'jagath123kit', 
       },
     });
 
     const mailOptions = {
-      from: 'sharewithgiveback@gmail.com',
+      from: 'pramodh.20220414@iit.ac.lk',
       to: organizationEmail,
       subject: 'New Donation Submission',
       html: `
@@ -331,14 +325,12 @@ app.post('/api/acceptDonation/:donationId', async (req, res) => {
     const recipientContactNumber = req.body.recipientContactNumber;
     const recipientEmail = req.body.recipientEmail;
 
-    // Find the donation by ID
     const donation = await Donation.findById(donationId);
 
     if (!donation) {
       return res.status(404).json({ error: 'Donation not found' });
     }
 
-    // Assuming you have the donor's email address
     const donorEmail = donation.email;
 
     const transporter = nodemailer.createTransport({
@@ -349,10 +341,8 @@ app.post('/api/acceptDonation/:donationId', async (req, res) => {
       },
     });
 
-
-    // Prepare email content
     const mailOptions = {
-      from: 'sharewithgiveback@gmail.com',
+      from: 'pramodh.20220414@iit.ac.lk',
       to: donorEmail,
       subject: 'Your Donation Has Been Accepted',
       html: `
@@ -362,20 +352,20 @@ app.post('/api/acceptDonation/:donationId', async (req, res) => {
         <p>Item Name: ${donation.itemName}</p>
         <p>Item Description: ${donation.itemDescription}</p>
         <p>Item Quantity: ${donation.itemQuantity}</p>
-        <p>Recipient's name: ${recipientName}</p>
-        <p>Recipient's contact number: ${recipientContactNumber}</p>
-        <p>Recipient's email: ${recipientEmail}</p>      
+        <p>Recipient's name: ${recipientName}</p>     
+        <hr>
+        <p>Best regards</p>
+        <p>CS-71, GiveBack Team</p>
+        <img src="https://i.imgur.com/igUsVTL.png" alt="Company Logo" width="100" height="100" margin-top="-30px">
       `,
     };
 
     // Send email
     await transporter.sendMail(mailOptions);
 
-    // Optionally, update the donation status in the database
     donation.status = 'Accepted';
     await donation.save();
 
-    // Send a success response
     res.status(200).json({ message: 'Donation accepted successfully!' });
   } catch (error) {
     console.error('Error accepting donation:', error);
@@ -383,7 +373,57 @@ app.post('/api/acceptDonation/:donationId', async (req, res) => {
   }
 });
 
-// Use donation routes
+app.post('/api/sendFeedbackToDonator/:donationId', async (req, res) => {
+  try {
+    const { feedbackText } = req.body;
+    const donationId = req.params.donationId;
+
+    const donation = await Donation.findById(donationId);
+
+    if (!donation) {
+      return res.status(404).json({ error: 'Donation not found' });
+    }
+
+    const donatorEmail = donation.email;
+
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'pramodh.20220414@iit.ac.lk',
+        pass: 'jagath123kit', 
+      },
+    });
+
+    const mailOptions = {
+      from: 'pramodh.20220414@iit.ac.lk', 
+      to: donatorEmail,
+      subject: 'Feedback Received for Your Donation',
+      html: `
+        <h2>Feedback Received for Your Donation</h2>
+        <p>Thank you for your donation. Feedback has been received from the recipient:</p>
+        <p>Feedback: ${feedbackText}</p>
+        </br>
+        <p><b>Donated item's information</b></p>
+        <p>Item Type: ${donation.itemType}</p>
+        <p>Item Name: ${donation.itemName}</p>
+        <p>Item Description: ${donation.itemDescription}</p>
+        <p>Item Quantity: ${donation.itemQuantity}</p>
+        <hr>
+        <p>Best regards</p>
+        <p>CS-71, GiveBack Team</p>
+        <img src="https://i.imgur.com/igUsVTL.png" alt="Company Logo" width="100" height="100" margin-top="-30px">
+      `,
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    res.status(200).json({ message: 'Feedback sent to donator successfully!' });
+  } catch (error) {
+    console.error('Error sending feedback to donator:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 app.use('/api', donationRoutes);
 
 const swaggerUI = require('swagger-ui-express');

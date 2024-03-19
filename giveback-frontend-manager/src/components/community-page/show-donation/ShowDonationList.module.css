@@ -9,7 +9,9 @@
   border: 1px solid #ccc;
   border-radius: 15px;
   padding: 15px;
+  background-color: #DBFFCF;
 }
+
 
 .accept_btn {
   background-color: #52ff00;
@@ -119,8 +121,16 @@
 }
 
 @media only screen and (max-width: 600px) {
+
+  .container {
+    width: 100%;
+    ;
+  }
+
   .styles-donations-container {
     padding: 10px;
+    margin: 0;
+    width: 100%;
   }
 
   .styles-donation-item {
