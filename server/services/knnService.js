@@ -2,13 +2,21 @@ const Recipient = require('../models/Recipient');
 const Donation = require('../models/Donation');
 
 const calculateEuclideanDistance = (recipient, donation) => {
+  const requiredRecipientProps = ['itemType', 'itemName', 'itemDescription', 'recipientAddress'];
+  const requiredDonationProps = ['itemType', 'itemName', 'itemDescription', 'donorAddress'];
 
-  if (!recipient.itemType || !recipient.itemName || !recipient.itemDescription || !recipient.recipientAddress) {
-    throw new Error('Recipient item is missing required properties');
+  for (const prop of requiredRecipientProps) {
+    if (!(prop in recipient)) {
+      console.log(`Recipient item is missing required property: ${prop}`);
+      return Infinity;
+    }
   }
 
-  if (!donation.itemType || !donation.itemName || !donation.itemDescription || !donation.donorAddress) {
-    throw new Error('Donation item is missing required properties');
+  for (const prop of requiredDonationProps) {
+    if (!(prop in donation)) {
+      console.log(`Donation item is missing required property: ${prop}`);
+      return Infinity;
+    }
   }
 
   // Calculating Euclidean distance between recipient and donor items

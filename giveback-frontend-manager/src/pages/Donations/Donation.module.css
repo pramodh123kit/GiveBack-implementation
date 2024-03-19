@@ -1,8 +1,44 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .title {
     color:aqua;
 }
 
 .container {
-    width: 70%;
-    margin:0 auto;
+    width: 63%;
+    margin: 0 auto;
+}
+
+.scrollToTopButton {
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 1000;
+}
+
+.scrollToTopButton:hover {
+  transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .scrollToTopButton {
+    bottom: 3%;
+    right: 3%;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }

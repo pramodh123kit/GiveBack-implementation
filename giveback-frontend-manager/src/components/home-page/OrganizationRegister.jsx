@@ -3,6 +3,7 @@ import axios from 'axios';
 import styles from '@/pages/Home/Home.module.css';
 import close_icon from '@/assets/close_icon.svg';
 import back_icon from '@/assets/back_icon.svg';
+import Cookies from 'universal-cookie';
 
 const OrganizationRegister = ({ onClose, onSubmit }) => {
     const [showSecondPage, setShowSecondPage] = useState(false);
@@ -19,6 +20,8 @@ const OrganizationRegister = ({ onClose, onSubmit }) => {
     const [summary, setSummary] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
 
+    const cookies = new Cookies();
+
     const handleSubmitFirstPage = async (e) => {
         e.preventDefault();
         setShowSecondPage(true);
@@ -31,32 +34,37 @@ const OrganizationRegister = ({ onClose, onSubmit }) => {
             alert('Please fill out all the required fields');
             return;
           }
-      
-          const reader = new FileReader();
-          reader.onloadend = async () => {
-            const imageData = reader.result;
 
-            const response = await axios.post('http://localhost:5000/api/registerOrganization', {
-              orgName,
-              address,
-              email,
-              contactNumber,
-              registrationDoc,
-              permit,
-              type,
-              quantity,
-              forWho,
-              summary,
-              image: imageData, 
-            });
-      
+          const formData = new FormData();
+            formData.append('image', image);
+            formData.append('orgName', orgName);
+            formData.append('address', address);
+            formData.append('email', email);
+            formData.append('contactNumber', contactNumber);
+            formData.append('registrationDoc', registrationDoc);
+            formData.append('permit', permit);
+            formData.append('type', type);
+            formData.append('quantity', quantity);
+            formData.append('forWho', forWho);
+            formData.append('summary', summary);
+            formData.append('donorName', cookies.get('fullName'));
+            formData.append('donorId', cookies.get('userId'));
+
+            await axios.post('http://localhost:5000/api/registerOrganization', formData, {
+                headers: {
+                  'Content-Type': 'multipart/form-data', 
+                },
+              });
+
             setSuccessMessage('Organization registered successfully!');
-            console.log(response.data);
-          };
-          reader.readAsDataURL(image);
         } catch (error) {
           console.error('Error submitting form:', error);
+          setSuccessMessage('Error submitting donation. Please try again.');
         }
+      };
+
+      const handleImageChange = (e) => {
+        setImage(e.target.files[0]);
       };
       
     return (
@@ -99,7 +107,7 @@ const OrganizationRegister = ({ onClose, onSubmit }) => {
                                 </div>
                                 <div className={styles.forms}>
                                     <label className={styles.form_labels}>Upload the logo</label>
-                                    <input className={styles.form_box} type="file" accept="image/*" onChange={(e) => setImage(e.target.files[0])} required/>
+                                    <input className={styles.upload_btn} type="file" accept="image/*" onChange={handleImageChange} required/>
                                 </div>
                             </div>
                             <div className={styles.form_btn}>

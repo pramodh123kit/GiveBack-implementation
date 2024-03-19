@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { StreamChat } from "stream-chat";
 import { Chat } from "stream-chat-react";
 import Cookies from "universal-cookie";
-import ClosestMatch from "../../components/community-page/closest-match/ClosestMatch";
 
 import { ChannelContainer, ChannelListContainer, Auth, ShowDonationList } from "@/components/community-page/index"
 import DonatorForm from '@/components/community-page/request-form/DonatorForm';
@@ -12,7 +11,7 @@ import 'stream-chat-react/dist/css/index.css';
 
 const cookies = new Cookies();
 
-const apiKey = 'byfr7rs9s8mj';
+const apiKey = 'ehvtd7wtcmck';
 const authToken = cookies.get('token');
 
 const client = StreamChat.getInstance(apiKey);
@@ -122,26 +121,7 @@ const Community = () => {
             DONATE
           </button>
           {showDonateForm && <DonatorForm onClose={handleCloseDonateForm} />}
-          <button className="donate-btn-list" onClick={handleOpenDonationList}>
-            Donation list
-          </button>
           {showDonationList && <ShowDonationList onClose={handleCloseDonationList} />}
-        </>
-      )}
-      {isRecipient && (
-        <>
-          <button className="recieve-btn" onClick={handleOpenDonateForm}>
-            Are you looking for donations?
-          </button>
-          {showDonateForm && <RecipientForm onClose={handleCloseDonateForm} setClosestMatch={setClosestMatch} onSubmit={() => setRecipientFormSubmitted(true)} />}
-          {recipientFormSubmitted && (
-            <>
-              <button className="match-btn" onClick={handleOpenClosestMatch}>
-                CLOSEST MATCH
-              </button>
-              {showClosestMatch && <ClosestMatch closestMatch={closestMatch} onClose={handleCloseClosestMatch} />}
-            </>
-          )}
         </>
       )}
     </div>

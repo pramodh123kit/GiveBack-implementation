@@ -1,159 +1,168 @@
-.modalOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
+.styles-donations-container {
+  width: 70%;
+  margin-left:auto
+}
+
+.styles-donation-item {
+  list-style: none;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 15px;
+  background-color: #DBFFCF;
+}
+
+
+.accept_btn {
+  background-color: #52ff00;
+  border: none;
+  font-weight: bold;
+  color: #000000;
+  padding: 7px 25px;
+  font-size: 18px;
+  text-align: center;
+  width: 100px;
+  border-radius: 7px;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.accept_btn :hover {
+  background-color: #46dd00;
+}
+
+.accepted_text {
+  background-color: #3cbe00;
+  border: none;
+  font-weight: bold;
+  color: #000000;
+  padding: 7px 25px;
+  font-size: 18px;
+  text-align: center;
+  width: 100px;
+  border-radius: 7px;
+  margin-top:15px;
+}
+
+.form_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.forms {
+  margin-bottom: 10px;
+  color:black;
+  font-size: 18px;
+}
+
+.styles-donation-image {
+  max-width: 100%;
+  height: 15rem;
+  margin-top: 10px;
+}
+
+.feedback_form {
+  margin-top: 20px;
+}
+
+.feedback_textarea {
+  width: 100%;
+  height: 150px;
+  padding: 10px;
+  border: 1px solid #121212;
+  border-radius: 5px;
+  resize: none; /* Prevent textarea resize */
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.submit_feedback_button {
+  background-color: #52ff00;
+  border: none;
+  font-weight: bold;
+  color: #000000;
+  padding: 7px 25px;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 7px;
+  margin-top:5px;
+  transition: background-color 0.3s ease;
+}
+
+.feedback_button {
+  background-color: #52ff00;
+  border: none;
+  font-weight: bold;
+  color: #000000;
+  padding: 7px 25px;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 7px;
+  margin-top:5px;
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.feedback_button:hover {
+  background-color: #3ec500;
+}
+
+.submit_feedback_button:hover {
+  background-color: #3ec500;
+}
+
+@media only screen and (max-width: 600px) {
+  .feedback_textarea {
+    height: 100px; /* Adjust height for smaller screens */
+  }
+}
+
+@media only screen and (max-width: 600px) {
+
+  .container {
     width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    overflow: auto;
-  }
-  
-  .popupCard {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 550px;
-    height: 90%;
-  }
-  
-  .form_header{
-    display: flex;
-    flex-direction: flex-start;
-    margin-bottom: 2rem;
-    font-size: 60px;
-    font-weight: bolder;
+    ;
   }
 
-  .close_icon {
-    width: 40px;
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 1rem;
-    margin-left: auto;
-    cursor: pointer;
-  }
-  
-  .styles-button {
-    color: #ffffff;
-    padding: 10px;
-    margin-bottom: 10px;
-    cursor: pointer;
-  }
-  
   .styles-donations-container {
-    margin-top: 20px;
-    max-height: 80vh;
-    overflow-y: auto;
+    padding: 10px;
+    margin: 0;
+    width: 100%;
   }
-  
+
   .styles-donation-item {
-    list-style-type: none;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    padding: 15px;
-    margin-right: 8%;
-    border-radius: 10px;
+    padding: 10px;
   }
-  
-  .styles-donation-info {
-    font-weight: bold;
-  }
+}
 
-
-  .styles-donation-image {
-    max-width: 100px;
-    max-height: 100px;
-  }
-  
-  .form_header{
-    display: flex;
-    flex-direction: flex-start;
-    margin-left: 6%;
-    font-size: 45px;
-    font-weight: bolder;
-  }
-  
-  .form_container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
+@media only screen and (max-width: 400px) {
   .forms {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 1rem;
-    font-size: 19px;
-    color:#000; 
+    font-size: 14px;
   }
-  
-  .form_labels {
-    color: #121212;
-    padding-right: 10px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    padding: 10px;
   }
-  
-  .form_box {
-    border-width: 1px;
-    border-radius: 5px;
-    width: 100%;
-    padding: 1px;
+}
+
+@media only screen and (max-width: 400px) {
+  .title {
+    font-size: 24px;
   }
-  
-  .form_box_big {
-    border-width: 1px;
-    border-radius: 5px;
-    padding-bottom: 3.65rem;
-    width: 100%;
-  }
-  
-  .form_btn {
-    padding-top: 5rem;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .next_btn {
-    background-color: #52ff00;
-    border: none;
-    font-weight: bold;
-    color: #000000;
-    padding: 7px 40px;
-    text-align: center;
-    font-size: 16px;
-    border-radius: 7px;
-    margin-top: 20px;
-  }
-  
-  .register_btn {
-    background-color: #52ff00;
-    border: none;
-    font-weight: bold;
-    color: #000000;
-    padding: 7px 30px;
-    text-align: center;
-    font-size: 16px;
-    border-radius: 7px;
-    margin-top: 20px;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .form_header {
-      font-size: 40px;
-    }
-  }
-  
-  @media screen and (max-width: 480px) {
-    .popupCard {
-      width: 90%;
-    }
-  }
-  
+}

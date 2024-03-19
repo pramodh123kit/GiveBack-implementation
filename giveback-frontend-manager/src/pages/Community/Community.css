@@ -1,5 +1,9 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .App {
-  background-color: #fefefe;
+  /* background-color: #ffffff; */
   height: 100vh;
   width: 100%;
 }
@@ -9,7 +13,7 @@
 }
 
 .container-community {
-  width: 80%;
+  width: 70%;
   margin:0 auto;
   height: 80%;
 }
@@ -215,25 +219,14 @@ body {
   text-align: center;
   font-size: 19px;
   border-radius: 7px;
-  margin-top: 20px; 
   position: absolute;
-  right: 10%;     
+  right: 15%;     
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .recieve-btn:hover{
-  background-color: #46dd00;
-  border: none;
-  font-weight: bold;
-  color: #000000;
-  padding: 7px 30px;
-  text-align: center;
-  font-size: 19px;
-  border-radius: 7px;
-  margin-top: 20px; 
-  position: absolute;
-  right: 10%; 
-  cursor: pointer;
+  background-color: #48ad19;
 }
 
 .donate-btn{
@@ -248,8 +241,9 @@ body {
   border-radius: 7px;
   margin-top: 20px; 
   position: absolute;
-  right: 10%;
-  margin-bottom: 50px;   
+  right: 15%;
+  margin-bottom: 50px;
+  cursor: pointer;   
 }
 
 .donate-btn-list{

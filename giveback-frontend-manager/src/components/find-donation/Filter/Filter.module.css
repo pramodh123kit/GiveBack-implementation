@@ -1,0 +1,70 @@
+.filterContainer {
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+
+.filterSystem {
+  padding: 15px;
+}
+
+.filterSection {
+  margin-bottom: 10px;
+}
+
+.filterSection h3 {
+  margin-bottom: 5px;
+}
+
+.filterOptions label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.filterOptions input[type="radio"] {
+  margin-right: 5px;
+}
+
+.filterOptions input[type="radio"]:checked + label {
+  font-weight: bold;
+}
+
+.image-with-text-container {
+  display: flex;
+  align-items: flex-start;
+}
+
+.image-with-text-image {
+  width: 10px;
+  height: 10px;
+  object-fit: cover;
+  margin-right: 16px;
+}
+
+.image-with-text-text-container {
+  flex: 1;
+}
+
+.image-with-text-text {
+  margin: 0;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 600px) {
+  .filterContainer {
+    padding: 10px;
+  }
+
+  .filterOptions label {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .filterSection h3 {
+    font-size: 18px;
+  }
+}

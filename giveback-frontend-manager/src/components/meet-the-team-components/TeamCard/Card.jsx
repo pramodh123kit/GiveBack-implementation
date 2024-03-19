@@ -1,6 +1,6 @@
 import styles from './Card.module.css';
 import linkedIn from '@/assets/linkedIn.png';
-import gitHub from '../../../assets/github.png';
+import gitHub from '@/assets/github.png';
 
 function Card(props){
 
