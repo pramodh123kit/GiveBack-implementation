@@ -119,17 +119,19 @@ li {
 .image {
     width: 250px;
     height: 200px;
-    margin-right: 20px;
+    margin-right: 5rem;
     margin-bottom: 1rem;
 }
 
+
 @media only screen and (max-width: 768px) {
     .container_organizations {
-        width: 90%;
+        width: 100%;
     }
 
     .organization_container {
         flex-direction: column;
+        align-items: center;
     }
 
     .right_container,
@@ -138,9 +140,14 @@ li {
     }
 
     .details_btn {
-        margin-left: 0; /* Remove left margin */
-        width: auto; /* Allow width to adjust based on content */
+        margin-left: 0;
+        margin-right: 2rem; 
+        width: auto; 
     }
+    
+    .ul_organization {
+        margin: 0 auto;
+      }
 
     .image {
         margin-bottom: 1rem;

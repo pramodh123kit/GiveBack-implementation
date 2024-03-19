@@ -30,6 +30,7 @@ export const Navbar = () => {
 
   return (
     <nav className={`${menuOpen ? "open" : ""} ${scrolled ? "scrolled" : ""}`}>
+      <div className="navContainer">
       <img src={logoLight} className="logo-light" alt="logo" />
       <div className="menu" onClick={toggleMenu}>
         <span></span>
@@ -59,6 +60,7 @@ export const Navbar = () => {
           <NavLink to="/signup" className="sign-in-button">SIGN UP</NavLink>
         </li>
       </ul>
+      </div>
     </nav>
   );
 };
