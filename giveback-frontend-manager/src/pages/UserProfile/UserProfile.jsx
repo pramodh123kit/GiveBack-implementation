@@ -54,7 +54,7 @@ const UserProfile = () => {
   useEffect(() => {
     const fetchUserDonations = async () => {
       try {
-        const response = await axios.get(`https://project-giveback.azurewebsites.net0/api/getUserDonations?userId=${userId}`);
+        const response = await axios.get(`https://project-giveback.azurewebsites.net/api/getUserDonations?userId=${userId}`);
         setDonationHistory(response.data);
       } catch (error) {
         console.error('Error fetching user donations:', error);
@@ -63,7 +63,7 @@ const UserProfile = () => {
 
     const fetchUserFeedback = async () => {
       try {
-        const response = await axios.get(`https://project-giveback.azurewebsites.net0/api/getFeedback?userId=${String(userId)}`);
+        const response = await axios.get(`https://project-giveback.azurewebsites.net/api/getFeedback?userId=${String(userId)}`);
         setFeedbackHistory(response.data);
       } catch (error) {
         console.error('Error fetching user feedback:', error);
