@@ -40,7 +40,7 @@ const OrganizationView = ({ organization  }) => {
 
   const handleShowOrganizations = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/getOrganizations');
+      const response = await axios.get('https://project-giveback.azurewebsites.net/api/getOrganizations');
       setOrganizations(response.data);
 
     } catch (error) {
@@ -56,7 +56,7 @@ const OrganizationView = ({ organization  }) => {
   
     try {
       // Fetching the organization email
-      const response = await axios.get(`http://localhost:5000/api/getOrganizationEmail/${organizationId}`);
+      const response = await axios.get(`https://project-giveback.azurewebsites.net0/api/getOrganizationEmail/${organizationId}`);
       const orgEmail = response.data.email;
       console.log('Organization Email:', orgEmail);
      
@@ -116,7 +116,7 @@ const OrganizationView = ({ organization  }) => {
                     <div>
                       <img
                         className={styles.image}
-                        src={`http://localhost:5000/api/getOrganizationImage/${organization._id}`}
+                        src={`https://project-giveback.azurewebsites.net0/api/getOrganizationImage/${organization._id}`}
                         alt={`Organization ${organization._id}`}
                       />
                     </div>           

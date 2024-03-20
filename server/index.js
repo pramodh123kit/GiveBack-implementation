@@ -21,7 +21,10 @@ app.use(cors());
 app.use(express.json());
 
 // Connecting to MongoDB
-mongoose.connect('mongodb://localhost:27017/donationDB');
+mongoose.connect('mongodb+srv://pramodh123kit:mbk0rtG4jOr5I3X1@cluster0.k4yd2h3.mongodb.net/Cluster0', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connection.on('connected', () => {
+  console.log('Connected to MongoDB');
+});
 
 app.use('/donations', donationRoutes);
 app.use('/recipients', recipientRoutes);
