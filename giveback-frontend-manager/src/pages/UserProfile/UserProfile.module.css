@@ -51,12 +51,12 @@ button{
     cursor: pointer;
     outline: none;
     margin-top: 10px;
-    
   } 
 
   .logOut_container {
     display: flex;
     justify-content: center; 
+    margin-top: 10px;
   }
   
   .center_container {
@@ -128,8 +128,8 @@ button{
   }
   
   .contentItem {
-    max-height: 430px; /* Adjust the maximum height as needed */
-    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: 430px; 
+    overflow-y: auto; 
     padding: 2rem;
     border-radius: 4px;
     background-color: #C7FFB4;

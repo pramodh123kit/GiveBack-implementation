@@ -36,6 +36,21 @@ const UserProfile = () => {
   const [donationHistory, setDonationHistory] = useState([]);
   const [feedbackHistory, setFeedbackHistory] = useState([]);
 
+  const isDonator = cookies.get('isDonator');
+  const isRecipient = cookies.get('isRecipient');
+
+  useEffect(() => {
+    async function importStyles() {
+      if (isDonator) {
+        const module = await import('@/pages/Community/Community2.css');
+      } else if (isRecipient) {
+        const module = await import('@/pages/Community/Community.css');
+      }
+    }
+
+    importStyles();
+  }, [isDonator, isRecipient]);
+
   useEffect(() => {
     const fetchUserDonations = async () => {
       try {
@@ -77,6 +92,13 @@ const UserProfile = () => {
     setActiveTab(tabIndex);
   };
 
+  useEffect(() => {
+    if (isDonator) {
+      const userIcon = document.querySelector(`.${styles.userIcon}`);
+      userIcon.style.backgroundColor = '#71005e';
+    }
+  }, [isDonator]);
+
   return (
     <div className={styles.container}>
       <div className={styles.tabs}>
@@ -106,13 +128,6 @@ const UserProfile = () => {
             View Feedback
           </button>
           <hr />
-          <button
-            className={`${styles.tab} ${activeTab === 3 ? styles.active : ''}`}
-            onClick={() => handleTabClick(3)}
-          >
-            View Ratings
-          </button>
-          <hr />
           <div className={styles.logOut_container}>
             <div className={styles.center_container}></div>
             <div className={styles.logOut_button}>
@@ -132,7 +147,6 @@ const UserProfile = () => {
         {activeTab === 0 && <PersonalInfo />}
         {activeTab === 1 && <DonationHistory donationHistory={donationHistory} />}
         {activeTab === 2 && <Feedback feedbackHistory={feedbackHistory} />}
-        {activeTab === 3 && <Ratings />}
       </div>
     </div>
   );
@@ -197,24 +211,6 @@ const Feedback = ({ feedbackHistory }) => {
             </div>
           ))
         )}
-      </div>
-    </>
-  );
-};
-
-const Ratings = () => {
-  return (
-    <>
-      <div className={styles.heading_container}>
-        <h1>View Ratings</h1>
-      </div>
-      <div className={styles.contentItem}>
-        <h2>Username: {cookies.get('username')}</h2>
-        <h2>Full Name: {cookies.get('fullName')}</h2>
-        <h2>Email: {cookies.get('username')}</h2>
-        <h2>Phone Number: {cookies.get('phoneNumber')}</h2>
-        <h2>Donator: {cookies.get('isDonator')}</h2>
-        <h2>Recipient: {cookies.get('isRecipient')}</h2>
       </div>
     </>
   );

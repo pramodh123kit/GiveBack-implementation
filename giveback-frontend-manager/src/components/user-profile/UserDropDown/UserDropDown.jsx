@@ -116,16 +116,6 @@ const UserDropDown = ({ onClose, redirectToUserProfile }) => {
                 </div>
            </div>
 
-           <div className={styles.logOut_container}>
-                <div className={styles.logOut_button}>
-                    <img
-                    src={startDropdown}
-                    className={styles.image}
-                    onClick={() => handleRedirect(3)}
-                    />
-                    <p className={styles.logOut_text} onClick={() => handleRedirect(3)}>My Ratings</p>
-                </div>
-           </div>
 
           <div className={styles.logOut_container}>
                 <div className={styles.logOut_button}>
