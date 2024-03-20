@@ -3,10 +3,13 @@ import axios from 'axios';
 import styles from '@/components/community-page/request-form/form.module.css';
 import close_icon from '@/assets/close_iconn.svg';
 import Cookies from 'universal-cookie';
+import SuccessPopup from './SuccessfullyAdded';
 
 const cookies = new Cookies();
 
 const DonatorForm = ({ onClose }) => {
+    const [showSubmit, setShowSubmit] = useState(false);
+    const [showSuccessPopup, setShowSuccessPopup] = useState(false);
     const [itemType, setItemType] = useState('');
     const [itemName, setItemName] = useState('');
     const [itemDescription, setItemDescription] = useState('');
@@ -21,7 +24,6 @@ const DonatorForm = ({ onClose }) => {
   
     const handleSubmit = async (e) => {
       e.preventDefault();
-  
       try {
         const formData = new FormData();
         formData.append('image', image);
@@ -61,6 +63,9 @@ const DonatorForm = ({ onClose }) => {
         // Save the updated donation history back to localStorage
         localStorage.setItem(`donationHistory_${userId}`, JSON.stringify(updatedDonationHistory));  
   
+
+        setShowSubmit(false);
+        setShowSuccessPopup(true);
         setSuccessMessage('Donation submitted successfully!');
       } catch (error) {
         console.error('Error submitting form:', error);
@@ -74,7 +79,10 @@ const DonatorForm = ({ onClose }) => {
     
     return (
       <div className={styles.modalOverlay}>
-        <div className={styles.popupCard}>
+            {showSuccessPopup ? ( 
+                <SuccessPopup onClose={onClose} />
+            ) : (
+                <div className={styles.popupCard}>
           <img src={close_icon} alt="close" className={styles.close_icon} onClick={onClose} />
           <>
             <h1 className={styles.form_header}>Donator's Form</h1>
@@ -125,12 +133,13 @@ const DonatorForm = ({ onClose }) => {
               )}
               <div className={styles.form_btn}>
                 <input className={styles.next_btn} type="submit" value="submit" />
-              </div>
-            </form>
-          </>
+                </div>
+                        </form>
+                    </>
+                </div>
+            )}
         </div>
-      </div>
     );
-  };
+};
   
   export default DonatorForm;

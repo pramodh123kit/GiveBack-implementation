@@ -4,9 +4,12 @@ import styles from '@/pages/Home/Home.module.css';
 import close_icon from '@/assets/close_icon.svg';
 import back_icon from '@/assets/back_icon.svg';
 import Cookies from 'universal-cookie';
+import SuccessPopup from '@/components/home-page/SuccessfullyRegistered';
 
-const OrganizationRegister = ({ onClose, onSubmit }) => {
+const OrganizationRegister = ({ onClose }) => {
+    const [showFirstPage, setShowFirstPage] = useState(false);
     const [showSecondPage, setShowSecondPage] = useState(false);
+    const [showSuccessPopup, setShowSuccessPopup] = useState(false);
     const [orgName, setOrgName] = useState('');
     const [address, setAddress] = useState('');
     const [email, setEmail] = useState('');
@@ -24,6 +27,7 @@ const OrganizationRegister = ({ onClose, onSubmit }) => {
 
     const handleSubmitFirstPage = async (e) => {
         e.preventDefault();
+
         setShowSecondPage(true);
     };
 
@@ -56,7 +60,9 @@ const OrganizationRegister = ({ onClose, onSubmit }) => {
                 },
               });
 
-            setSuccessMessage('Organization registered successfully!');
+              setShowFirstPage(false);
+              setShowSecondPage(false);
+              setShowSuccessPopup(true);
         } catch (error) {
           console.error('Error submitting form:', error);
           setSuccessMessage('Error submitting donation. Please try again.');
@@ -69,17 +75,20 @@ const OrganizationRegister = ({ onClose, onSubmit }) => {
       
     return (
         <div className={styles.modalOverlay}>
-            <div className={styles.popupCard}>
-                <div className={styles.icons_container}>
-                    {showSecondPage && (
-                        <img src={back_icon} alt="back" className={styles.back_icon} onClick={() => setShowSecondPage(false)} />
-                    )}
-                    <img src={close_icon} alt="close" className={styles.close_icon} onClick={onClose} />  
-                </div>
-                {!showSecondPage ? (
-                    <>
-                        <h1 className={styles.form_header}>Register Your <br /> Organization or Charity</h1>
-                        <form onSubmit={handleSubmitFirstPage}>
+            {showSuccessPopup ? ( 
+                <SuccessPopup onClose={onClose} />
+            ) : (
+                <div className={styles.popupCard}>
+                    <div className={styles.icons_container}>
+                        {showSecondPage && (
+                            <img src={back_icon} alt="back" className={styles.back_icon} onClick={() => setShowSecondPage(false)} />
+                        )}
+                        <img src={close_icon} alt="close" className={styles.close_icon} onClick={onClose} />  
+                    </div>
+                    {!showSecondPage ? (
+                        <>
+                            <h1 className={styles.form_header}>Register Your <br /> Organization or Charity</h1>
+                            <form onSubmit={handleSubmitFirstPage}>
                             <div className={styles.form_container}>
                                 <div className={styles.forms}>
                                     <label className={styles.form_labels}>Name of the organization/charity </label>
@@ -113,7 +122,7 @@ const OrganizationRegister = ({ onClose, onSubmit }) => {
                             <div className={styles.form_btn}>
                                 <input className={styles.next_btn} type="submit" value="Next" />
                             </div>
-                        </form>
+                            </form>
                     </>
                 ) : (
                     <>                       
@@ -147,8 +156,8 @@ const OrganizationRegister = ({ onClose, onSubmit }) => {
                     </>
                 )}
             </div>
-        </div>
-    );
-};
+        )};
+    </div>
+)};
 
 export default OrganizationRegister;
