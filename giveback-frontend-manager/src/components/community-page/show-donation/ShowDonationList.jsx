@@ -37,7 +37,7 @@ const ShowDonationList = ({ filter, closestMatch, recipientFormSubmitted }) => {
   useEffect(() => {
     const handleShowDonations = async () => {
       try {
-        const response = await axios.get('https://project-giveback.azurewebsites.net0/api/getDonations');
+        const response = await axios.get('https://project-giveback.azurewebsites.net/api/getDonations');
         setDonations(response.data);
         setShowDonations(true);
       } catch (error) {
@@ -58,7 +58,7 @@ const ShowDonationList = ({ filter, closestMatch, recipientFormSubmitted }) => {
       const recipientEmail = cookies.get('avatarURL'); 
       
       // Send a request to your server indicating acceptance of the donation
-      await axios.post(`https://project-giveback.azurewebsites.net0/api/acceptDonation/${donationId}`, { recipientName, recipientContactNumber, recipientEmail });
+      await axios.post(`https://project-giveback.azurewebsites.net/api/acceptDonation/${donationId}`, { recipientName, recipientContactNumber, recipientEmail });
   
       // Update the donation status locally
       setDonations(prevDonations => prevDonations.map(donation => {
@@ -84,7 +84,7 @@ const ShowDonationList = ({ filter, closestMatch, recipientFormSubmitted }) => {
       }
   
       // Send the feedback to the server
-      await axios.post(`https://project-giveback.azurewebsites.net0/api/submitFeedback/${donationId}`, { feedbackText, userId: currentUser.id });
+      await axios.post(`https://project-giveback.azurewebsites.net/api/submitFeedback/${donationId}`, { feedbackText, userId: currentUser.id });
   
       // Update the UI or show a success message
       console.log('Feedback submitted successfully!');
@@ -102,7 +102,7 @@ const ShowDonationList = ({ filter, closestMatch, recipientFormSubmitted }) => {
   const sendFeedbackToDonator = async (donationId, feedbackText) => {
     try {
       // Make a POST request to the backend route
-      const response = await axios.post(`https://project-giveback.azurewebsites.net0/api/sendFeedbackToDonator/${donationId}`, {
+      const response = await axios.post(`https://project-giveback.azurewebsites.net/api/sendFeedbackToDonator/${donationId}`, {
         feedbackText: feedbackText,
       });
 
@@ -164,7 +164,7 @@ const ShowDonationList = ({ filter, closestMatch, recipientFormSubmitted }) => {
                 <p className={styles.forms}>Image:</p>
                 <img
                   className={styles['styles-donation-image']}
-                  src={`https://project-giveback.azurewebsites.net0/api/getImage/${closestMatch._id}`}
+                  src={`https://project-giveback.azurewebsites.net/api/getImage/${closestMatch._id}`}
                   alt={`Closest Donation ${closestMatch._id}`}
                 />
               </div>
@@ -228,7 +228,7 @@ const ShowDonationList = ({ filter, closestMatch, recipientFormSubmitted }) => {
                 <p className={styles.forms}>Image:</p>
                 <img
                   className={styles['styles-donation-image']}
-                  src={`https://project-giveback.azurewebsites.net0/api/getImage/${donation._id}`}
+                  src={`https://project-giveback.azurewebsites.net/api/getImage/${donation._id}`}
                   alt={`Donation ${donation._id}`}
                 />
               </div>
