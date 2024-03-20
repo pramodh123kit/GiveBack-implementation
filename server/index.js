@@ -30,7 +30,7 @@ app.use('/recipients', recipientRoutes);
 app.use('/organizations', organizationRoutes);
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'Giveback-frontend-manager', 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'giveback-frontend-manager', 'build', 'index.html'));
 });
 
 app.use(bodyParser.json({ limit: '10mb' }));
