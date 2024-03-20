@@ -19,7 +19,7 @@ const OrganizationSignContainer = () => {
   const handleSubmit = async (formData) => {
     try {
       // Making a POST request to the server to submit the form data
-      const response = await axios.post('http://localhost:5000/api/registerOrganization', formData);
+      const response = await axios.post('https://project-giveback.azurewebsites.net/api/registerOrganization', formData);
       console.log(response.data);
       alert('Organization registered successfully!');
       handleCloseBtn(); // Close the form after successful submission
