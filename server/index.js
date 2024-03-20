@@ -29,9 +29,11 @@ app.use('/donations', donationRoutes);
 app.use('/recipients', recipientRoutes);
 app.use('/organizations', organizationRoutes);
 
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'giveback-frontend-manager', 'build', 'index.html'));
-// });
+app.use(express.static(path.join(__dirname, '../giveback-frontend-manager/dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../giveback-frontend-manager/dist', 'index.html'));
+});
 
 app.use(bodyParser.json({ limit: '10mb' }));
 
