@@ -38,7 +38,7 @@ const DonatorForm = ({ onClose }) => {
         formData.append('donorName', cookies.get('fullName'));
         formData.append('donorId', userId);
   
-        await axios.post('http://localhost:5000/api/donatorSubmitForm', formData, {
+        await axios.post('https://project-giveback.azurewebsites.net/api/donatorSubmitForm', formData, {
           headers: {
             'Content-Type': 'multipart/form-data', 
           },

@@ -21,11 +21,19 @@ app.use(cors());
 app.use(express.json());
 
 // Connecting to MongoDB
-mongoose.connect('mongodb://localhost:27017/donationDB');
+mongoose.connect('mongodb+srv://pramodh123kit:mbk0rtG4jOr5I3X1@cluster0.k4yd2h3.mongodb.net/Cluster0', { useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect('mongodb://localhost:27017/donationDB');
+// app.use(express.static(path.join(__dirname, 'giveback-frontend-manager', 'build')));
 
 app.use('/donations', donationRoutes);
 app.use('/recipients', recipientRoutes);
 app.use('/organizations', organizationRoutes);
+
+app.use(express.static(path.join(__dirname, '../giveback-frontend-manager/dist')));
+
+app.get(/^\/(?!api).*/, (req, res) => {
+  res.sendFile(path.join(__dirname, '../giveback-frontend-manager/dist', 'index.html'));
+});
 
 app.use(bodyParser.json({ limit: '10mb' }));
 

@@ -54,7 +54,7 @@ const OrganizationRegister = ({ onClose }) => {
             formData.append('donorName', cookies.get('fullName'));
             formData.append('donorId', cookies.get('userId'));
 
-            await axios.post('http://localhost:5000/api/registerOrganization', formData, {
+            axios.post('https://project-giveback.azurewebsites.net/api/registerOrganization', formData, {
                 headers: {
                   'Content-Type': 'multipart/form-data', 
                 },

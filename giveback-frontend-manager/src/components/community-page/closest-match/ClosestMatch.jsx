@@ -16,7 +16,7 @@ const ClosestMatch = ({ closestMatch, onClose }) => {
         <p className="info-closest"><span className='text_heading_property'>Image:</span></p>
         <img
           className="donation-image-closest"
-          src={`http://localhost:5000/api/getImage/${closestMatch._id}`}
+          src={`https://project-giveback.azurewebsites.net/api/getImage/${closestMatch._id}`}
           alt={`Donation ${closestMatch._id}`}
         />
       </div>

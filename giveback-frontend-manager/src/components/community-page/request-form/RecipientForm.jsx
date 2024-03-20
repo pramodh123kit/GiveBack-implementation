@@ -16,7 +16,7 @@ const RecipientForm = ({ onClose, setClosestMatch, onSubmit }) => {
     e.preventDefault();
   
     try {
-      const response = await axios.post('http://localhost:5000/api/recipientSubmitForm', {
+      const response = await axios.post('https://project-giveback.azurewebsites.net/api/recipientSubmitForm', {
         formType: 'recipient',
         itemType,
         itemName,
