@@ -28,7 +28,7 @@ const DonationFormForOrganization = ({ onClose, organizationEmail }) => {
         Donation Reason: ${donationReason}
       `;
 
-      await axios.post('http://localhost:5000/api/sendDonationEmail', { 
+      await axios.post('https://project-giveback.azurewebsites.net/api/sendDonationEmail', { 
         userName,
         userContactNumber,
         userEmail,
