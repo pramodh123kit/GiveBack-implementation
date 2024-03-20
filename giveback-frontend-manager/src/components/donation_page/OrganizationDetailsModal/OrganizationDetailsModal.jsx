@@ -18,7 +18,7 @@ const OrganizationDetailsModal = ({ organization, onClose }) => {
                     <div>
                       <img
                         className={styles.image}
-                        src={`http://localhost:5000/api/getOrganizationImage/${organization._id}`}
+                        src={`https://project-giveback.azurewebsites.net/api/getOrganizationImage/${organization._id}`}
                         alt={`Organization ${organization._id}`}
                       />
                     </div>           
