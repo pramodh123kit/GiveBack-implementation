@@ -189,6 +189,39 @@ html {
   width: 40px;
   cursor: pointer;
 }
+.close_btn{
+  margin-left: 40%;
+  background-color: #52ff00;
+  border: none;
+  font-weight: bold;
+  color: #000000;
+  padding: 7px 30px;
+  text-align: center;
+  font-size: 19px;
+  border-radius: 7px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.close_btn:hover{
+  background-color: #48ad19;
+}
+.org_popup{
+  text-align: center;
+  flex-direction: flex-start;
+  margin-bottom: 0.5rem;
+  font-size: 50px;
+  font-weight: bolder;
+}
+
+.donation_popup{
+  text-align: center;
+  flex-direction: flex-start;
+  margin-bottom: 0.5rem;
+  font-size: 50px;
+  font-weight: bolder;
+}
+
 .close_icon {
   width: 40px;
   cursor: pointer;
