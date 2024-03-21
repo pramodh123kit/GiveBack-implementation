@@ -100,7 +100,7 @@ const OrganizationView = ({ organization  }) => {
                   <div className={styles.left_container}>
                     <h1 className={styles.heading}>{organization.orgName}</h1>
                     <p className={styles.description}>{organization.summary}</p>
-                    <p><span className='text_heading_property'>Type:</span> {organization.type}</p>
+                    <p><span className='text_heading_property'><span className={styles.type_label}>Type:</span></span> {organization.type}</p>
                     <div className={styles.conatainer_button}>
                       <button className={styles.match_btn} onClick={() => handleDonateClick(organization._id)}>
                         Donate

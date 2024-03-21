@@ -6,7 +6,6 @@ import donationMissing from '@/assets/donation-missing.jpg';
 
 import { ShowDonationList } from "@/components/community-page/index"
 import DonatorForm from '@/components/community-page/request-form/DonatorForm';
-import Popup from '@/components/DonationRequest/Popup/Popup';
 
 const cookies = new Cookies();
 
@@ -16,15 +15,20 @@ const DonationRequest = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [selectedDonationId, setSelectedDonationId] = useState(null);
   const [showDonationList, setShowDonationList] = useState(false);
+  const [editItemId, setEditItemId] = useState(null);
+  const [editFormData, setEditFormData] = useState({
+    itemType: '',
+    itemName: '',
+    itemDescription: '',
+    itemQuantity: ''
+  });
+  const [isEditMode, setIsEditMode] = useState(false);
 
   const handleOpenDonateForm = () => setShowDonateForm(true);
   const handleCloseDonateForm = () => setShowDonateForm(false);
 
   const handleOpenDonationList = () => setShowDonationList(true);
   const handleCloseDonationList = () => setShowDonationList(false);
-
-  const handleOpenClosestMatch = () => setShowClosestMatch(true);
-  const handleCloseClosestMatch = () => setShowClosestMatch(false);
 
   const userId = cookies.get('userId');
   
@@ -63,6 +67,46 @@ const DonationRequest = () => {
     setShowPopup(false);
   };
 
+  const handleEditItem = (donationId) => {
+    setEditItemId(donationId);
+    const itemToEdit = donationHistory.find(item => item._id === donationId);
+    setEditFormData({
+      itemType: itemToEdit.itemType,
+      itemName: itemToEdit.itemName,
+      itemDescription: itemToEdit.itemDescription,
+      itemQuantity: itemToEdit.itemQuantity
+    });
+    setIsEditMode(true);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEditFormData({
+      ...editFormData,
+      [name]: value
+    });
+  };
+
+  const handleUpdateItem = async (donationId, e) => {
+    e.preventDefault();
+    try {
+      console.log(donationId, editFormData)
+      await axios.put(`https://project-giveback.azurewebsites.net/api/updateDonation/${donationId}`, editFormData);
+      console.log('Donation updated successfully!');
+      window.location.reload();
+    } catch (error) {
+      console.error('Error updating donation:', error);
+    } finally {
+      setEditItemId(null); 
+      setIsEditMode(false);
+    }
+  };
+
+  const handleCancelEdit = () => {
+    setEditItemId(null);
+    setIsEditMode(false); 
+  };
+
   return (
     <div className={styles.container}>
 
@@ -78,14 +122,13 @@ const DonationRequest = () => {
             {showDonationList && <ShowDonationList onClose={handleCloseDonationList} />}
           </div>
         ) : (
-            
           <ul className={styles.list}>
-          <button className={styles.donate2_btn} onClick={handleOpenDonateForm}>
+            <button className={styles.donate2_btn} onClick={handleOpenDonateForm}>
               DONATE
             </button>
             {showDonateForm && <DonatorForm onClose={handleCloseDonateForm} />}
             {showDonationList && <ShowDonationList onClose={handleCloseDonationList} />}
-          <h1 className={styles.header}>Your Donating Items</h1>
+            <h1 className={styles.header}>Your Donating Items</h1>
             {donationHistory.map((donation, index) => (
               <li key={index} className={styles.item}>
                 <div className={styles.itemDetail}>
@@ -104,7 +147,58 @@ const DonationRequest = () => {
                       />
                     </div>
                   )}
-                  <button className={styles.delete_btn} onClick={() => handleDeleteItem(donation._id)}>Delete</button>
+
+                  {editItemId === donation._id ? (
+                    <div className={styles.editFormContainer}>
+                      <form>
+                      <label className={styles.label_form}>Item type:</label>
+                        <input
+                          type="text"
+                          name="itemType"
+                          value={editFormData.itemType}
+                          onChange={handleInputChange}
+                          placeholder="Item Type"
+                          className={styles.inputField}
+                        />
+                       <label className={styles.label_form}>Item name:</label>
+                        <input
+                          type="text"
+                          name="itemName"
+                          value={editFormData.itemName}
+                          onChange={handleInputChange}
+                          placeholder="Item Name"
+                          className={styles.inputField}
+                        />
+                        <label className={styles.label_form}>Item description:</label>
+                        <input
+                          type="type"
+                          name="itemDescription"
+                          value={editFormData.itemDescription}
+                          onChange={handleInputChange}
+                          placeholder="Item Description"
+                          className={styles.inputField}
+                        />
+                        <label className={styles.label_form}>Item quantity:</label>
+                        <input
+                          type="type"
+                          name="itemQuantity"
+                          value={editFormData.itemQuantity}
+                          onChange={handleInputChange}
+                          placeholder="Item Quantity"
+                          className={styles.inputField}
+                        />
+                       <div className={styles.buttonContainer}>
+                        <button className={styles.updateButton} type="button" onClick={(e) => handleUpdateItem(donation._id, e)}>Update</button>
+                        <button className={styles.cancelButton} type="button" onClick={handleCancelEdit}>Cancel</button>
+                       </div>
+                      </form>
+                    </div>
+                  ) : (
+                    <div className={styles.buttonContainer}>
+                      <button className={styles.edit_btn} onClick={() => handleEditItem(donation._id)}>Edit</button>
+                      <button className={styles.delete_btn} onClick={() => handleDeleteItem(donation._id)}>Delete</button>
+                    </div>
+                  )}
                 </div>
               </li>
             ))}

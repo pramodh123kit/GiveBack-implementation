@@ -39,22 +39,32 @@ app.use(bodyParser.json({ limit: '20mb' }));
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
+app.put('/api/updateDonation/:donationId', async (req, res) => {
+  const { donationId } = req.params;
+  const updatedData = req.body;
 
-app.patch('/api/updateDonationItemType/:donationId', async (req, res) => {
   try {
-    const donationId = req.params.donationId;
-    const { itemType } = req.body;
+    // Find the donation item by ID
+    const donation = await Donation.findById(donationId);
 
-    const updatedDonation = await Donation.findByIdAndUpdate(donationId, { itemType }, { new: true });
-
-    if (!updatedDonation) {
-      return res.status(404).json({ error: 'Donation not found' });
+    if (!donation) {
+      return res.status(404).json({ message: 'Donation item not found' });
     }
 
-    res.status(200).json({ message: 'Item type updated successfully', donation: updatedDonation });
+    // Update the donation item with the new data
+    Object.keys(updatedData).forEach(key => {
+      if (updatedData[key] !== undefined) {
+        donation[key] = updatedData[key];
+      }
+    });
+
+    // Save the updated donation item
+    await donation.save();
+
+    res.json({ message: 'Donation item updated successfully', donation });
   } catch (error) {
-    console.error('Error updating donation item type:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error('Error updating donation item:', error);
+    res.status(500).json({ message: 'Internal server error' });
   }
 });
 
