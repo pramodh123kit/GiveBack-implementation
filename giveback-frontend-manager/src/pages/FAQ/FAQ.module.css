@@ -10,7 +10,7 @@
   .faqItems {
     padding-top: 20px; /* Add padding top to create space */
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     gap: 20px;
   }
   
@@ -84,6 +84,7 @@
 
   .faqItems {
     grid-template-columns: repeat(1, 1fr); /* Switch to a single column layout */
+    margin-bottom: 20px;
   }
 
   .faqQuestion {
