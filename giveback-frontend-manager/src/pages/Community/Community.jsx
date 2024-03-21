@@ -74,7 +74,7 @@ const Community = () => {
   return (
     <div className="container-community">
       <div className="app__wrapper">
-        {/* <Chat client={client} theme="team light">
+        <Chat client={client} theme="team light">
 
           <ChannelListContainer
             isCreating={isCreating}
@@ -90,18 +90,8 @@ const Community = () => {
             setIsEditing={setIsEditing}
             createType={createType}
           />
-        </Chat> */}
+        </Chat>
       </div>
-
-      {isDonator && (
-        <>
-          <button className="donate-btn" onClick={handleOpenDonateForm}>
-            DONATE
-          </button>
-          {showDonateForm && <DonatorForm onClose={handleCloseDonateForm} />}
-          {showDonationList && <ShowDonationList onClose={handleCloseDonationList} />}
-        </>
-      )}
     </div>
   );
 };

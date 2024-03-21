@@ -7,11 +7,35 @@
 
 }
 
+.noOrg_heading {
+    margin: 0 auto;
+    margin-bottom: 80vh;
+    text-align: center;
+    margin-top: -50px;
+}
+
+.noOrg_container {
+    width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.noOrgImage {
+    width: 70%;
+
+display:flex;
+    margin: 0 auto;
+    margin-top: -80px;
+
+}
+
 .ul_organization {
 
-    width: 70%;
-    margin: 0;
-    margin-left: auto;
+    width: 90%;
+    margin: 0 auto;
+    
     padding: 0;
 }
 

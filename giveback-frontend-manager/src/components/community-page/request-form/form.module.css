@@ -49,6 +49,7 @@
 .successMessage {
   color:#277702;
   font-size: 20px;
+  font-weight: bolder;
 }
 .forms{
   width: 100%;
@@ -85,8 +86,29 @@
   font-weight: bolder;
   font-size: 19px;
 }
-
+.successMessage_donate {
+  color:71005e ;
+  font-weight: bolder;
+  font-size: 20px;
+}
 .next_btn {
+  background-color: #71005e;
+  border: none;
+  font-weight: bold;
+  color: #ffffff;
+  padding: 7px 40px;
+  text-align: center;
+  font-size: 19px;
+  border-radius: 7px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.next_btn:hover {
+  background-color: #4b013c;
+}
+
+.next2_btn {
   background-color: #52ff00;
   border: none;
   font-weight: bold;
@@ -97,7 +119,13 @@
   border-radius: 7px;
   margin-top: 20px;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
+
+.next2_btn:hover {
+  background-color:#277702;
+}
+
 .register_btn{
   background-color: #52ff00;
   border: none;

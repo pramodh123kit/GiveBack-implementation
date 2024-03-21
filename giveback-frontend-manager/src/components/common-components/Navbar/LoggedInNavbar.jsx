@@ -103,11 +103,12 @@ export const LoggedInNavbar = () => {
             <li><NavLink to="/home">HOME</NavLink></li>
             {isDonator && 
               <li>
-                <NavLink to="/donations">DONATION</NavLink>
+                <NavLink to="/charities">CHARITIES/ ORGANIZATIONS</NavLink>
               </li>}
+              {isDonator && 
               <li>
                 <NavLink to="/donation-request">DONATING ITEMS</NavLink>
-              </li>
+              </li>}
             {isRecipient && <li><NavLink to="/find-donation">FIND DONATION</NavLink></li>}
             <li><NavLink to="/community">COMMUNITY</NavLink></li>
             <li><NavLink to="/about">ABOUT</NavLink></li>

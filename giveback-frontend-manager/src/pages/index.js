@@ -11,7 +11,3 @@ export { default as UserProfile } from './UserProfile/UserProfile';
 export {default as FAQ} from './FAQ/FAQ';
 export {default as GivebackInfo} from './WhatIsGiveback/GivebackInfo';
 export {default as DonationRequest} from './DonationRequest/DonationRequest';
-
-
-
-

@@ -12,6 +12,9 @@
   background-color: #DBFFCF;
 }
 
+.noItem_heading {
+  margin-bottom: 70vh;
+}
 
 .accept_btn {
   background-color: #52ff00;

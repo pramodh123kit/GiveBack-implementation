@@ -1,16 +1,21 @@
 .container {
-    max-width: 800px;
+    width: 66%;
     margin: 0 auto;
     padding: 20px;
+    padding-top: 10px;
   }
   
   .header {
     text-align: center;
+    font-weight: bolder;
+    font-size: 40px;
     margin-bottom: 20px;
+    color : #71005e;
   }
   
   .donationList {
     padding: 10px;
+    width: 100%;
   }
   
   .item {
@@ -19,7 +24,10 @@
     border: 1px solid #ccc;
     border-radius: 15px;
     padding: 15px;
-    background-color: #DBFFCF;
+    width: 80%;
+    margin: 0 auto;
+    color:rgb(0, 0, 0);
+    background-color: rgba(204, 0, 255, 0.308);
   }
   
   .label {
@@ -32,19 +40,89 @@
   
   .list {
     padding: 0;
+    width: 100%;
   }
   
   .noItems {
     text-align: center;
-    font-style: italic;
+    font-style:oblique;
     font-size: 19px;
-    margin-bottom: 70vh;
+    /* margin-bottom: 12vh; */
+    font-size: 30px;
+    font-weight: bolder;
   }
 
   .forms {
       font-weight: bolder;
   }
+  
+  .donation_missing_image {
+    margin-top: -40px;
+    margin-bottom: -20px;
+  }
 
+  .donate_btn{
+    background-color: #71005e;
+    border: none;
+    font-weight: bold;
+    color: white;
+    padding: 7px 30px;
+    font-size: 19px;
+    text-align: center;
+    border-radius: 7px;
+    margin-top: 20px; 
+    display: flex;
+    margin: 0 auto;
+    margin-top: 20px;
+    cursor: pointer; 
+    transition: all 0.3s ease;
+    margin-bottom: 13%;
+  }
+
+  .donate_btn:hover {
+    background-color: #4b013c;
+  }
+
+  .donate2_btn{
+    background-color: #71005e;
+    border: none;
+    font-weight: bold;
+    color: white;
+    padding: 7px 30px;
+    font-size: 19px;
+    text-align: center;
+    border-radius: 7px;
+    display: flex;
+    cursor: pointer; 
+    margin-left: auto;
+    transition: all 0.3s ease;
+  }
+
+  .donate2_btn:hover {
+    background-color: #4b013c;
+  }
+
+  .delete_btn {
+    color: white;
+    background-color: #c50505;
+    padding: 7px 30px;
+    border-radius: 7px;
+    font-size: 19px;
+    font-weight: bold;
+    border: none;
+    display: flex;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .delete_btn:hover {
+    background-color: #a30303;
+  }
+.noItems_container {
+  width: 75%;
+  margin: 0 auto;
+}
   .edit_btn {
     background-color: #52ff00;
     border: none;
@@ -73,6 +151,19 @@
   @media only screen and (max-width: 600px) {
     .container {
       padding: 10px;
+      width: 100%;
+    }
+    .item {
+      width: 100%;
+    }
+    .donation_missing_image  {
+      height: 100%;
+    }
+    .donationList {
+      width: 100%;
+    }
+    .container {
+      width: 100%;
     }
   }
   

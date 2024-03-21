@@ -3,6 +3,7 @@ import axios from 'axios';
 import Cookies from "universal-cookie";
 import { StreamChat } from "stream-chat";
 import styles from './OrganizationView.module.css';
+import noOrgImage from '@/assets/noOrg.jpg';
 
 import DonationFormForOrganization from '../DonatingForm/DonationFormForOrganization';
 import OrganizationDetailsModal from '../OrganizationDetailsModal/OrganizationDetailsModal'; // Importing the modal component
@@ -86,7 +87,11 @@ const OrganizationView = ({ organization  }) => {
       )}
 
       {organizations.length === 0 ? (
-        <h1>No organizations/charities are registered yet</h1>
+        <div className={styles.noOrg_container}>
+          <img src={noOrgImage} className={styles.noOrgImage} />
+          <h1 className={styles.noOrg_heading}>No organizations/charities are registered yet</h1>
+        </div>
+
       ) : (
         <ul className={styles.ul_organization}>
           <div className={styles.container_organizations}>
