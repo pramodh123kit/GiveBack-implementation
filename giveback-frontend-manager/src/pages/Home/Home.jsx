@@ -37,20 +37,6 @@ const Home = () => {
     });
   };
 
-  const isDonator = cookies.get('isDonator');
-  const isRecipient = cookies.get('isRecipient');
-
-  useEffect(() => {
-    async function importStyles() {
-      if (isDonator) {
-        const module = await import('../Community/Community2.css');
-      } else if (isRecipient) {
-        const module = await import('../Community/Community.css');
-      }
-    }
-  
-    importStyles();
-  }, [isDonator, isRecipient]);
 
   return (
     <div className={styles.container}>

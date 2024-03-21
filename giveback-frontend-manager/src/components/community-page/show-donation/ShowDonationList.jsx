@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { StreamChat } from "stream-chat";
-import { Chat } from "stream-chat-react";
 import Cookies from "universal-cookie";
 import styles from './ShowDonationList.module.css';
 

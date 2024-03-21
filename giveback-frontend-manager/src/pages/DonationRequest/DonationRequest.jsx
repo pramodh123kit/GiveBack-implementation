@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { StreamChat } from "stream-chat";
 import styles from './DonationRequest.module.css';
 import Cookies from 'universal-cookie';
 import donationMissing from '@/assets/donation-missing.jpg';
@@ -10,25 +9,6 @@ import DonatorForm from '@/components/community-page/request-form/DonatorForm';
 import Popup from '@/components/DonationRequest/Popup/Popup';
 
 const cookies = new Cookies();
-
-const apiKey = 'ehvtd7wtcmck';
-const authToken = cookies.get('token');
-
-const client = StreamChat.getInstance(apiKey);
-
-if(authToken) {
-  client.connectUser({
-    id: cookies.get('userId'),
-    name: cookies.get('username'),
-    fullName: cookies.get('fullName'),
-    image: cookies.get('avatarURL'),
-    hashedPassword: cookies.get('hashedPassword'),
-    phoneNumber: cookies.get('phoneNumber'),
-    donator: cookies.get('isDonator'),
-    recipient: cookies.get('isRecipient'),
-  }, authToken);
-}
-
 
 const DonationRequest = () => {
   const [donationHistory, setDonationHistory] = useState([]);
@@ -47,21 +27,6 @@ const DonationRequest = () => {
   const handleCloseClosestMatch = () => setShowClosestMatch(false);
 
   const userId = cookies.get('userId');
-
-  const isDonator = cookies.get('isDonator');
-  const isRecipient = cookies.get('isRecipient');
-
-  useEffect(() => {
-    async function importStyles() {
-      if (isDonator) {
-        const module = await import('@/pages/Community/Community2.css');
-      } else if (isRecipient) {
-        const module = await import('@/pages/Community/Community.css');
-      }
-    }
-
-    importStyles();
-  }, [isDonator, isRecipient]);
   
   useEffect(() => {
     const fetchUserDonations = async () => {

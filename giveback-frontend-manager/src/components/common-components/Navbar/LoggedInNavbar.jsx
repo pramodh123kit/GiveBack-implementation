@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import Cookies from 'universal-cookie';
+import { StreamChat } from "stream-chat";
 import logoLight from "@/assets/logoLight.png";
 import image from '@/assets/prof.svg';
 import UserDropDown from '@/components/user-profile/UserDropDown/UserDropDown';
@@ -8,13 +9,33 @@ import "./Navbar.css";
 
 const cookies = new Cookies();
 
+const apiKey = 'byfr7rs9s8mj';
+const authToken = cookies.get('token');
+
+const client = StreamChat.getInstance(apiKey);
+
+if (authToken) {
+  client.connectUser({
+    id: cookies.get('userId'),
+    name: cookies.get('username'),
+    fullName: cookies.get('fullName'),
+    email: cookies.get('avatarURL'),
+    contactNumber: cookies.get('phoneNumber'),
+    image: cookies.get('avatarURL'),
+    hashedPassword: cookies.get('hashedPassword'),
+    phoneNumber: cookies.get('phoneNumber'),
+    donator: cookies.get('isDonator'),
+    recipient: cookies.get('isRecipient'),
+  }, authToken);
+}
+
 export const LoggedInNavbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const username = cookies.get('username');
   const userInitial = username && typeof username === 'string' ? username.charAt(0).toUpperCase() : '';
-
+  
   useEffect(() => {
     const handleScroll = () => {
       const isTop = window.scrollY < 100;
@@ -87,6 +108,18 @@ export const LoggedInNavbar = () => {
 
   // Checking if the user is a recipient
   const isRecipient = cookies.get('isRecipient');
+
+  useEffect(() => {
+    async function importStyles() {
+      if (isDonator) {
+        const module = await import('@/pages/Community/Community2.css');
+      } else if (isRecipient) {
+        const module = await import('@/pages/Community/Community.css');
+      }
+    }
+
+    importStyles();
+  }, [isDonator, isRecipient]);
 
   return (
     <nav className={`${menuOpen ? "open" : ""} ${scrolled ? "scrolled" : ""}`}>
