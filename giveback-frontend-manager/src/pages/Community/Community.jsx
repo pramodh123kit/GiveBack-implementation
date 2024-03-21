@@ -5,7 +5,6 @@ import Cookies from "universal-cookie";
 
 import { ChannelContainer, ChannelListContainer, Auth, ShowDonationList } from "@/components/community-page/index"
 import DonatorForm from '@/components/community-page/request-form/DonatorForm';
-import RecipientForm from '@/components/community-page/request-form/RecipientForm';
 
 import 'stream-chat-react/dist/css/index.css';
 
@@ -34,10 +33,8 @@ const Community = () => {
   const [isCreating, setIsCreating] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
-  const [closestMatch, setClosestMatch] = useState(null);
   const [showClosestMatch, setShowClosestMatch] = useState(false);
-  const [recipientFormSubmitted, setRecipientFormSubmitted] = useState(false);
-
+  
   const [showDonateForm, setShowDonateForm] = useState(false);
   const [showDonationList, setShowDonationList] = useState(false);
 
@@ -74,29 +71,10 @@ const Community = () => {
     );
   }
 
-  if (isDonator) {
-    // console.log("User is a donator");
-  } else if (isRecipient) {
-    // console.log("User is a recipient");
-  }
-
   return (
     <div className="container-community">
       <div className="app__wrapper">
-        <Chat client={client} theme="team light">
-          {/* Donator Form */}
-          {isDonator && (
-            <>
-              {/* ... */}
-            </>
-          )}
-
-          {/* Recipient Form */}
-          {isRecipient && (
-            <>
-              {/* ... */}
-            </>
-          )}
+        {/* <Chat client={client} theme="team light">
 
           <ChannelListContainer
             isCreating={isCreating}
@@ -112,7 +90,7 @@ const Community = () => {
             setIsEditing={setIsEditing}
             createType={createType}
           />
-        </Chat>
+        </Chat> */}
       </div>
 
       {isDonator && (

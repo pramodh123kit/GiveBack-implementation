@@ -16,6 +16,8 @@ const DonatorForm = ({ onClose }) => {
     const [email, setEmail] = useState('');
     const [image, setImage] = useState(null);
     const [successMessage, setSuccessMessage] = useState('');
+
+    const [donationHistory, setDonationHistory] = useState([]);
   
     const userId = cookies.get('userId');
   

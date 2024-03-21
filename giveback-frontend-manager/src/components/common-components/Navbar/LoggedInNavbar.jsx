@@ -101,7 +101,13 @@ export const LoggedInNavbar = () => {
         {isAuthenticated && (isDonator || isRecipient) && (
           <>
             <li><NavLink to="/home">HOME</NavLink></li>
-            {isDonator && <li><NavLink to="/donations">DONATION</NavLink></li>}
+            {isDonator && 
+              <li>
+                <NavLink to="/donations">DONATION</NavLink>
+              </li>}
+              <li>
+                <NavLink to="/donation-request">DONATING ITEMS</NavLink>
+              </li>
             {isRecipient && <li><NavLink to="/find-donation">FIND DONATION</NavLink></li>}
             <li><NavLink to="/community">COMMUNITY</NavLink></li>
             <li><NavLink to="/about">ABOUT</NavLink></li>

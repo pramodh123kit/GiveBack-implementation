@@ -22,21 +22,58 @@ app.use(express.json());
 
 // Connecting to MongoDB
 mongoose.connect('mongodb+srv://pramodh123kit:mbk0rtG4jOr5I3X1@cluster0.k4yd2h3.mongodb.net/Cluster0', { useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect('mongodb://localhost:27017/donationDB');
 
 app.use('/donations', donationRoutes);
 app.use('/recipients', recipientRoutes);
 app.use('/organizations', organizationRoutes);
 
-app.use(express.static(path.join(__dirname, '../giveback-frontend-manager/dist')));
+// app.use(express.static(path.join(__dirname, '../giveback-frontend-manager/dist')));
 
-app.get(/^\/(?!api).*/, (req, res) => {
-  res.sendFile(path.join(__dirname, '../giveback-frontend-manager/dist', 'index.html'));
-});
+// app.get(/^\/(?!api).*/, (req, res) => {
+//   res.sendFile(path.join(__dirname, '../giveback-frontend-manager/dist', 'index.html'));
+// });
 
-app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.json({ limit: '20mb' }));
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
+
+
+app.patch('/api/updateDonationItemType/:donationId', async (req, res) => {
+  try {
+    const donationId = req.params.donationId;
+    const { itemType } = req.body;
+
+    const updatedDonation = await Donation.findByIdAndUpdate(donationId, { itemType }, { new: true });
+
+    if (!updatedDonation) {
+      return res.status(404).json({ error: 'Donation not found' });
+    }
+
+    res.status(200).json({ message: 'Item type updated successfully', donation: updatedDonation });
+  } catch (error) {
+    console.error('Error updating donation item type:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+app.delete('/api/deleteDonation/:donationId', async (req, res) => {
+  try {
+    const donationId = req.params.donationId;
+    
+    const deletedDonation = await Donation.findByIdAndDelete(donationId);
+    
+    if (!deletedDonation) {
+      return res.status(404).json({ error: 'Donation not found' });
+    }
+
+    res.status(200).json({ message: 'Donation deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting donation:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 
 app.post('/api/donatorSubmitForm', upload.single('image'), async (req, res) => {
   try {
@@ -134,6 +171,8 @@ app.post('/api/recipientSubmitForm', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
+
 
 // Endpoint to fetch donations
 app.get('/api/getDonations', async (req, res) => {
@@ -430,7 +469,6 @@ app.post('/api/sendFeedbackToDonator/:donationId', async (req, res) => {
   }
 });
 
-app.use('/api', donationRoutes);
 
 const swaggerUI = require('swagger-ui-express');
 const swaggerSpec = require('./swagger');

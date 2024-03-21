@@ -8,7 +8,6 @@ import handHeartIcon from "@/assets/hand-heart.png";
 import profileIconDropdown from "@/assets/profile-icon-dropdown.png";
 import donationHistoryDropdown from "@/assets/donation-history-dropdown.png";
 import feedbackDropdown from "@/assets/feedback-dropdown.png";
-import startDropdown from "@/assets/star-dropdown.png";
 
 const cookies = new Cookies();
 
