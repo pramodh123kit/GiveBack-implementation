@@ -70,7 +70,6 @@ const OrganizationView = ({ organization  }) => {
   };
 
   const handleYourButtonClick = (organizationId) => {
-    // Find the organization object based on the id
     const selectedOrg = organizations.find(org => org._id === organizationId);
     setSelectedOrganization(selectedOrg);
     setShowDetailsModal(true);
