@@ -36,7 +36,7 @@ function App() {
       {isAuthenticated ? <LoggedInNavbar /> : <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/home/site/wwwroot/home" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/charities" element={<Donations />} />
         <Route path="/find-donation" element={<FindDonation />} />
         <Route path="/login" element={<Login />} />
