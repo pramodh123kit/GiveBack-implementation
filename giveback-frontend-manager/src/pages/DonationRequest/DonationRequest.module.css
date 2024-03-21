@@ -1,0 +1,84 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .donationList {
+    padding: 10px;
+  }
+  
+  .item {
+    list-style: none;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    padding: 15px;
+    background-color: #DBFFCF;
+  }
+  
+  .label {
+    font-weight: bold;
+  }
+  
+  .itemDetail {
+    margin-bottom: 10px;
+  }
+  
+  .list {
+    padding: 0;
+  }
+  
+  .noItems {
+    text-align: center;
+    font-style: italic;
+    font-size: 19px;
+    margin-bottom: 70vh;
+  }
+
+  .forms {
+      font-weight: bolder;
+  }
+
+  .edit_btn {
+    background-color: #52ff00;
+    border: none;
+    font-weight: bold;
+    color: #000000;
+    padding: 7px 25px;
+    font-size: 18px;
+    text-align: center;
+    width: 100px;
+    border-radius: 7px;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.edit_btn:hover {
+    background-color: #46dd00;
+}
+
+  .styles-donation-image {
+    max-width: 100%;
+    height: 15rem;
+    margin-top: 10px;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .container {
+      padding: 10px;
+    }
+  }
+  
+  @media only screen and (max-width: 400px) {
+    .header {
+      font-size: 24px;
+    }
+  }
+  

@@ -50,14 +50,12 @@ const ShowDonationList = ({ filter, closestMatch, recipientFormSubmitted }) => {
     handleShowDonations();
   }, []);
 
-  // Function for handling an acceptance of a donation
   const handleAcceptDonation = async (donationId) => {
     try {
       const recipientName = cookies.get('fullName'); 
       const recipientContactNumber = cookies.get('phoneNumber'); 
       const recipientEmail = cookies.get('avatarURL'); 
       
-      // Send a request to your server indicating acceptance of the donation
       await axios.post(`https://project-giveback.azurewebsites.net/api/acceptDonation/${donationId}`, { recipientName, recipientContactNumber, recipientEmail });
   
       // Update the donation status locally
@@ -76,19 +74,15 @@ const ShowDonationList = ({ filter, closestMatch, recipientFormSubmitted }) => {
 
   const handleGiveFeedback = async (donationId) => {
     try {
-      // Get the currently authenticated user from Stream Chat client
       const currentUser = client.user;
       if (!currentUser || !currentUser.id) {
         console.error('Current user not found or missing ID');
         return;
       }
   
-      // Send the feedback to the server
       await axios.post(`https://project-giveback.azurewebsites.net/api/submitFeedback/${donationId}`, { feedbackText, userId: currentUser.id });
   
-      // Update the UI or show a success message
       console.log('Feedback submitted successfully!');
-      // Reset the feedback text and hide the feedback form
       setFeedbackText('');
       setShowFeedbackForm(false);
       setFeedbackButtonLabel('Give Feedback');
@@ -101,12 +95,11 @@ const ShowDonationList = ({ filter, closestMatch, recipientFormSubmitted }) => {
 
   const sendFeedbackToDonator = async (donationId, feedbackText) => {
     try {
-      // Make a POST request to the backend route
+
       const response = await axios.post(`https://project-giveback.azurewebsites.net/api/sendFeedbackToDonator/${donationId}`, {
         feedbackText: feedbackText,
       });
 
-      // Check if the request was successful
       if (response.status === 200) {
         console.log('Feedback sent to donator successfully!');
       } else {
@@ -117,32 +110,21 @@ const ShowDonationList = ({ filter, closestMatch, recipientFormSubmitted }) => {
     }
   };
 
-  // Toggle feedback form visibility and button label
   const toggleFeedbackForm = (donationId) => {
     if (selectedDonationId === donationId) {
-      // If the same donation ID is clicked again, close the form
       setSelectedDonationId(null);
     } else {
-      // Otherwise, set the selected donation ID
       setSelectedDonationId(donationId);
     }
   };
 
-  // Prepare filtered donations
   let filteredDonations = [...donations];
 
-  // Filter by item type if filter is applied
   if (filter) {
     filteredDonations = donations.filter((donation) => 
       donation.itemType && donation.itemType.toLowerCase() === filter.toLowerCase()
     );
   }
-
-  // If recipient form is submitted and closest match is available, remove it from regular donations
-  if (recipientFormSubmitted && closestMatch) {
-    filteredDonations = filteredDonations.filter(donation => donation._id !== closestMatch._id);
-  }
-
  
   return (
     <div className={styles['styles-donations-container']}>
@@ -167,43 +149,6 @@ const ShowDonationList = ({ filter, closestMatch, recipientFormSubmitted }) => {
                   src={`https://project-giveback.azurewebsites.net/api/getImage/${closestMatch._id}`}
                   alt={`Closest Donation ${closestMatch._id}`}
                 />
-              </div>
-            )}
-            {closestMatch.status === 'Accepted' ? (
-              <>
-                <span className={styles.accepted_text}>Accepted</span>
-                {selectedDonationId === closestMatch._id && (
-                  <button
-                    className={styles.feedback_button}
-                    onClick={() => toggleFeedbackForm(closestMatch._id)}
-                  >
-                    {selectedDonationId === closestMatch._id ? 'Close Feedback' : 'Give Feedback'}
-                  </button>
-                )}
-              </>
-            ) : (
-              <button
-                className={styles.accept_btn}
-                onClick={() => handleAcceptDonation(closestMatch._id)}
-                disabled={closestMatch.status === 'Accepted'}
-              >
-                {closestMatch.status === 'Accepted' ? 'Accepted' : 'Accept'}
-              </button>
-            )}
-            {selectedDonationId === closestMatch._id && (
-              <div className={styles.feedback_form}>
-                <textarea
-                  className={styles.feedback_textarea}
-                  placeholder="Enter your feedback here..."
-                  value={feedbackText}
-                  onChange={(e) => setFeedbackText(e.target.value)}
-                />
-                <button
-                  className={styles.submit_feedback_button}
-                  onClick={() => handleGiveFeedback(selectedDonationId)}
-                >
-                  Submit Feedback
-                </button>
               </div>
             )}
           </div>
