@@ -60,7 +60,7 @@
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 18px; 
+  font-size: 19px; 
   font-weight: bolder;
   margin-left: 50px;
   cursor: pointer;
@@ -89,14 +89,14 @@
 .auth_p {
   color: black;
   margin-left: 55px;
-  font-size: 18px;
+  font-size: 19px;
   font-weight: bold;
 }
 
 .auth_label {
   width: 20%;
   margin-left: 30px;
-  font-size: 18px;
+  font-size: 19px;
   font-weight: bold;
 }
 
@@ -111,6 +111,7 @@
 .auth_checkbox{
   font-weight: bold;
   margin-left: 30px;
+  font-size: 18px;
 }
 
 .auth_input_checkbox{
@@ -121,7 +122,7 @@
     color: #349408;
     padding: 0.5rem 0.5rem;
     cursor: pointer;
-    font-size: bolder;
+    font-weight: bolder;
 }
 
 
@@ -134,7 +135,7 @@
     color: red;
     font-weight: bold;
     margin-top: 10px;
-    font-size: 18px;
+    font-size: 19px;
 }
 
 /* Original styles */

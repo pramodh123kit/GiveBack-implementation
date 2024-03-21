@@ -3,6 +3,7 @@ import axios from 'axios';
 import styles from './DonationRequest.module.css';
 import Cookies from 'universal-cookie';
 import donationMissing from '@/assets/donation-missing.jpg';
+import scroll from "@/assets/scroll.png";
 
 import { ShowDonationList } from "@/components/community-page/index"
 import DonatorForm from '@/components/community-page/request-form/DonatorForm';
@@ -30,6 +31,7 @@ const DonationRequest = () => {
 
   const handleOpenDonationList = () => setShowDonationList(true);
   const handleCloseDonationList = () => setShowDonationList(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const userId = cookies.get('userId');
   
@@ -45,6 +47,28 @@ const DonationRequest = () => {
 
     fetchUserDonations();
   }, [userId]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset;
+
+      setIsScrolled(scrollTop > 300);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth" 
+    });
+  };
+
 
   const handleDeleteItem = async (donationId) => {
     setSelectedDonationId(donationId);
@@ -110,6 +134,9 @@ const DonationRequest = () => {
 
   return (
     <div className={styles.container}>
+    {isScrolled && 
+        <img src={scroll} alt="" className={styles.scrollToTopButton} onClick={scrollToTop} />
+      }
 
       <div className={styles.donationList}>
         {donationHistory.length === 0 ? (

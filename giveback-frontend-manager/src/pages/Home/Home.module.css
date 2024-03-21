@@ -250,9 +250,11 @@ html {
 .form_labels{
   color: #9d9b9b;
   padding-right: 10px;
+  font-size: 18px;
 }
 
 .form_box{
+  font-size: 18px;
   border-width: 1px;
   border-radius: 5px; 
   width: 100%;
@@ -279,13 +281,14 @@ html {
 .next_btn {
   background-color: #52ff00;
   border: none;
-  font-weight: bold;
   color: #000000;
   padding: 7px 40px;
   text-align: center;
-  font-size: 16px;
+  font-size: 18px;
   border-radius: 7px;
   margin-top: 20px;
+  cursor: pointer;
+  font-weight: bolder;
 }
 .register_btn{
   background-color: #52ff00;

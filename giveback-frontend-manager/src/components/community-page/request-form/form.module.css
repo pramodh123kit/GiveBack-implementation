@@ -61,14 +61,17 @@
 .form_labels{
   color: #121212;
   padding-right: 10px;
+  font-size: 16px;
 }
 
 .form_box{
   border-width: 1px;
   border-radius: 5px; 
   width: 100%;
-  padding: 1px;
+  padding: 5px; 
+  font-size: 18px;
 }
+
 .form_box_big{
   border-width: 1px;
   border-radius: 5px;

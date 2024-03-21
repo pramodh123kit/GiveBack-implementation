@@ -13,6 +13,33 @@
   color : #71005e;
 }
 
+.scrollToTopButton {
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 1000;
+}
+
+.scrollToTopButton:hover {
+  transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .scrollToTopButton {
+    bottom: 3%;
+    right: 3%;
+  }
+}
+
 .editFormContainer {
   margin-top: 10px;
 }
@@ -212,6 +239,13 @@ margin: 0 auto;
   height: 15rem;
   margin-top: 10px;
 }
+@media only screen and (max-width: 1200px) {
+  .container {
+    padding: 10px;
+    width: 100%;
+  }
+}
+
 
 @media only screen and (max-width: 600px) {
   .container {
