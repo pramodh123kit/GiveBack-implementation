@@ -42,7 +42,7 @@ export const Navbar = () => {
           <NavLink to="/home">HOME</NavLink>
         </li>
         <li>
-          <NavLink to="/donations">DONATION</NavLink>
+          <NavLink to="/charities">CHARITIES/ ORGANIZATIONS</NavLink>
         </li>
         <li>
           <NavLink to="/community">COMMUNITY</NavLink>

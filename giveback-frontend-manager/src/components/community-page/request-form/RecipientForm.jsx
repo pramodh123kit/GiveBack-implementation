@@ -78,7 +78,7 @@ const RecipientForm = ({ onClose, setClosestMatch, onSubmit }) => {
               <div className={styles.successMessage}>{successMessage}</div>
             )}
             <div className={styles.form_btn}>
-              <input className={styles.next_btn} type="submit" value="Submit" />
+              <input className={styles.next2_btn} type="submit" value="Submit" />
             </div>
           </form>
         </>

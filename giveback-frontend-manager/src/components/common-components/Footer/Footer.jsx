@@ -16,7 +16,7 @@ export const Footer = () => {
             <div className="footer__link--items mb-4">
               <h2 className="text-2xl sm:text-3xl font-bold mb-2">Menu</h2>
               <a href="/home">Home</a>
-              <a href="/donations">Donations</a>
+              <a href="/charities">Donations</a>
               <a href="/community">Community Group</a>
               <a href="/contact">Contact</a>
               <a href="/about">About</a>

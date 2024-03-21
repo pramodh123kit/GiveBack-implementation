@@ -64,6 +64,7 @@ const DonatorForm = ({ onClose }) => {
         localStorage.setItem(`donationHistory_${userId}`, JSON.stringify(updatedDonationHistory));  
   
         setSuccessMessage('Donation submitted successfully!');
+        window.location.reload();
       } catch (error) {
         console.error('Error submitting form:', error);
         setSuccessMessage('Error submitting donation. Please try again.');
@@ -123,7 +124,7 @@ const DonatorForm = ({ onClose }) => {
                 </div>
               </div>
               {successMessage && (
-                <div className={styles.successMessage}>{successMessage}</div>
+                <div className={styles.successMessage_donate}>{successMessage}</div>
               )}
               <div className={styles.form_btn}>
                 <input className={styles.next_btn} type="submit" value="submit" />

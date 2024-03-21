@@ -74,11 +74,7 @@ const Donation = () => {
       {isScrolled && 
         <img src={scroll} alt="" className={styles.scrollToTopButton} onClick={scrollToTop} />
       }
-     {/* <SearchBar/> */}
-       {/* <Filter/> */}
-      <OrganizationView/>
-      
-      
+      <OrganizationView/>      
     </div>
   )
 }
