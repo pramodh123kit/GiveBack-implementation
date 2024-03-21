@@ -54,13 +54,14 @@
 .auth_log_button {
   background-color: #4EE109;
   border: none;
-  color: white;
+  color: rgb(0, 0, 0);
   padding: 3px 3px;
   width: 80%;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 18px; 
+  font-weight: bolder;
   margin-left: 50px;
   cursor: pointer;
   border-radius: 8px; 

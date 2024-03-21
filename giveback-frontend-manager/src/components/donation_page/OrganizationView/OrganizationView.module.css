@@ -115,6 +115,11 @@ li {
     background-color: #46dd00;
 }
 
+.type_label {
+    font-weight: bolder;
+    font-size: 19px;
+}
+
 .text_heading_property {
     font-weight: bolder;
     font-size: 19px;
