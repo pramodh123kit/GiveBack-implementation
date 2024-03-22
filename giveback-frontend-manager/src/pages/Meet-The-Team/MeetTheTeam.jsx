@@ -12,7 +12,7 @@ const MeetTheTeam = () => {
         <div className={`${styles.card_container} flex justify-center items-center flex-wrap gap-8`}>
           <div className={`${styles.card} shadow-md w-64 h-96 bg-white rounded-md mb-16`}>
             <img className={`${styles.prof_pic} rounded-t-md w-64 h-32`} src={icon} alt="Profile Picture" />
-            <Card name="Pramodh Lihinikaduwa" role="Team Leader" email="pramodh.20220414@iit.ac.lk" github="https://github.com/pramodh123kit" linkedin="https://www.linkedin.com/in/pramodh-lihinikaduwa/" />
+            <Card name="Pramodh Lihinikaduwa" role="Team Leader" email="givebacksdgp@gmail.com" github="https://github.com/pramodh123kit" linkedin="https://www.linkedin.com/in/pramodh-lihinikaduwa/" />
           </div>
           <div className={`${styles.card} shadow-md w-64 h-96 bg-white rounded-md mb-16`}>
             <img className={`${styles.prof_pic} rounded-t-md w-64 h-32`} src={icon} alt="Profile Picture" />

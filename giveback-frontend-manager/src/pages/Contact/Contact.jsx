@@ -35,7 +35,7 @@ const Contact = () => {
                 <div className={styles.box2}>
                     <img src={mail_icon} alt="mail_icon" className={styles.mail_icon} />
                     <p>Email Us</p>
-                    <p>sharewithgiveback@gmail.com</p>
+                    <p>givebacksdgp@gmail.com</p>
                 </div>
                 <div>
                     <button className={styles.faq_button} onClick={handleReadFAQs}>Read FAQ's</button>
