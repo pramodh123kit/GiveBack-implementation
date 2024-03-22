@@ -334,13 +334,13 @@ app.post('/api/sendDonationEmail', upload.single('image'), async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'pramodh.20220414@iit.ac.lk',
-        pass: 'jagath123kit', 
+        user: 'givebacksdgp@gmail.com',
+        pass: 'zkbo nbke kvei thky', 
       },
     });
 
     const mailOptions = {
-      from: 'pramodh.20220414@iit.ac.lk',
+      from: 'givebacksdgp@gmail.com',
       to: organizationEmail,
       subject: 'New Donation Submission',
       html: `
@@ -390,13 +390,13 @@ app.post('/api/acceptDonation/:donationId', async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'pramodh.20220414@iit.ac.lk',
-        pass: 'jagath123kit', 
+        user: 'givebacksdgp@gmail.com',
+        pass: 'zkbo nbke kvei thky', 
       },
     });
 
     const mailOptions = {
-      from: 'pramodh.20220414@iit.ac.lk',
+      from: 'givebacksdgp@gmail.com',
       to: donorEmail,
       subject: 'Your Donation Has Been Accepted',
       html: `
@@ -443,13 +443,13 @@ app.post('/api/sendFeedbackToDonator/:donationId', async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'pramodh.20220414@iit.ac.lk',
-        pass: 'jagath123kit', 
+        user: 'givebacksdgp@gmail.com',
+        pass: 'zkbo nbke kvei thky', 
       },
     });
 
     const mailOptions = {
-      from: 'pramodh.20220414@iit.ac.lk', 
+      from: 'givebacksdgp@gmail.com', 
       to: donatorEmail,
       subject: 'Feedback Received for Your Donation',
       html: `

@@ -43,7 +43,7 @@ export const Footer = () => {
                                   src={emailIcon}
                                   alt="Email Icon"
                                 />
-                                <p>sharewithgiveback@gmail.com</p>
+                                <p>givebacksdgp@gmail.com</p>
                             </div>
                       </div>
 
