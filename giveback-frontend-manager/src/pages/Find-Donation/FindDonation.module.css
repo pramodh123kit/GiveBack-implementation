@@ -6,3 +6,25 @@
     width: 70%;
     margin: 0 auto;
   }
+
+  
+  .scrollToTopButton {
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 1000;
+  }
+  
+  .scrollToTopButton:hover {
+    transform: translateY(-3px);
+  }
+  @media (max-width: 768px) {
+  .scrollToTopButton {
+    bottom: 3%;
+    right: 3%;
+  }
+}
