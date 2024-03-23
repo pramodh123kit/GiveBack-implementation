@@ -1,31 +1,47 @@
-import { useState } from 'react';
-import styles from "./Contact.module.css";
+// Contact.jsx
+
+import React, { useState } from 'react';
+import styles from './Contact.module.css';
 import mail_icon from '@/assets/mail_icon.svg';
 
 const Contact = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        message: '',
+        message: ''
     });
 
-    const handleChange = (event) => {
+    const handleChange = event => {
         setFormData({
             ...formData,
-            [event.target.name]: event.target.value,
+            [event.target.name]: event.target.value
         });
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async event => {
         event.preventDefault();
-        
-        console.log('Form data:', formData);
-        setFormData({ name: '', email: '', message: '' });
+    
+        try {
+            const response = await fetch('https://project-giveback.azurewebsites.net/send-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+    
+            if (response.ok) {
+                console.log('Email sent successfully');
+                setFormData({ name: '', email: '', message: '' });
+            } else {
+                console.error('Failed to send email');
+            }
+        } catch (error) {
+            console.error('Error sending email:', error);
+        }
     };
-
     const handleReadFAQs = () => {
-       
-        window.location.href = '/FAQ'; 
+        window.location.href = '/FAQ';
     };
 
     return (
@@ -56,7 +72,7 @@ const Contact = () => {
                     />
                     <br />
                     <input
-                        className={styles.form_input} 
+                        className={styles.form_input}
                         type="text"
                         id="email"
                         name="email"

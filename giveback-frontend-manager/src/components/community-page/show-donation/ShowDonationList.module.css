@@ -16,6 +16,15 @@
   margin-bottom: 70vh;
 }
 
+.NoItem_text
+ {
+  margin-bottom: 75vh;
+ }
+
+ .info_text {
+  font-size: 18px;
+  font-weight: bolder;
+ }
 .accept_btn {
   background-color: #52ff00;
   border: none;

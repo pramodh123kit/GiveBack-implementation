@@ -95,6 +95,9 @@ html {
     height: 25px;
     border: none;
     margin: 0 auto;
+    padding:18px 20px;
+    font-size: 18px;
+    border-radius: 7px;
 }
 
 .form_email {

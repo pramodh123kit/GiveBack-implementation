@@ -133,16 +133,16 @@ const ShowDonationList = ({ filter, closestMatch, recipientFormSubmitted }) => {
           <h1 className={styles.form_header}>Closest Donation Item: </h1>
           <div className={styles['styles-donation-item']}>
             <div className={styles.form_container}>
-              <div className={styles.forms}>Type of Donation: {closestMatch.itemType}</div>
-              <div className={styles.forms}>Item Name: {closestMatch.itemName}</div>
-              <div className={styles.forms}>Item Description: {closestMatch.itemDescription}</div>
-              <div className={styles.forms}>Item Quantity: {closestMatch.itemQuantity}</div>
-              <div className={styles.forms}>Donator's Name: {closestMatch.donorName}</div>
-              <div className={styles.forms}>Donator's Email: {closestMatch.email}</div>
+              <div className={styles.forms}><span className={styles.info_text}>Type of Donation:</span> {closestMatch.itemType}</div>
+              <div className={styles.forms}><span className={styles.info_text}>Item Name:</span> {closestMatch.itemName}</div>
+              <div className={styles.forms}><span className={styles.info_text}>Item Description:</span> {closestMatch.itemDescription}</div>
+              <div className={styles.forms}><span className={styles.info_text}>Item Quantity:</span> {closestMatch.itemQuantity}</div>
+              <div className={styles.forms}><span className={styles.info_text}>Donator's Name:</span> {closestMatch.donorName}</div>
+              <div className={styles.forms}><span className={styles.info_text}>Donator's Email:</span> {closestMatch.email}</div>
             </div>
              {closestMatch.image && (
               <div>
-                <p className={styles.forms}>Image:</p>
+                <p className={styles.forms}><span className={styles.info_text}>Image:</span></p>
                 <img
                   className={styles['styles-donation-image']}
                   src={`https://project-giveback.azurewebsites.net/api/getImage/${closestMatch._id}`}
@@ -155,21 +155,21 @@ const ShowDonationList = ({ filter, closestMatch, recipientFormSubmitted }) => {
       )}
 
       <h1 className={styles.form_header}>Donation List: </h1>
-      {filteredDonations.length === 0 && <h2>No items found</h2>}
+      {filteredDonations.length === 0 && <h2 className={styles.NoItem_text}>No items found</h2>}
       <ul>
         {filteredDonations.map((donation) => (
           <li key={donation._id} className={styles['styles-donation-item']}>
             <div className={styles.form_container}>
-              <div className={styles.forms}>Type of Donation: {donation.itemType}</div>
-              <div className={styles.forms}>Item Name: {donation.itemName}</div>
-              <div className={styles.forms}>Item Description: {donation.itemDescription}</div>
-              <div className={styles.forms}>Item Quantity: {donation.itemQuantity}</div>
-              <div className={styles.forms}>Donator's Name: {donation.donorName}</div>
-              <div className={styles.forms}>Donator's Email: {donation.email}</div>
+              <div className={styles.forms}><span className={styles.info_text}>Type of Donation:</span> {donation.itemType}</div>
+              <div className={styles.forms}><span className={styles.info_text}>Item Name:</span> {donation.itemName}</div>
+              <div className={styles.forms}><span className={styles.info_text}>Item Description:</span> {donation.itemDescription}</div>
+              <div className={styles.forms}><span className={styles.info_text}>Item Quantity:</span> {donation.itemQuantity}</div>
+              <div className={styles.forms}><span className={styles.info_text}>Donator's Name:</span> {donation.donorName}</div>
+              <div className={styles.forms}><span className={styles.info_text}>Donator's Email:</span> {donation.email}</div>
             </div>
             {donation.image && (
               <div>
-                <p className={styles.forms}>Image:</p>
+                <p className={styles.forms}><span className={styles.info_text}>Image:</span></p>
                 <img
                   className={styles['styles-donation-image']}
                   src={`https://project-giveback.azurewebsites.net/api/getImage/${donation._id}`}
