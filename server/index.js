@@ -479,6 +479,38 @@ app.post('/api/sendFeedbackToDonator/:donationId', async (req, res) => {
 });
 
 
+app.post('/send-email', (req, res) => {
+
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+      user: 'givebacksdgp@gmail.com',
+      pass: 'zkbo nbke kvei thky', 
+  }
+});
+
+const { name, email, message } = req.body;
+
+const mailOptions = {
+    from: 'givebacksdgp@gmail.com',
+    to: 'givebacksdgp@gmail.com',
+    subject: 'New message from your website',
+    text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
+};
+
+transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+        console.error('Error sending email:', error);
+        res.status(500).json({ success: false, message: 'Failed to send email' });
+    } else {
+        console.log('Email sent:', info.response);
+        res.json({ success: true, message: 'Email sent successfully' });
+    }
+});
+});
+
+
+
 const swaggerUI = require('swagger-ui-express');
 const swaggerSpec = require('./swagger');
 
