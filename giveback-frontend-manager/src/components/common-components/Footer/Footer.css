@@ -58,7 +58,6 @@
   color: #fff;
   text-decoration: none;
   margin-bottom: 0.5rem;
-  /* font-family: 'Saira Condensed', sans-serif; */
   font-size: 19px;
   font-weight: 500;
 }
@@ -116,7 +115,6 @@ a {
   color: #fff;
 }
 
-/* Responsive Styles */
 @media (max-width: 768px) {
   .footer__link--items {
     flex-basis: 50%;
@@ -130,6 +128,6 @@ a {
 @media (max-width: 576px) {
   .footer__link--items {
     flex-basis: 100%;
-    margin: 16px 30px; /* Adjust margin for smaller screens */
+    margin: 16px 30px;
   }
 }

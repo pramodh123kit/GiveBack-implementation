@@ -6,7 +6,7 @@ import styles from './OrganizationView.module.css';
 import noOrgImage from '@/assets/noOrg.jpg';
 
 import DonationFormForOrganization from '../DonatingForm/DonationFormForOrganization';
-import OrganizationDetailsModal from '../OrganizationDetailsModal/OrganizationDetailsModal'; // Importing the modal component
+import OrganizationDetailsModal from '../OrganizationDetailsModal/OrganizationDetailsModal'; 
 
 const cookies = new Cookies();
 const apiKey = 'ehvtd7wtcmck';
@@ -32,8 +32,8 @@ const OrganizationView = ({ organization  }) => {
   const [organizations, setOrganizations] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [showLoginMessage, setShowLoginMessage] = useState(false);
-  const [selectedOrganization, setSelectedOrganization] = useState(null); // State to store the selected organization for modal
-  const [showDetailsModal, setShowDetailsModal] = useState(false); // State to control the visibility of modal
+  const [selectedOrganization, setSelectedOrganization] = useState(null); 
+  const [showDetailsModal, setShowDetailsModal] = useState(false); 
 
   const [organizationEmail, setOrganizationEmail] = useState('');
 

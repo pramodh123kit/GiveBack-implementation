@@ -1,5 +1,3 @@
-// server/routes/auth.js
-
 /**
  * @swagger
  * tags:

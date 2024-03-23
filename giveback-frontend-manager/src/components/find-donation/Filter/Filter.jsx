@@ -57,7 +57,6 @@ const FilterSystem = ({ onSearch, onFilter }) => {
     { value: 'books', label: 'Books' },
     { value: 'furniture', label: 'Furniture' },
     { value: 'school items', label: 'School Items' },
-    // { value: 'other', label: 'Other' },
   ];
 
   return (

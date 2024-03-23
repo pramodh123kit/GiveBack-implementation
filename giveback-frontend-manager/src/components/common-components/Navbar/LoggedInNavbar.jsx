@@ -80,7 +80,7 @@ export const LoggedInNavbar = () => {
     setDropdownOpen(false);
   };
 
-  // Redirectin to the function to handle navigation
+  // Redirecting to the function to handle navigation
   const redirectToUserProfile = (index) => {
     switch (index) {
       case 0:

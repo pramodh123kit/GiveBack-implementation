@@ -13,7 +13,7 @@ function Card(props){
       <h3 className={styles.role}>{props.role}</h3>
       <a href={linkedIn_link} target='_blank'><img src={linkedIn} className={styles.linkedin_logo}></img></a>
       <a href={gitHub_link} target='_blank'><img src={gitHub} className={styles.github_logo}></img></a> 
-      <p>To contact me, please send an email to</p>
+      <p className={styles.p_contact_text}>To contact me, please send an email to</p>
       <p className={styles.email}>{props.email}</p>
     </div>
   );

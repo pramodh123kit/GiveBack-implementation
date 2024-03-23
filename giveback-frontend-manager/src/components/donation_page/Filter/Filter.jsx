@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './Filter.module.css'; // Import the CSS module
+import styles from './Filter.module.css'; 
 
 const FilterSystem = ({ onSearch, onFilter }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -16,7 +16,7 @@ const FilterSystem = ({ onSearch, onFilter }) => {
   };
 
   return (
-    <div className={styles['filter-system']}> {/* Use styles['class-name'] syntax */}
+    <div className={styles['filter-system']}>
       <div className={styles['filter-section']}>
         <h3>Categories</h3>
         <div className={styles['filter-options']}>
