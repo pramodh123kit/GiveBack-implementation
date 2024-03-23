@@ -1,5 +1,4 @@
 import { Channel, useChatContext, MessageSimple } from 'stream-chat-react';
-
 import { ChannelInner, CreateChannel, EditChannel } from '../community-page/index.js';
 
 const ChannelContainer = ({ isCreating, setIsCreating, isEditing, setIsEditing, createType }) => {

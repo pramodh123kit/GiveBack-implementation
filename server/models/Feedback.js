@@ -1,4 +1,3 @@
-// Feedback model
 const mongoose = require('mongoose');
 
 const feedbackSchema = new mongoose.Schema({
@@ -11,7 +10,7 @@ const feedbackSchema = new mongoose.Schema({
       required: true
     },
     recipientId: {
-      type: String,  // Ensure recipientId is defined correctly
+      type: String, 
       required: true,
       validate: {
         validator: function(v) {

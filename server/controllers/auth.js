@@ -19,7 +19,7 @@ const signup = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Include roles in the response
+        // Including roles in the response
         const roles = { isDonator: isDonator || false, isRecipient: isRecipient || false };
 
         const token = serverClient.createUserToken(userId);

@@ -34,7 +34,7 @@ html {
 .card {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     width:250px;
-    height: 480px;
+    height: 570px;
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -46,6 +46,6 @@ html {
 .prof_pic {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    height: 200px;
+    height: 300px;
     width: 250px;
 }

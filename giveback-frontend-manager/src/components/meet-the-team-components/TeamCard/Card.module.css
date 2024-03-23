@@ -13,17 +13,16 @@
     margin-bottom: 4px;
 }
 
-.p {
-    margin: 15px;
+.p_contact_text {
     color:black;
     font-weight: 500;
     font-size: 18px;
+    margin: 15px;
 }
 
 .email {
     margin: 15px;
     color:#1100ff;
-    /* text-decoration: underline; */
 }
 
 .role {

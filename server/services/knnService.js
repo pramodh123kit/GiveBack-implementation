@@ -1,6 +1,7 @@
 const Recipient = require('../models/Recipient');
 const Donation = require('../models/Donation');
 
+// Checking if the all the features of the two items are present
 const calculateEuclideanDistance = (recipient, donation) => {
   const requiredRecipientProps = ['itemType', 'itemName', 'itemDescription', 'recipientAddress'];
   const requiredDonationProps = ['itemType', 'itemName', 'itemDescription', 'donorAddress'];

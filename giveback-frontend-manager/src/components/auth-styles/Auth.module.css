@@ -138,14 +138,6 @@
     font-size: 19px;
 }
 
-/* Original styles */
-
-/* ... */
-@media (max-width: 780px) {
-
-
-}
-
 @media only screen and (max-width: 1200px) {
     .auth_container {
       flex-direction: column;

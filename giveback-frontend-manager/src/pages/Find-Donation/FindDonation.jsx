@@ -31,7 +31,7 @@ const FindDonation = () => {
           setClosestMatch={setClosestMatch}
           onSubmit={() => {
             setRecipientFormSubmitted(true);
-            setShowRecipientForm(false); // Hide the form when submitted
+            setShowRecipientForm(false); 
           }}
         />
       )}

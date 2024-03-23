@@ -52,7 +52,6 @@
   margin: 0;
 }
 
-/* Responsive Styles */
 @media only screen and (max-width: 600px) {
   .filterContainer {
     padding: 10px;
