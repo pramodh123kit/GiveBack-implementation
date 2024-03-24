@@ -159,10 +159,10 @@ const PersonalInfo = () => {
         <h1>Personal Information</h1>
       </div>
       <div className={styles.contentItem}>
+        <p><span className='text_heading_property'>Currently logged in as a:</span> {cookies.get('isDonator') ? 'Donator' : 'Recipient'}</p>
         <p><span className='text_heading_property'>Full Name:</span> {cookies.get('fullName')}</p>
         <p><span className='text_heading_property'>Username:</span> {cookies.get('username')}</p>
-        <p><span className='text_heading_property'>Email:</span> {cookies.get('avatarURL')}</p>
-        <p><span className='text_heading_property'>Phone Number:</span> {cookies.get('phoneNumber')}</p>
+        <p><span className='text_heading_property'>User ID:</span> {cookies.get('userId')}</p>
       </div>
     </>
   );
