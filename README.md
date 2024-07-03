@@ -2,7 +2,7 @@
 _**Welcome to the Repository of **GiveBack** 👨‍🎓**_
 
 ## Completed Project
-[![Watch the video](https://imgur.com/a/7gPBuzZ)]([https://www.youtube.com/watch?v=your-video-id](https://www.youtube.com/watch?v=Yx3rLs5Kykw))
+[![Watch the video]]([https://www.youtube.com/watch?v=your-video-id](https://www.youtube.com/watch?v=Yx3rLs5Kykw))
 
 
 ## Overview
