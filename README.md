@@ -1,6 +1,9 @@
 # ★ GiveBack Repository ★  
 _**Welcome to the Repository of **GiveBack** 👨‍🎓**_
 
+## Completed Project
+[![Video Preview](path/to/preview-image.png)]([https://link-to-your-video.com](https://www.youtube.com/watch?v=gxc5kvzoddE))
+
 ## Overview
 * This repository manages the codebase for **GiveBack**. It handles the user interface, interactions, and presentation logic for the application and backend logic.
 
